@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.RoamingSIMInfoDao">
+
+	<resultMap type="simInfoDTO" id="simInfoDTO"></resultMap>
+	<resultMap type="SimStatusStatByCountry" id="SimStatusStatByCountry"></resultMap>
+	<resultMap type="SimStatusStatByOperator" id="SimStatusStatByOperator"></resultMap>
+
+	<sql id="allColumn">
+	  SIMinfoID,
+	  SIMServerID,
+	  serverIP,
+	  slotNumber,
+	  SIMCategory,
+	  ICCID,
+      IMSI,
+      MNC,
+      MCC,
+      countryList,
+      trademark,
+      phone,
+      registerInfo,
+      PIN,
+      PUK,
+      APN,
+      SIMType,
+      planType,
+      planPrice,
+      planIfActivated,
+      planActivateDate,
+      planEndDate,
+      SIMIfActivated,
+      SIMActivateDate,
+      SIMEndDate,
+      rechargeDate,
+      rechargedValidDate,
+      cardInitialBalance,
+      cardBalance,
+      cardStatus,
+      planActivateCode,
+      simActivateCode,
+      queryMethod,
+      rechargeMethod,
+      planData,
+      planRemainData,
+      lastDeviceSN,
+      speedLimit,
+      simBillMethod,
+      simAlias,
+      remark,
+      creatorUserID,
+      creatorDate,
+      creatorUserName,
+      modifyUserID,
+      modifyDate,
+      sysStatus
+	</sql>
+
+    <!-- 查询列表 -->
+<!--     <select id="queryAll" resultMap="simInfoDTO" parameterType="String"> -->
+<!--         <![CDATA[ -->
+<!--             SELECT * FROM  WHERE sysStatus = 1 -->
+<!--         ]]> -->
+<!--     </select> -->
+
+    <!-- 分页查询-->
+    <select id="queryPage" resultMap="simInfoDTO" parameterType="searchDTO">
+        <![CDATA[
+            SELECT * FROM RoamingSIMInfo WHERE sysStatus=1
+        ]]>
+        <include refid="queryPage_filter_sql" />
+        <include refid="queryPage_order_sql" />
+         LIMIT #{startIndex},#{endIndex}
+    </select>
+    <!-- 查询总记录 -->
+    <select id="getcount" resultType="Integer" parameterType="searchDTO">
+    <![CDATA[
+            SELECT count(*) FROM RoamingSIMInfo WHERE sysStatus=1
+    ]]>
+    <include refid="queryPage_filter_sql" />
+    </select>
+
+    <sql id="queryPage_filter_sql">
+        <if test="obj.IMSI != null and obj.IMSI != '' ">
+        <![CDATA[
+            AND IMSI like '%${obj.IMSI}%'
+        ]]>
+        </if>
+        <if test="obj.lastDeviceSN != null and obj.lastDeviceSN != '' ">
+        <![CDATA[
+            AND lastDeviceSN LIKE '%${obj.lastDeviceSN}%'
+        ]]>
+        </if>
+        <if test="obj.ICCID != null and obj.ICCID != '' ">
+        <![CDATA[
+            AND ICCID LIKE '%${obj.ICCID}%'
+        ]]>
+        </if>
+        <if test="obj.cardStatus != null and obj.cardStatus != '' ">
+        <![CDATA[
+            AND cardStatus = #{obj.cardStatus}
+        ]]>
+        </if>
+        <if test="obj.serverIP != null and obj.serverIP != '' ">
+        <![CDATA[
+            AND serverIP = #{obj.serverIP}
+        ]]>
+        </if>
+        <if test="obj.MCC != null and obj.MCC != '' ">
+        <![CDATA[
+            AND MCC = #{obj.MCC}
+        ]]>
+        </if>
+        <if test="obj.simAlias != null and obj.simAlias != '' ">
+        <![CDATA[
+            AND simAlias LIKE '%${obj.simAlias}%'
+        ]]>
+        </if>
+        <if test="obj.cardBalance != null and obj.cardBalance > 0 and obj.planRemainData != null and obj.planRemainData > 0 ">
+        <![CDATA[
+            AND (cardBalance <= #{obj.cardBalance} OR planRemainData <= #{obj.planRemainData})
+        ]]>
+        </if>
+    </sql>
+
+    <sql id="queryPage_order_sql">
+        ORDER BY
+        <if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+        <if test="sortName!=null and sortName!=''">${sortName}</if>
+        <if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+        <if test="sortOrder == 'asc'"> ASC </if>
+    </sql>
+
+    <!-- 分页查询已删除记录-->
+    <select id="queryPageDeleted" resultMap="simInfoDTO" parameterType="searchDTO">
+        <![CDATA[
+            SELECT * FROM RoamingSIMInfo WHERE sysStatus=0
+        ]]>
+        <include refid="queryPage_filter_sql" />
+        <include refid="queryPage_order_sql" />
+        <![CDATA[
+         LIMIT #{startIndex},#{endIndex}
+        ]]>
+    </select>
+    <!-- 查询已删除总记录 -->
+    <select id="getcountDeleted" resultType="Integer" parameterType="searchDTO">
+    <![CDATA[
+            SELECT count(*) FROM RoamingSIMInfo WHERE sysStatus=0
+    ]]>
+    <include refid="queryPage_filter_sql" />
+    </select>
+
+    <!-- 通过id查询详情 -->
+    <select id="queryById" resultMap="simInfoDTO" parameterType="String">
+        <![CDATA[
+            SELECT
+            *
+            FROM RoamingSIMInfo WHERE SIMinfoID = #{id}
+        ]]>
+    </select>
+
+    <!-- 通过IMSI查询详情 -->
+    <select id="queryByImsi" resultMap="simInfoDTO" parameterType="String">
+        <![CDATA[
+            SELECT
+            *
+            FROM RoamingSIMInfo WHERE IMSI = #{IMSI}
+        ]]>
+    </select>
+    <!--  插入记录 -->
+    <insert id="insertInfo"  parameterType="simInfoDTO">
+    <![CDATA[
+        INSERT INTO RoamingSIMInfo(
+    ]]>
+    <include refid="allColumn"></include>
+    <![CDATA[
+        ) value(
+        #{SIMinfoID},#{SIMServerID},#{serverIP},#{slotNumber},#{SIMCategory},#{ICCID},#{IMSI},
+        #{MNC},#{MCC},#{countryList},#{trademark},#{phone},
+        #{registerInfo},#{PIN}, #{PUK},#{APN},#{SIMType},
+        #{planType},#{planPrice},#{planIfActivated},#{planActivateDate},#{planEndDate},
+        #{SIMIfActivated},#{SIMActivateDate},#{SIMEndDate},#{rechargeDate},#{rechargedValidDate},
+        #{cardInitialBalance},#{cardBalance},#{cardStatus},
+        #{planActivateCode},#{simActivateCode},#{queryMethod},#{rechargeMethod},
+        #{planData},#{planRemainData},
+        #{lastDeviceSN},#{speedLimit},#{simBillMethod},#{simAlias},
+        #{remark},#{creatorUserID},now(),#{creatorUserName},null,null,1)
+    ]]>
+    </insert>
+
+    <!--  更新套餐信息 -->
+    <update id="updateInfo" parameterType="simInfoDTO">
+        <![CDATA[
+        UPDATE RoamingSIMInfo SET
+            SIMServerID=#{SIMServerID},serverIP=#{serverIP},slotNumber=#{slotNumber},SIMCategory=#{SIMCategory},ICCID=#{ICCID},
+            MNC=#{MNC},MCC=#{MCC},countryList=#{countryList},trademark=#{trademark},phone=#{phone},
+            PIN=#{PIN}, PUK=#{PUK},APN=#{APN},SIMType=#{SIMType},
+            planType=#{planType},planPrice=#{planPrice},planIfActivated=#{planIfActivated},planActivateDate=#{planActivateDate},planEndDate=#{planEndDate},
+            SIMIfActivated=#{SIMIfActivated},SIMActivateDate=#{SIMActivateDate},SIMEndDate=#{SIMEndDate},cardInitialBalance=#{cardInitialBalance},cardBalance=#{cardBalance},
+            cardStatus=#{cardStatus},planActivateCode=#{planActivateCode},simActivateCode=#{simActivateCode},
+            queryMethod=#{queryMethod},rechargeMethod=#{rechargeMethod},planData=#{planData},planRemainData=#{planRemainData},
+            lastDeviceSN=#{lastDeviceSN},speedLimit=#{speedLimit},simBillMethod=#{simBillMethod},simAlias=#{simAlias},
+            remark=#{remark},modifyUserID=#{modifyUserID},modifyDate=now()
+        WHERE SIMinfoID = #{SIMinfoID}
+        ]]>
+    </update>
+
+    <!--  更新套餐信息 使用全部字段 选用 -->
+<!--     <update id="updateInfoAll" parameterType="simInfoDTO"> -->
+<!--         <![CDATA[ -->
+<!-- 		UPDATE RoamingSIMInfo SET -->
+<!-- 			SIMServerID=#{SIMServerID},serverIP=#{serverIP},slotNumber=#{slotNumber},ICCID=#{ICCID},IMSI=#{IMSI}, -->
+<!-- 			MNC=#{MNC},MCC=#{MCC},countryList=#{countryList},trademark=#{trademark},phone=#{phone}, -->
+<!-- 			registerInfo=#{registerInfo},PIN=#{PIN},PUK=#{PUK},APN=#{APN},SIMType=#{SIMType}, -->
+<!-- 			planType=#{planType},planPrice=#{planPrice},planIfActivated=#{planIfActivated},planActivateDate=#{planActivateDate},planEndDate=#{planEndDate}, -->
+<!-- 			SIMIfActivated=#{SIMIfActivated},SIMActivateDate=#{SIMActivateDate},SIMEndDate=#{SIMEndDate},rechargeDate=#{rechargeDate},rechargedValidDate=#{rechargedValidDate}, -->
+<!-- 			cardInitialBalance=#{cardInitialBalance},cardBalance=#{cardBalance},cardStatus=#{cardStatus}, -->
+<!-- 			planActivateCode=#{planActivateCode},simActivateCode=#{simActivateCode},queryMethod=#{queryMethod},rechargeMethod=#{rechargeMethod}, -->
+<!-- 			planData=#{planData},planRemainData=#{planRemainData}, -->
+<!-- 			lastDeviceSN=#{lastDeviceSN},speedLimit=#{speedLimit}, -->
+<!-- 			remark=#{remark},modifyUserID=#{modifyUserID},modifyDate=now(),sysStatus=#{sysStatus} -->
+<!-- 		WHERE SIMinfoID = #{SIMinfoID} -->
+<!--         ]]> -->
+<!--     </update> -->
+
+    <!--  更新套餐sysStatus -->
+    <update id="updateInfoSysStatus" parameterType="simInfoDTO">
+        <![CDATA[
+            UPDATE RoamingSIMInfo SET
+                sysStatus=#{sysStatus}
+            WHERE SIMinfoID = #{SIMinfoID}
+        ]]>
+    </update>
+
+    <!-- 通过SIM卡状态查询各地区SIM卡数量 确保排序 -->
+    <select id="querySimStatusStatByCountry" resultMap="SimStatusStatByCountry" parameterType="simInfoDTO">
+        <![CDATA[
+SELECT t.*, COUNT(LENGTH(t.countryList) > 0) AS simsTotalCount
+FROM (SELECT t1.countryID,t1.countryName,t1.countryCode,t1.continent,t1.flowCount,t1.orderCount,t1.flowPrice,t2.countryList,t2.mcc
+        FROM CountryInfo as t1
+        LEFT JOIN RoamingSIMInfo as t2
+          ON (ISNULL(t2.countryList) OR t2.countryList='' OR t2.countryList LIKE CONCAT("%",t1.countryCode,"%"))
+]]>
+		<if test="cardStatus != null and cardStatus != '' ">
+            <if test="obj.cardStatus != '损坏' ">
+        <![CDATA[
+AND t2.cardStatus = #{obj.cardStatus}
+        ]]>
+            </if>
+            <if test="obj.cardStatus == '损坏' ">
+        <![CDATA[
+AND (t2.cardStatus = #{obj.cardStatus} OR t2.cardStatus = '丢失')
+        ]]>
+            </if>
+		</if>
+        <if test="cardBalance != null and cardBalance > 0 and planRemainData != null and planRemainData > 0 ">
+        <![CDATA[
+AND (t2.cardBalance <= #{cardBalance} OR t2.planRemainData <= #{planRemainData})
+        ]]>
+        </if>
+WHERE t1.sysStatus = 1
+        <![CDATA[
+) AS t GROUP BY t.countryCode ORDER BY t.continent ASC, t.countryCode ASC;
+        ]]>
+    </select>
+
+    <!-- 通过SIM卡状态查询各地区SIM卡数量 通过 searchDTO -->
+    <select id="queryPageOfSimStatusStatByCountry" resultMap="SimStatusStatByCountry" parameterType="searchDTO">
+        <![CDATA[
+SELECT t.*, COUNT(LENGTH(t.countryList) > 0) AS simsTotalCount
+FROM (SELECT t1.countryID,t1.countryName,t1.countryCode,t1.continent,t1.flowCount,t1.orderCount,t1.flowPrice,t2.countryList,t2.mcc
+        FROM CountryInfo as t1
+        LEFT JOIN RoamingSIMInfo as t2
+          ON t2.sysStatus = 1 AND (ISNULL(t2.countryList) OR t2.countryList='' OR t2.countryList LIKE CONCAT("%",t1.countryCode,"%"))
+]]>
+        <if test="obj.cardStatus != null and obj.cardStatus != '' ">
+            <if test="obj.cardStatus != '损坏' ">
+        <![CDATA[
+AND t2.cardStatus = #{obj.cardStatus}
+        ]]>
+            </if>
+            <if test="obj.cardStatus == '损坏' ">
+        <![CDATA[
+AND (t2.cardStatus = #{obj.cardStatus} OR t2.cardStatus = '丢失')
+        ]]>
+            </if>
+        </if>
+        <if test="obj.cardBalance != null and obj.cardBalance > 0 and obj.planRemainData != null and obj.planRemainData > 0 ">
+        <![CDATA[
+AND (t2.cardBalance <= #{obj.cardBalance} OR t2.planRemainData <= #{obj.planRemainData})
+        ]]>
+        </if>
+WHERE t1.sysStatus = 1
+        <![CDATA[
+) AS t GROUP BY t.countryCode ORDER BY t.continent ASC, t.countryCode ASC
+        ]]>
+
+    </select>
+
+    <!-- 查询SIM卡状态统计总记录 按有效国家 -->
+    <select id="queryCountOfSimStatusStatByCountry" resultType="Integer" parameterType="searchDTO">
+    <![CDATA[
+            SELECT count(*) FROM CountryInfo WHERE sysStatus=1
+    ]]>
+    </select>
+
+    <!-- TODO: 排序 在完善之前, 前面使用了 continent asc, countryCode asc, 其中前者可能需要考虑为必选,以
+    按大洲表示清楚 -->
+    <sql id="querySimStatusStatByCountryGetCount_order_sql">
+        ORDER BY
+        <if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+        <if test="sortName!=null and sortName!=''">${sortName}</if>
+        <if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+        <if test="sortOrder == 'asc'"> ASC </if>
+    </sql>
+
+        <!-- 通过SIM卡状态查询各运营商SIM卡数量 通过 searchDTO -->
+    <select id="queryPageOfSimStatusStatByOperator" resultMap="SimStatusStatByOperator" parameterType="searchDTO">
+        <![CDATA[
+SELECT t.*, COUNT(LENGTH(t.trademark) > 0) AS simsTotalCount
+FROM (SELECT t1.operatorID,t1.countryName,t1.operatorName,t2.trademark,t2.mcc
+        FROM OperatorInfo as t1
+        LEFT JOIN RoamingSIMInfo as t2
+          ON t2.trademark = t1.operatorName and t2.sysStatus = 1
+]]>
+        <if test="obj.cardStatus != null and obj.cardStatus != '' ">
+            <if test="obj.cardStatus != '损坏' ">
+        <![CDATA[
+AND t2.cardStatus = #{obj.cardStatus}
+        ]]>
+            </if>
+            <if test="obj.cardStatus == '损坏' ">
+        <![CDATA[
+AND (t2.cardStatus = #{obj.cardStatus} OR t2.cardStatus = '丢失')
+        ]]>
+            </if>
+        </if>
+        <if test="obj.cardBalance != null and obj.cardBalance > 0 and obj.planRemainData != null and obj.planRemainData > 0 ">
+        <![CDATA[
+AND (t2.cardBalance <= #{obj.cardBalance} OR t2.planRemainData <= #{obj.planRemainData})
+        ]]>
+        </if>
+WHERE t1.sysStatus = 1
+        <![CDATA[
+) AS t GROUP BY t.operatorName ORDER BY t.countryName ASC, t.operatorID ASC
+        ]]>
+
+    </select>
+
+    <!-- 查询SIM卡状态统计总记录 目前指有效国家 -->
+    <select id="queryCountOfSimStatusStatByOperator" resultType="Integer" parameterType="searchDTO">
+    <![CDATA[
+            SELECT count(*) FROM OperatorInfo WHERE sysStatus=1
+    ]]>
+    </select>
+
+    <!-- 统计查询各种状态的数量 -->
+    <select id="allCount" resultType="map" parameterType="simInfoDTO">
+        <![CDATA[
+        SELECT
+        (SELECT COUNT(*) FROM RoamingSIMInfo where 1=1
+        ]]>
+        <include refid="countsql" />
+        <![CDATA[
+        ) as count,
+        (SELECT COUNT(*) FROM RoamingSIMInfo where (cardBalance <= #{cardBalance} OR planRemainData <= #{planRemainData})
+        ]]>
+        <include refid="countsql" />
+        <![CDATA[
+        ) as alert,
+        (SELECT COUNT(*) FROM RoamingSIMInfo where cardStatus='正常'
+        ]]>
+        <include refid="countsql" />
+        <![CDATA[
+        ) as status_available,
+        (SELECT COUNT(*) FROM RoamingSIMInfo where cardStatus='欠费'
+        ]]>
+        <include refid="countsql" />
+        <![CDATA[
+        ) as status_using,
+        (SELECT COUNT(*) FROM RoamingSIMInfo where (cardStatus='损坏' or cardStatus='丢失')
+        ]]>
+        <include refid="countsql" />
+        <![CDATA[
+        ) as status_unavailable
+        FROM RoamingSIMInfo where 1=1
+        LIMIT 1
+        ]]>
+    </select>
+    <sql id="countsql">
+    <![CDATA[
+        and sysStatus = 1
+    ]]>
+<!--     <if test=" cardStatus !=null and cardStatus'' "> -->
+<!--     <![CDATA[ -->
+<!--         and cardStatus = #{cardStatus} -->
+<!--     ]]> -->
+<!--     </if> -->
+    <if test="begindate !=null  and enddate!=null">
+    <![CDATA[
+        and creatorDate >=#{begindate} and creatorDate <=#{enddate}
+    ]]>
+    </if>
+    </sql>
+
+    <select id="getCountByPrimaryKey" resultType="Integer" parameterType="String">
+    <![CDATA[
+        SELECT Count(*) FROM RoamingSIMInfo WHERE ICCID=#{ICCID} LIMIT 1
+    ]]>
+    </select>
+
+    <!-- ahming notes: 这个功能系何广超根据漫游卡管理实际情况提出的需求，在导入前手动执行将清除全部漫游卡信息！请只有在清楚问题情况下再继续清除 -->
+    <delete id="deleteAllBeforeImport" parameterType="String">
+        DELETE FROM RoamingSIMInfo
+     </delete>
+     
+     <select id="getInfoBySN" resultType="simInfoDTO" parameterType="String">
+     <![CDATA[
+     		select * from RoamingSIMInfo where sysStatus=1 and lastDeviceSN=#{SN} LIMIT 1
+     	]]>
+     </select>
+</mapper>

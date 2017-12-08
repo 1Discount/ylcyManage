@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.SIMInfoDao">
+
+	<resultMap type="simInfoDTO" id="simInfoDTO"></resultMap>
+	<resultMap type="SimStatusStatByCountry" id="SimStatusStatByCountry"></resultMap>
+	<resultMap type="SimStatusStatByOperator" id="SimStatusStatByOperator"></resultMap>
+    <resultMap type="simRecordDTO" id="simRecordDTO"></resultMap>
+    <resultMap type="SIMcostStatisticsDTO" id="SIMcostStatisticsDTO"></resultMap>
+    <resultMap type="SIMCardUsageRecordDTO" id="SIMCardUsageRecordDTO"></resultMap>
+    <resultMap type="SIMAndSN" id="SIMAndSN"></resultMap>
+    <resultMap type="SIMCostDTO" id="SIMCostDTO"></resultMap>
+
+	<sql id="allColumn">
+		SIMinfoID,SIMServerID,serverIP,slotNumber,SIMCategory,ICCID,IMSI,MNC,MCC,countryList,trademark,phone,registerInfo,
+		PIN,PUK,APN,SIMType,planType,planPrice,planIfActivated,planActivateDate,planEndDate,SIMIfActivated,SIMActivateDate,
+		SIMEndDate,rechargeDate,rechargedValidDate,cardInitialBalance,cardBalance,cardStatus,planActivateCode,simActivateCode,
+		queryMethod,rechargeMethod,planData,planRemainData,lastDeviceSN,speedLimit,simBillMethod,simAlias,tag,lastStatisticsTime,
+		historyUsedFlow,remark,notes,creatorUserID,creatorDate,creatorUserName,modifyUserID,modifyDate,sysStatus,speedType,subscribeTag,
+		selnet,ifRoam,VPN,IMEI,handleType,handleConfig,cardSource,limitSpeedStr
+	</sql>
+
+
+	<!-- 分页查询 -->
+	<select id="queryPage" resultMap="simInfoDTO" parameterType="searchDTO">
+        <![CDATA[
+        
+            SELECT * FROM SIMInfo WHERE sysStatus=1
+        ]]>
+		<include refid="queryPage_filter_sql" />
+		<include refid="queryPage_order_sql" />
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	
+	<!-- 查询总记录 -->
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+	    <![CDATA[
+	        SELECT count(*) FROM SIMInfo WHERE sysStatus=1
+	    ]]>
+		<include refid="queryPage_filter_sql" />
+	</select>
+	
+
+	<sql id="queryPage_filter_sql">
+		<if test="obj.IMSI != null and obj.IMSI != '' ">
+        <![CDATA[
+            AND IMSI = #{obj.IMSI}
+        ]]>
+		</if>
+		<if test="obj.lastDeviceSN != null and obj.lastDeviceSN != '' ">
+        <![CDATA[
+            AND lastDeviceSN LIKE '%${obj.lastDeviceSN}%'
+        ]]>
+		</if>
+		<if test="obj.simAlias != null and obj.simAlias != '' ">
+        <![CDATA[
+            AND simAlias like '%${obj.simAlias}%'
+        ]]>
+		</if>
+		<if test="obj.cardStatus != null and obj.cardStatus != '' ">
+        <![CDATA[
+            AND cardStatus = #{obj.cardStatus}
+        ]]>
+		</if>
+		<if test="obj.serverIP != null and obj.serverIP != '' ">
+        <![CDATA[
+            AND IPAndPort like '%${obj.serverIP}%'
+        ]]>
+		</if>
+		<if test="obj.MCC != null and obj.MCC != '' ">
+        <![CDATA[
+            AND countryList like '%${obj.MCC}%'
+        ]]>
+		</if>
+		<if test="obj.planRemainData != null and obj.planRemainData > 0 ">
+        <![CDATA[
+            AND planRemainData <= #{obj.planRemainData}
+        ]]>
+		</if>
+		<if test="obj.cardBalance != null and obj.cardBalance > 0 ">
+        <![CDATA[
+            AND cardBalance <= #{obj.cardBalance}
+        ]]>
+		</if>
+		<if test="obj.SIMEndDate != null and obj.SIMEndDate != '' ">
+        <![CDATA[
+            AND SIMEndDate 	LIKE  '${obj.SIMEndDate}%'
+        ]]>
+		</if>
+        <if test="obj.begindate != null and obj.begindate != '' ">
+        <![CDATA[
+            AND creatorDate  >=  #{obj.begindate}
+        ]]>
+        </if>
+        <if test="obj.enddate != null and obj.enddate != '' ">
+        <![CDATA[
+            AND creatorDate  <=  #{obj.enddate}
+        ]]>
+        </if>
+        <if test="obj.serverCode != null and obj.serverCode != '' ">
+        <![CDATA[
+            AND left(serverCode,5)  =  #{obj.serverCode}
+        ]]>
+        </if>
+	</sql>
+
+	<sql id="queryPage_order_sql">
+		ORDER BY
+		<if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+		<if test="sortName!=null and sortName!=''">${sortName}</if>
+		<if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+	</sql>
+
+	<!-- 分页查询已删除记录 -->
+	<select id="queryPageDeleted" resultMap="simInfoDTO"
+		parameterType="searchDTO">
+        <![CDATA[
+            SELECT * FROM SIMInfo WHERE sysStatus=0
+        ]]>
+		<include refid="queryPage_filter_sql" />
+		<include refid="queryPage_order_sql" />
+        <![CDATA[
+         LIMIT #{startIndex},#{endIndex}
+        ]]>
+	</select>
+	
+	<!-- 查询已删除总记录 -->
+	<select id="getcountDeleted" resultType="Integer" parameterType="searchDTO">
+    <![CDATA[
+            SELECT count(*) FROM SIMInfo WHERE sysStatus=0
+    ]]>
+		<include refid="queryPage_filter_sql" />
+	</select>
+
+	<!-- 通过id查询详情 -->
+	<select id="queryById" resultMap="simInfoDTO" parameterType="String">
+        <![CDATA[
+            SELECT * FROM SIMInfo WHERE SIMinfoID = #{id}
+        ]]>
+	</select>
+
+	<!--  查询所有SIM卡 -->
+	<select id="getAll" resultMap="simInfoDTO" parameterType="simInfoDTO">
+        <![CDATA[
+            SELECT * FROM SIMInfo WHERE sysStatus=1
+        ]]>
+	</select>
+	
+	
+	<select id="getDayUserAll" resultMap="simInfoDTO" parameterType="simInfoDTO">
+     <![CDATA[
+         SELECT * FROM SIMInfo WHERE sysStatus=1 or (sysStatus=0 and modifyDate like '${modifyDate}%')
+     ]]>
+	</select>
+
+	<!-- 通过IMSI查询详情 -->
+	<select id="queryByImsi" resultMap="simInfoDTO" parameterType="String">
+     <![CDATA[
+         SELECT  * FROM SIMInfo WHERE IMSI = #{IMSI} and sysStatus=1 order by lastTime desc limit 1
+     ]]>
+	</select>
+	
+	
+	<!-- 插入记录 -->
+	<insert id="insertInfo" parameterType="simInfoDTO">
+    <![CDATA[
+        INSERT INTO SIMInfo(
+    ]]>
+		<include refid="allColumn"></include>
+    <![CDATA[
+        ) value(
+        #{SIMinfoID},#{SIMServerID},#{serverIP},#{slotNumber},#{SIMCategory},#{ICCID},#{IMSI},
+        #{MNC},#{MCC},#{countryList},#{trademark},#{phone},
+        #{registerInfo},#{PIN}, #{PUK},#{APN},#{SIMType},
+        #{planType},#{planPrice},#{planIfActivated},#{planActivateDate},#{planEndDate},
+        #{SIMIfActivated},#{SIMActivateDate},#{SIMEndDate},#{rechargeDate},#{rechargedValidDate},
+        #{cardInitialBalance},#{cardBalance},#{cardStatus},
+        #{planActivateCode},#{simActivateCode},#{queryMethod},#{rechargeMethod},
+        #{planData},#{planRemainData},
+        #{lastDeviceSN},#{speedLimit},#{simBillMethod},#{simAlias},0,0,0,
+        #{remark},#{notes},#{creatorUserID},now(),#{creatorUserName},null,null,1,#{speedType},#{subscribeTag},#{selnet},
+        #{ifRoam},#{VPN},#{IMEI},#{handleType},#{handleConfig},#{cardSource},#{limitSpeedStr})
+    ]]>
+	</insert>
+
+	<!-- 更新套餐信息 -->
+	<update id="updateInfo" parameterType="simInfoDTO">
+        <![CDATA[
+	        UPDATE SIMInfo SET lastDeviceSN=#{lastDeviceSN},IMSI=#{IMSI},
+	            SIMCategory=#{SIMCategory},ICCID=#{ICCID},MNC=#{MNC},
+	            MNC=#{MNC},MCC=#{MCC},countryList=#{countryList},trademark=#{trademark},phone=#{phone},
+	            PIN=#{PIN}, PUK=#{PUK},APN=#{APN},SIMType=#{SIMType},
+	            planType=#{planType},planPrice=#{planPrice},planIfActivated=#{planIfActivated},planActivateDate=#{planActivateDate},planEndDate=#{planEndDate},
+	            SIMIfActivated=#{SIMIfActivated},SIMActivateDate=#{SIMActivateDate},SIMEndDate=#{SIMEndDate},cardInitialBalance=#{cardInitialBalance},cardBalance=#{cardBalance},
+	            cardStatus=#{cardStatus},planActivateCode=#{planActivateCode},simActivateCode=#{simActivateCode},
+	            queryMethod=#{queryMethod},rechargeMethod=#{rechargeMethod},planData=#{planData},planRemainData=#{planRemainData},
+	            speedLimit=#{speedLimit},simBillMethod=#{simBillMethod},simAlias=#{simAlias},
+	            speedType=#{speedType},subscribeTag=#{subscribeTag},selnet=#{selnet},ifRoam=#{ifRoam},
+	            remark=#{remark},notes=#{notes},modifyUserID=#{modifyUserID},modifyDate=now(),VPN=#{VPN},IMEI=#{IMEI},ifBoundSN=#{ifBoundSN},
+	            handleType=#{handleType},handleConfig=#{handleConfig},cardSource=#{cardSource},limitSpeedStr=#{limitSpeedStr}
+	        WHERE SIMinfoID = #{SIMinfoID}
+        ]]>
+	</update>
+
+	
+
+	<!-- 更新套餐sysStatus -->
+	<update id="updateInfoSysStatus" parameterType="simInfoDTO">
+     <![CDATA[
+         UPDATE SIMInfo SET sysStatus=#{sysStatus},modifyDate=#{modifyDate},modifyUserID=#{modifyUserID} WHERE SIMinfoID = #{SIMinfoID}
+     ]]>
+	</update>
+
+	<!-- 通过SIM卡状态查询各地区SIM卡数量 确保排序 -->
+	<select id="querySimStatusStatByCountry" resultMap="SimStatusStatByCountry" parameterType="simInfoDTO">
+        <![CDATA[
+			SELECT t.*, COUNT(LENGTH(t.countryList) > 0) AS simsTotalCount
+			FROM (SELECT t1.countryID,t1.countryName,t1.countryCode,t1.continent,t1.flowCount,t1.orderCount,t1.flowPrice,t2.countryList,t2.mcc
+			FROM CountryInfo as t1 LEFT JOIN SIMInfo as t2 ON t2.countryList LIKE CONCAT("%",t1.countryCode,"%")
+		]]>
+		<if test="cardStatus != null and cardStatus != '' ">
+		<![CDATA[
+			AND t2.cardStatus = #{cardStatus}
+		]]>
+		</if>
+		<if test="cardBalance != null and cardBalance > 0 and planRemainData != null and planRemainData > 0 ">
+        <![CDATA[
+			AND (t2.cardBalance <= #{cardBalance} OR t2.planRemainData <= #{planRemainData})
+        ]]>
+		</if>
+			WHERE t1.sysStatus = 1
+        <![CDATA[
+			) AS t GROUP BY t.countryCode ORDER BY t.continent ASC, t.countryCode ASC;
+        ]]>
+	</select>
+
+	<!-- 通过SIM卡状态查询各地区SIM卡数量 通过 searchDTO -->
+	<select id="queryPageOfSimStatusStatByCountry" resultMap="SimStatusStatByCountry"
+		parameterType="searchDTO">
+        <![CDATA[
+			SELECT t.*, COUNT(LENGTH(t.countryList) > 0) AS simsTotalCount
+			FROM (SELECT t1.countryID,t1.countryName,t1.countryCode,t1.continent,t1.flowCount,t1.orderCount,t1.flowPrice,t2.countryList,t2.mcc
+			FROM CountryInfo as t1 LEFT JOIN SIMInfo as t2 ON t2.countryList LIKE CONCAT("%",t1.countryCode,"%") and t2.sysStatus = 1
+		]]>
+		<if test="obj.cardStatus != null and obj.cardStatus != '' ">
+        <![CDATA[
+			AND t2.cardStatus = #{obj.cardStatus}
+        ]]>
+		</if>
+		<if test="obj.cardBalance != null and obj.cardBalance > 0 and obj.planRemainData != null and obj.planRemainData > 0 ">
+        <![CDATA[
+			AND (t2.cardBalance <= #{obj.cardBalance} OR t2.planRemainData <= #{obj.planRemainData})
+        ]]>
+		</if>
+			WHERE t1.sysStatus = 1
+        <![CDATA[
+			) AS t GROUP BY t.countryCode ORDER BY t.continent ASC, t.countryCode ASC
+        ]]>
+
+	</select>
+
+	<!-- 查询SIM卡状态统计总记录 即系与有效国家的总数相同 -->
+	<select id="queryCountOfSimStatusStatByCountry" resultType="Integer" parameterType="searchDTO">
+	    <![CDATA[
+	        SELECT count(*) FROM CountryInfo WHERE sysStatus=1
+	    ]]>
+	</select>
+
+	<!-- TODO: 排序 在完善之前, 前面使用了 continent asc, countryCode asc, 其中前者可能需要考虑为必选,以 按大洲表示清楚 -->
+	<sql id="querySimStatusStatByCountryGetCount_order_sql">
+		ORDER BY
+		<if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+		<if test="sortName!=null and sortName!=''">${sortName}</if>
+		<if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+	</sql>
+
+	<!-- 通过SIM卡状态查询各运营商SIM卡数量 通过 searchDTO -->
+	<select id="queryPageOfSimStatusStatByOperator" resultMap="SimStatusStatByOperator" parameterType="searchDTO">
+        <![CDATA[
+			SELECT t.*, COUNT(LENGTH(t.trademark) > 0) AS simsTotalCount
+			FROM (SELECT t1.operatorID,t1.countryName,t1.operatorName,t2.trademark,t2.mcc
+			FROM OperatorInfo as t1 LEFT JOIN SIMInfo as t2 ON t2.trademark = t1.operatorName and t2.sysStatus = 1
+		]]>
+		<if test="obj.cardStatus != null and obj.cardStatus != '' ">
+        <![CDATA[
+			AND t2.cardStatus = #{obj.cardStatus}
+        ]]>
+		</if>
+		<if
+			test="obj.cardBalance != null and obj.cardBalance > 0 and obj.planRemainData != null and obj.planRemainData > 0 ">
+        <![CDATA[
+			AND (t2.cardBalance <= #{obj.cardBalance} OR t2.planRemainData <= #{obj.planRemainData})
+        ]]>
+		</if>
+		WHERE t1.sysStatus = 1
+        <![CDATA[
+			) AS t GROUP BY t.operatorName ORDER BY t.countryName ASC, t.operatorID ASC
+        ]]>
+	</select>
+
+	<!-- 查询按运营商作SIM卡状态统计总记录, 即系运营商的总数 -->
+	<select id="queryCountOfSimStatusStatByOperator" resultType="Integer" parameterType="searchDTO">
+    <![CDATA[
+        SELECT count(*) FROM OperatorInfo WHERE sysStatus=1
+    ]]>
+	</select>
+
+	<!-- 统计查询各种状态的数量 -->
+	<select id="allCount" resultType="map" parameterType="simInfoDTO">
+        <![CDATA[
+        SELECT (SELECT COUNT(*) FROM SIMInfo where 1=1
+        ]]>
+		<include refid="countsql" />
+        <![CDATA[
+        ) as count,
+        (SELECT COUNT(*) FROM SIMInfo where (cardBalance <= #{cardBalance} OR planRemainData <= #{planRemainData})
+        ]]>
+		<include refid="countsql" />
+        <![CDATA[
+        ) as alert,
+        (SELECT COUNT(*) FROM SIMInfo where cardStatus='可用'
+        ]]>
+		<include refid="countsql" />
+        <![CDATA[
+        ) as status_available,
+        (SELECT COUNT(*) FROM SIMInfo where cardStatus='使用中'
+        ]]>
+		<include refid="countsql" />
+        <![CDATA[
+        ) as status_using,
+        (SELECT COUNT(*) FROM SIMInfo where cardStatus='不可用'
+        ]]>
+		<include refid="countsql" />
+        <![CDATA[
+        ) as status_unavailable,
+        (SELECT COUNT(*) FROM SIMInfo where cardStatus='停用'
+        ]]>
+		<include refid="countsql" />
+        <![CDATA[
+        ) as status_stop
+        FROM SIMInfo where 1=1
+        LIMIT 1
+        ]]>
+	</select>
+	
+	 
+	<sql id="countsql">
+	    <![CDATA[
+	        and sysStatus = 1
+	    ]]>
+		<if test="begindate !=null  and enddate!=null">
+	    <![CDATA[
+	        and creatorDate >=#{begindate} and creatorDate <=#{enddate}
+	    ]]>
+		</if>
+	</sql>
+
+
+	<!-- 根据状态查询sim卡 -->
+	<select id="getbystatus" resultMap="simInfoDTO" parameterType="String">
+		select * from SIMInfo where sysStatus=1 and IMSI!='' and
+		cardStatus=#{cardStatus}
+	</select>
+
+	<!-- 根据国家编码查询查询SIM卡每个状态的个数 -->
+	<select id="getcardStatus" resultMap="simInfoDTO" parameterType="simInfoDTO">
+		select count(*) as planData,cardStatus from SIMInfo where sysStatus =
+		1 and countryList like '%${countryList}%'
+		group by cardStatus
+	</select>
+
+	<select id="getCountByIMSI" resultType="Integer" parameterType="String">
+        <![CDATA[
+            SELECT Count(*) FROM SIMInfo WHERE IMSI=#{imsi} LIMIT 1
+        ]]>
+	</select>
+	<select id="getSIMbyserverID" parameterType="simInfoDTO" resultMap="simInfoDTO">
+		<![CDATA[
+			SELECT s.*,c.countryName as countryName FROM SIMInfo s LEFT JOIN CountryInfo c on c.countryCode like s.countryList
+			where s.sysStatus = 1 and ifIn=1
+		]]>
+		<if test="serverIP!=null and serverIP!=''">
+			and IPAndPort like '%${serverIP}%'
+		</if>
+
+	</select>
+	<!-- 根据 simAlias查询SIM卡信息 -->
+	<select id="getSIMInfoBysimAlias" parameterType="simInfoDTO" resultMap="simInfoDTO">
+		<![CDATA[
+			select * from SIMInfo where sysStatus=1 and IMSI=#{IMSI}
+		]]>
+	</select>
+
+	<!-- 更新套餐sysStatus -->
+	<update id="updateNotes" parameterType="simInfoDTO">
+     <![CDATA[
+         UPDATE SIMInfo SET notes=#{notes} WHERE SIMinfoID = #{SIMinfoID}
+     ]]>
+	</update>
+
+
+	<update id="updataStatusByIMSI" parameterType="simInfoDTO">
+    	<![CDATA[
+            update SIMInfo set cardStatus=#{cardStatus} where IMSI in(${IMSI}) and sysStatus=1
+        ]]>
+	</update>
+
+	<!-- 查询需要开启的卡 -->
+	<select id="selectTimeOpenCard" resultMap="simInfoDTO">
+    <![CDATA[
+    	select * from SIMInfo  where sysStatus=1  and cardStatus='停用' and unix_timestamp(now())-unix_timestamp(SIMActivateDate)<=1800  and unix_timestamp(now())-unix_timestamp(SIMActivateDate)>0
+    ]]>
+	</select>
+	<!-- 查询需要关闭的卡 -->
+	<select id="selectTimeShutdownCard" resultMap="simInfoDTO">
+    <![CDATA[
+    	select * from SIMInfo  where sysStatus=1  and cardStatus in('可用','使用中') and unix_timestamp(SIMEndDate)-unix_timestamp(now())<=1800  AND UNIX_TIMESTAMP(SIMEndDate)-UNIX_TIMESTAMP(NOW())>0
+    ]]>
+	</select>
+
+	<update  id="updateTimeOpenCard" parameterType="simInfoDTO">
+    <![CDATA[
+    	update SIMInfo set cardStatus='可用' where IMSI in(${IMSI}) and sysStatus=1
+    ]]>
+	</update>
+
+
+
+	<update  id="updateTimeShutdownCard" parameterType="simInfoDTO">
+    <![CDATA[
+    	update SIMInfo set cardStatus='停用' where IMSI in(${IMSI}) and sysStatus=1
+    ]]>
+	</update>
+
+
+	<select id="queryPageSIMAndSNByIMSI" parameterType="SearchDTO" resultMap="SIMAndSN">
+	   select * from SIMAndSN where IMSI = #{obj.IMSI} order by allotTime desc
+        <![CDATA[
+         LIMIT #{startIndex},#{endIndex}
+        ]]>
+	</select>
+
+	<select id="getcountSIMAndSN" parameterType="SearchDTO" resultType="Integer" >
+	   select count(*) from SIMAndSN where IMSI = #{obj.IMSI}
+	</select>
+
+	<!-- 导出sim卡信息 -->
+	<select id="excelimportSIM" parameterType="simInfoDTO" resultMap="simInfoDTO">
+		select * from SIMInfo where sysStatus=1 and IMSI IN (${IMSI}) order by creatorDate desc
+	</select>
+
+
+    <select id="getSIMRecordByDate" parameterType="simRecordDTO" resultMap="simRecordDTO">
+        select count(*) useCount,creatorDate,SIMCount from SIMRecord where country like '%${country}%'
+        <if test="dateBegin != null and dateBegin != ''">
+            <![CDATA[and creatorDate >= #{dateBegin} ]]>
+        </if>
+        <if test="dateEnd != null and dateEnd != ''">
+            <![CDATA[and creatorDate <= #{dateEnd} ]]>
+        </if>
+        group by creatorDate order by creatorDate asc
+    </select>
+
+    <select id="getSIMRecordPageCountByDate" parameterType="searchDTO" resultType="int">
+        select count(*) from (select country from SIMRecord
+        <if test="obj.creatorDate != null and obj.creatorDate != ''">
+            where creatorDate = #{obj.creatorDate}
+        </if>
+        <if test="obj.creatorDate == null or obj.creatorDate == ''">
+            where creatorDate = DATE_SUB(CURDATE(),INTERVAL 1 DAY)
+        </if>
+        group by country ) sim_record
+    </select>
+
+    <select id="getSIMRecordPageByDate" parameterType="searchDTO" resultMap="simRecordDTO">
+        select count(*) useCount,sum(useFlow) useFlow,country,creatorDate,SIMCount from SIMRecord
+        <if test="obj.creatorDate != null and obj.creatorDate != ''">
+            where creatorDate = #{obj.creatorDate}
+        </if>
+        <if test="obj.creatorDate == null or obj.creatorDate == ''">
+            where creatorDate = DATE_SUB(CURDATE(),INTERVAL 1 DAY)
+        </if>
+        group by country
+        LIMIT #{startIndex},#{endIndex}
+    </select>
+
+    <select id="getSIMRecordPageCountByCountry" parameterType="searchDTO" resultType="int">
+        select count(*) from SIMRecord where 1=1
+        <if test="obj.creatorDate != null and obj.creatorDate != ''">
+           and creatorDate = #{obj.creatorDate}
+        </if>
+        <if test="obj.country != null and obj.country != ''">
+           and country = #{obj.country}
+        </if>
+        <if test="obj.IMSI != null and obj.IMSI != ''">
+           and IMSI = #{obj.IMSI}
+        </if>
+        <if test="obj.code != null and obj.code != ''">
+           and code = #{obj.code}
+        </if>
+    </select>
+
+    <select id="getSIMRecordPageByCountry" parameterType="searchDTO" resultMap="simRecordDTO">
+        select * from SIMRecord where 1=1
+        <if test="obj.creatorDate != null and obj.creatorDate != ''">
+           and creatorDate = #{obj.creatorDate}
+        </if>
+        <if test="obj.country != null and obj.country != ''">
+           and country = #{obj.country}
+        </if>
+        <if test="obj.IMSI != null and obj.IMSI != ''">
+           and IMSI = #{obj.IMSI}
+        </if>
+        <if test="obj.code != null and obj.code != ''">
+           and code = #{obj.code}
+        </if>
+        order by creatorDate desc
+    </select>
+
+
+	<select id="getSIMRecordByIMSI" parameterType="simRecordDTO" resultMap="simRecordDTO">
+        select * from SIMRecord where 1=1 and creatorDate=#{creatorDate}
+        <if test="IMSI != null and IMSI != ''">
+           and IMSI = #{IMSI}
+        </if>
+    </select>
+
+    <select id="getVFsimAlias" parameterType="simInfoDTO" resultMap="simInfoDTO">
+    	select * from SIMInfo where sysStatus=1 and simAlias like 'EUT%'  limit 1
+    </select>
+
+    <select id="getVFsimcardCount" parameterType="simInfoDTO" resultType="simInfoDTO">
+		select cardStatus ,count(*) as cardStatusCount from SIMInfo where sysStatus=1 and simAlias like 'EUT%' group by cardStatus
+    </select>
+    
+    <!-- SIM卡成本统计 -->
+    <select id="getSIMCardUsageRecordPage" parameterType="searchDTO" resultMap="SIMCardUsageRecordDTO">
+        select country,sum(CardCount) cardCount,sum(moneyCount) moneyCount,sum(flowCount) flowCount from SIMCardUsageRecord where 1=1 
+        <if test="obj.begainTime != null and obj.begainTime != ''">
+            and useTime >= #{obj.begainTime} 
+        </if> 
+        <if test="obj.endTime != null and obj.endTime != ''">
+            <![CDATA[and useTime <= #{obj.endTime} ]]>
+        </if> 
+        <if test="obj.country != null and obj.country != ''">
+            <![CDATA[and country = #{obj.country} ]]>
+        </if> 
+        group by country
+        LIMIT #{startIndex},#{endIndex} 
+    </select>
+    
+    <select id="getSIMCardUsageRecordCount" parameterType="searchDTO" resultType="int">
+        select count(*) from (select country from SIMCardUsageRecord where 1=1 
+        <if test="obj.begainTime != null and obj.begainTime != ''">
+            and useTime >= #{obj.begainTime} 
+        </if> 
+        <if test="obj.endTime != null and obj.endTime != ''">
+            <![CDATA[and useTime <= #{obj.endTime} ]]>
+        </if> 
+        <if test="obj.country != null and obj.country != ''">
+            <![CDATA[and country = #{obj.country} ]]>
+        </if> 
+        group by country) a
+    </select>
+    
+    <select id="searchMoneySum" parameterType="SIMCardUsageRecordDTO" resultType="String">
+        select sum(moneyCount) moneyCount from SIMCardUsageRecord where 1=1 
+        <if test="begainTime != null and begainTime != ''">
+            and useTime >= #{begainTime} 
+        </if> 
+        <if test="endTime != null and endTime != ''">
+            <![CDATA[and useTime <= #{endTime} ]]>
+        </if> 
+        <if test="country != null and country != ''">
+            <![CDATA[and country = #{country} ]]>
+        </if> 
+    </select>
+    
+						
+	<!-- SIM卡总数查询 -->			
+	<select id="getSIMCardTotal" parameterType="simInfoDTO" resultType="simInfoDTO">
+	 <![CDATA[
+		SELECT count(*) as SIMCount,IFNULL(SUM(planRemainData),0) as SUMplanRemainData from SIMInfo where sysStatus=1 and countryList LIKE '${countryCode}' and cardStatus NOT in('调试不可用') 
+		and countryList not like concat('%','|','%') 
+		and ((unix_timestamp(SIMActivateDate)<=unix_timestamp('${datetime}:00') and unix_timestamp(SIMEndDate)>=unix_timestamp('${datetime}:00'))
+		or SIMEndDate is  null or SIMEndDate = '' or SIMActivateDate is  null or SIMActivateDate ='')
+	 ]]>
+	</select>
+	
+    <select id="SIMcostStatisticsQueryPage" parameterType="SIMcostStatisticsDTO" resultMap="SIMcostStatisticsDTO">
+     <![CDATA[
+		select IMSI,SUM(primeCost) as primeCost,SUM(useFlow) as useFlow,countryList,country from SIMcostStatistics 
+		where  creatorDate>=#{obj.begindate} and creatorDate<=#{obj.enddate} 
+
+	 ]]>
+	 <if test="obj.country != null and obj.country != ''">
+          <![CDATA[and countryList = #{obj.country} ]]>
+     </if>  
+	 <if test="obj.isMoreCountry != null and obj.isMoreCountry != ''">
+          <![CDATA[and countryList like '%|%' ]]>
+     </if>  
+     group by IMSI
+	 LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	 <select id="SIMcostStatisticsQueryPageCount" parameterType="SIMcostStatisticsDTO" resultType="Integer">
+     <![CDATA[
+     
+		select COUNT(DISTINCT(IMSI)) from SIMcostStatistics where  creatorDate>=#{obj.begindate} and creatorDate<=#{obj.enddate}
+		
+	 ]]>
+	 <if test="obj.country != null and obj.country != ''">
+          <![CDATA[and countryList = #{obj.country} ]]>
+     </if> 
+      <if test="obj.isMoreCountry != null and obj.isMoreCountry != ''">
+          <![CDATA[and countryList like '%|%' ]]>
+     </if>  
+     
+	</select>
+	
+	
+	<!-- *************SIM卡成本统计begin***************** -->
+	
+	<insert id="insertSIMcostStatistics" parameterType="SIMcostStatisticsDTO">
+		 INSERT INTO SIMcostStatistics (IMSI,creatorDate,assignedSN,country,primeCost,useFlow,countryList) value(#{IMSI},#{creatorDate},#{assignedSN},#{country},#{primeCost},#{useFlow},#{countryList})
+	</insert>
+	
+	<!-- new 分页查询 -->
+	<select id="getPageSIMcostStatisticsByDay" parameterType="searchDTO" resultMap="SIMcostStatisticsDTO">
+	<![CDATA[
+		select * from SIMcostStatistics where creatorDate>=#{obj.begindate} and creatorDate<=#{obj.enddate} and IMSI=#{obj.IMSI}
+		order by creatorDate
+	]]>
+	</select>
+	
+	<select id="getPageSIMcostStatisticsByDayCount" parameterType="searchDTO" resultType="Integer">
+	<![CDATA[
+		select count(*) from SIMcostStatistics where creatorDate>=#{obj.begindate} and creatorDate<=#{obj.enddate} and IMSI=#{obj.IMSI}
+	]]>
+	</select>
+	
+	<!-- sim卡成本统计一级页面分页查询  -->
+	<select id="SIMcostQueryPage" parameterType="searchDTO" resultMap="SIMCostDTO">
+	<![CDATA[
+		select c.countryName,s.* from 
+		(select a.country,count(*) as totalSim,sum(singleFlow) as totalFlow,sum(planData) as totalData,sum(planPrice) as totalPrice from 
+		(select s.IMSI,s.country,sum(s.useFlow) as singleFlow 
+		from SIMRecord s where s.creatorTime>=#{obj.begindate} and s.creatorTime<=#{obj.enddate}  group by s.IMSI,s.country ) a,
+		SIMInfo s where s.IMSI=a.IMSI  group by a.country) s left join CountryInfo c on(s.country=c.countryCode) where 1=1
+	 ]]>
+	  <if test="obj.countryName != null and obj.countryName != ''">
+          and countryName=#{obj.countryName}
+     </if> 
+	</select>
+	
+	<select id="SIMcostQueryPageCount" parameterType="searchDTO" resultType="Integer">
+	<![CDATA[
+		select count(*) from 
+		(select a.country,count(*) as totalSim,sum(singleFlow) as totalFlow,sum(planData) as totalData,sum(planPrice) as totalPrice from 
+		(select s.IMSI,s.country,sum(s.useFlow) as singleFlow 
+		from SIMRecord s where s.creatorTime>=#{obj.begindate} and s.creatorTime<=#{obj.enddate}  group by s.IMSI,s.country ) a,
+		SIMInfo s where s.IMSI=a.IMSI  group by a.country) s left join CountryInfo c on(s.country=c.countryCode)where 1=1
+		
+	 ]]>
+	 <if test="obj.countryName != null and obj.countryName != ''">
+        and   countryName=#{obj.countryName}
+     </if> 
+	</select>
+	
+	<!-- sim卡成本统计二级页面分页查询  -->
+	<select id="SIMcostQueryInfoPageInfo" parameterType="searchDTO" resultType="SIMCostDTO">
+	<![CDATA[
+		select count(*) as simNum, a.countryName,sum(a.useFlow) as totalFlow, SUM(s.planData) as totalData,SUM( s.planPrice) as totalPrice, s.planType from (
+			select a.*,c.countryName from (
+				select s.IMSI,s.country,sum(s.useFlow) as useFlow  from SIMRecord s 
+				where s.creatorTime>=#{obj.begindate} and s.creatorTime<=#{obj.enddate}  and country = #{obj.MCC} and IMSI !='000000000000000000' and IMSI !='' group by s.IMSI,s.country ) a
+				left join CountryInfo c on a.country=c.countryCode
+			) a left JOIN SIMInfo s on a.IMSI=s.IMSI    group by s.planType
+	 ]]>
+	</select>
+	
+	<select id="SIMcostQueryPageInfoCount" parameterType="searchDTO" resultType="Integer">
+	<![CDATA[
+		select count(*) from (
+			select a.countryName, SUM(s.planData) as planData,SUM( s.planPrice) as planPrice, s.planType from (
+				select a.*,c.countryName from (
+					select s.IMSI,s.country,sum(s.useFlow) as singleFlow  from SIMRecord s 
+					where s.creatorTime>=#{obj.begindate} and s.creatorTime<=#{obj.enddate}  and country = #{obj.MCC} and IMSI !='000000000000000000' and IMSI !='' group by s.IMSI,s.country ) a
+					left join CountryInfo c on a.country=c.countryCode
+				) a left JOIN SIMInfo s on a.IMSI=s.IMSI  group by s.planType
+		) a 
+	 ]]>
+	</select>
+	
+	<!-- sim卡成本统计三级页面分页查询  -->
+	<select id="SIMcostQueryInfoPageInfoThree" parameterType="searchDTO" resultMap="SIMCostDTO">
+	<![CDATA[
+		select a.IMSI,a.countryName,a.useFlow as totalFlow,a.assignedSN,s.planData as totalData,s.planPrice as totalPrice, s.planType from (
+			select a.*,c.countryName from (
+				select s.IMSI,s.country,sum(s.useFlow) as useFlow,group_concat(assignedSN) as assignedSN  from SIMRecord s 
+				where s.creatorTime>=#{obj.begindate} and s.creatorTime<=#{obj.enddate}  and country =#{obj.MCC} group by s.IMSI,s.country 
+			) a left join CountryInfo c on a.country=c.countryCode
+		) a left JOIN SIMInfo s on a.IMSI=s.IMSI    where s.planType=#{obj.planType}
+	 ]]>
+	</select>
+		
+	<!-- sim卡成本统计三级页面分页查询  -->
+	<select id="SIMcostQueryInfoPageInfoThreeCount" parameterType="searchDTO"  resultType="Integer">
+	<![CDATA[
+		select count(*) from (
+			select a.IMSI,a.countryName,a.useFlow as totalFlow,a.assignedSN,s.planData as totalData,s.planPrice as totalPrice, s.planType from (
+				select a.*,c.countryName from (
+					select s.IMSI,s.country,sum(s.useFlow) as useFlow,group_concat(assignedSN) as assignedSN  from SIMRecord s 
+					where s.creatorTime>=#{obj.begindate} and s.creatorTime<=#{obj.enddate}  and country =#{obj.MCC} group by s.IMSI,s.country 
+				) a left join CountryInfo c on a.country=c.countryCode
+			) a left JOIN SIMInfo s on a.IMSI=s.IMSI    where s.planType=#{obj.planType}
+		)a
+	]]>
+	
+	</select>
+	
+	<!-- 三级页面的使用天数查询 -->
+	<select id="seelctSIMrecordbyIMSI" parameterType="simInfoDTO" resultType="Integer">
+	<![CDATA[
+		select  count(DISTINCT(creatorDate))  from SIMRecord where IMSI=#{IMSI} and creatorDate>=#{begindate} and creatorDate<=#{enddate} and country=#{MCC}
+	]]>
+	</select>
+	
+	<!-- 四级页面 ，使用天数 -->
+	<select id="getSIMRecordPageByIMSI" parameterType="searchDTO" resultType="SIMRecordDTO">
+	<![CDATA[
+		select * from SIMRecord where IMSI=#{obj.IMSI} and creatorDate>=#{obj.begindate} and creatorDate<=#{obj.enddate} 
+	]]>
+	 <if test="obj.MCC != null and obj.MCC != ''">
+        and country=#{obj.MCC}
+     </if> 
+	</select>
+	<select id="getSIMRecordPageByIMSICount" parameterType="searchDTO" resultType="Integer">
+	<![CDATA[
+		select count(*) from SIMRecord where IMSI=#{obj.IMSI} and creatorDate>=#{obj.begindate} and creatorDate<=#{obj.enddate}
+	]]>
+	 <if test="obj.MCC != null and obj.MCC != ''">
+        and country=#{obj.MCC}
+     </if>
+	</select>
+	
+	<!-- sim成本统计按国家导出 -->
+	<select id="simcostexportbycountry"  parameterType="simInfoDTO" resultMap="SIMCostDTO">
+	<![CDATA[
+	select a.IMSI,a.countryName,a.useFlow as totalFlow,a.assignedSN,s.planData as totalData,s.planPrice as totalPrice, s.planType from (
+		select a.*,c.countryName from (
+			select s.IMSI,s.country,sum(s.useFlow) as useFlow,group_concat(assignedSN) as assignedSN  from SIMRecord s 
+			where s.creatorTime>=#{begindate} and s.creatorTime<=#{enddate}  group by s.IMSI,s.country 
+		) a left join CountryInfo c on a.country=c.countryCode
+	) a left JOIN SIMInfo s on a.IMSI=s.IMSI  where a.IMSI !='000000000000000000' and a.IMSI !='' order by countryName,planType
+	]]>   
+	</select>
+	
+	
+	<!-- 每种卡的使用详情查询  (按类型)-->
+	<select id="getpageSIMUserInfoByplanType" parameterType="searchDTO" resultMap="SIMCostDTO">
+	<![CDATA[
+	select count(a.IMSI) AS totalSim,group_concat(DISTINCT(a.country)) AS country,group_concat(DISTINCT(a.assignedSN)) AS assignedSN,SUM(a.totalFlow) as totalFlow,SUM(a.totalData) as totalData,SUM(a.totalPrice) AS totalPrice,a.planType from (
+		SELECT  a.IMSI, group_concat(DISTINCT(a.country)) AS country ,group_concat(DISTINCT(a.assignedSN)) AS assignedSN ,SUM(a.useFlow) totalFlow, b.planData AS totalData,b.planPrice as totalPrice,b.planType FROM SIMRecord a left JOIN SIMInfo b on a.IMSI=b.IMSI 
+		WHERE a.creatorDate>=#{obj.begindate} and a.creatorDate<=#{obj.enddate} and a.IMSI!='' and a.IMSI!='000000000000000000'  GROUP BY a.IMSI
+	) a  GROUP BY planType
+	]]>
+	</select>
+	
+	<select id="getpageSIMUserInfoByplanTypeCount" parameterType="searchDTO" resultType="Integer">
+	<![CDATA[
+	select count(*) from (
+		select count(a.IMSI) AS IMSI,group_concat(DISTINCT(a.MCC)) AS MCC,SUM(a.totalFlow) as totalFlow,SUM(a.totalData) as totalData,SUM(a.totalPrice) AS totalPrice,a.planType from (
+			SELECT  a.IMSI, group_concat(DISTINCT(a.country)) AS MCC ,SUM(a.useFlow) totalFlow,b.planData AS totalData,b.planPrice as totalPrice,b.planType FROM SIMRecord a left JOIN SIMInfo b on a.IMSI=b.IMSI 
+			WHERE a.creatorDate>=#{obj.begindate} and a.creatorDate<=#{obj.enddate} and a.IMSI!='' and a.IMSI!='000000000000000000'  GROUP BY a.IMSI
+		) a  GROUP BY planType
+	) a 
+	]]>
+	</select>
+
+	<!-- sim成本统计按卡类型   二级页面分页查询 -->
+	<select id="getpagesimbyplanType" parameterType="searchDTO" resultMap="SIMCostDTO">
+	<![CDATA[
+	select * from (
+		SELECT  b.simAlias,a.IMSI, group_concat(DISTINCT(a.country)) AS country ,group_concat(DISTINCT(a.assignedSN)) AS assignedSN ,SUM(a.useFlow) totalFlow, b.planData AS totalData,b.planPrice as totalPrice,b.planType FROM SIMRecord a left JOIN SIMInfo b on a.IMSI=b.IMSI 
+		WHERE a.creatorDate>=#{obj.begindate} and a.creatorDate<=#{obj.enddate} and a.IMSI!='' and a.IMSI!='000000000000000000'  GROUP BY a.IMSI
+	) a where a.planType=#{obj.planType}
+	]]>
+	</select>
+	
+	<select id="getpagesimbyplanTypeCount" parameterType="searchDTO" resultType="Integer">
+	<![CDATA[
+	select count(*) from (
+		select * from (
+			SELECT  a.IMSI, group_concat(DISTINCT(a.country)) AS country ,group_concat(DISTINCT(a.assignedSN)) AS assignedSN ,SUM(a.useFlow) totalFlow, b.planData AS totalData,b.planPrice as totalPrice,b.planType FROM SIMRecord a left JOIN SIMInfo b on a.IMSI=b.IMSI 
+			WHERE a.creatorDate>=#{obj.begindate} and a.creatorDate<=#{obj.enddate} and a.IMSI!='' and a.IMSI!='000000000000000000'  GROUP BY a.IMSI
+		) a where a.planType=#{obj.planType}
+	) a
+	]]>
+	</select>
+	
+	<!-- *************SIM卡成本统计end***************** -->
+</mapper>

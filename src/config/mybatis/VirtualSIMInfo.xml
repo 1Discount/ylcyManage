@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.VirtualSIMInfoDao">
+	<resultMap type="VirtualSIMInfoDTO" id="VirtualSIMInfoDTO"></resultMap>
+	<sql id="allColumn">
+		SIMinfoID,
+		SIMServerID,
+		serverIP,
+		slotNumber,
+		SIMCategory,
+		ICCID,
+		IMSI,
+		MNC,
+		MCC,
+		countryList,
+		trademark,
+		phone,
+		registerInfo,
+		PIN,
+		PUK,
+		APN,
+		SIMType,
+		planType,
+		planPrice,
+		planIfActivated,
+		planActivateDate,
+		planEndDate,
+		SIMIfActivated,
+		SIMActivateDate,
+		SIMEndDate,
+		rechargeDate,
+		rechargedValidDate,
+		cardInitialBalance,
+		cardBalance,
+		cardStatus,
+		planActivateCode,
+		simActivateCode,
+		queryMethod,
+		rechargeMethod,
+		planData,
+		planRemainData,
+		lastDeviceSN,
+		speedLimit,
+		simBillMethod,
+		simAlias,
+		tag,
+		lastStatisticsTime,
+		historyUsedFlow,
+		remark,
+		notes,
+		creatorUserID,
+		creatorDate,
+		creatorUserName,
+		modifyUserID,
+		modifyDate,
+		sysStatus,
+		speedType,
+		subscribeTag,
+		selnet,
+		ifRoam,
+		VPN,
+		IMEI
+	</sql>
+
+
+
+	<!-- 分页查询 -->
+	<select id="queryPage" resultMap="VirtualSIMInfoDTO"
+		parameterType="searchDTO">
+        <![CDATA[
+            SELECT * FROM VirtualSIMInfo WHERE sysStatus=1
+        ]]>
+		<include refid="queryPage_filter_sql" />
+		<include refid="queryPage_order_sql" />
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+	<!-- 查询总记录 -->
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+    <![CDATA[
+            SELECT count(*) FROM VirtualSIMInfo WHERE sysStatus=1
+    ]]>
+		<include refid="queryPage_filter_sql" />
+	</select>
+
+	<sql id="queryPage_filter_sql">
+		<if test="obj.IMSI != null and obj.IMSI != '' ">
+        <![CDATA[
+            AND IMSI = #{obj.IMSI}
+        ]]>
+		</if>
+		<if test="obj.lastDeviceSN != null and obj.lastDeviceSN != '' ">
+        <![CDATA[
+            AND lastDeviceSN LIKE '%${obj.lastDeviceSN}%'
+        ]]>
+		</if>
+		<if test="obj.simAlias != null and obj.simAlias != '' ">
+        <![CDATA[
+            AND simAlias like '%${obj.simAlias}%'
+        ]]>
+		</if>
+		<if test="obj.cardStatus != null and obj.cardStatus != '' ">
+        <![CDATA[
+            AND cardStatus = #{obj.cardStatus}
+        ]]>
+		</if>
+		<if test="obj.serverIP != null and obj.serverIP != '' ">
+        <![CDATA[
+            AND IPAndPort like '%${obj.serverIP}%'
+        ]]>
+		</if>
+		<if test="obj.MCC != null and obj.MCC != '' ">
+        <![CDATA[
+            AND countryList like '%${obj.MCC}%'
+        ]]>
+		</if>
+		<if test="obj.planRemainData != null and obj.planRemainData > 0 ">
+        <![CDATA[
+            AND planRemainData <= #{obj.planRemainData}
+        ]]>
+		</if>
+	</sql>
+
+	<sql id="queryPage_order_sql">
+		ORDER BY
+		<if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+		<if test="sortName!=null and sortName!=''">${sortName}</if>
+		<if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+	</sql>
+
+
+	<!-- 插入记录 -->
+	<insert id="insertInfo" parameterType="VirtualSIMInfoDTO">
+    <![CDATA[
+        INSERT INTO VirtualSIMInfo(
+    ]]>
+		<include refid="allColumn"></include>
+    <![CDATA[
+        ) value(
+        #{SIMinfoID},#{SIMServerID},#{serverIP},#{slotNumber},#{SIMCategory},#{ICCID},#{IMSI},
+        #{MNC},#{MCC},#{countryList},#{trademark},#{phone},
+        #{registerInfo},#{PIN}, #{PUK},#{APN},#{SIMType},
+        #{planType},#{planPrice},#{planIfActivated},#{planActivateDate},#{planEndDate},
+        #{SIMIfActivated},#{SIMActivateDate},#{SIMEndDate},#{rechargeDate},#{rechargedValidDate},
+        #{cardInitialBalance},#{cardBalance},#{cardStatus},
+        #{planActivateCode},#{simActivateCode},#{queryMethod},#{rechargeMethod},
+        #{planData},#{planRemainData},
+        #{lastDeviceSN},#{speedLimit},#{simBillMethod},#{simAlias},0,0,0,
+        #{remark},#{notes},#{creatorUserID},now(),#{creatorUserName},null,null,1,#{speedType},#{subscribeTag},#{selnet},#{ifRoam},#{VPN},#{IMEI})
+    ]]>
+	</insert>
+
+	<select id="getvirtualbyid" resultMap="VirtualSIMInfoDTO"
+		parameterType="String">
+		<![CDATA[
+	        select * from VirtualSIMInfo where SIMinfoID=#{id}
+	    ]]>
+	</select>
+
+	<update id="updatevirtual" parameterType="VirtualSIMInfoDTO">
+			<![CDATA[
+				update VirtualSIMInfo set IMSI=#{IMSI},countryList=#{countryList},lastDeviceSN=#{lastDeviceSN},cardStatus=#{cardStatus},
+				simAlias=#{simAlias},modifyUserID=#{modifyUserID},modifyDate=#{modifyDate}  where SIMinfoID=#{SIMinfoID}
+			 ]]>
+	</update>
+	<update id="deletevirtual" parameterType="String">
+		<![CDATA[
+		update VirtualSIMInfo set sysStatus=0 where SIMinfoID=#{id}
+				 ]]>
+	</update>
+</mapper>

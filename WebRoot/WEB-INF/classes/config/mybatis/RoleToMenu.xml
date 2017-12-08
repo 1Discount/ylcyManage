@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.RoleToMenuDao">
+	
+	<resultMap type="roleToMenuDTO" id="roleToMenuDTO"></resultMap>
+	
+	<sql id="allColumn">
+	   roleToMenuID,roleID,menuID,roleName,menuName,remark,creatorUserID,creatorDate,modifyUserID,modifyDate,sysStatus
+	</sql>
+	<!-- 条件查询sql片段 -->
+	<sql id="queryPage_filter_sql">
+		<if test="obj!= null and obj.roleName!=null">
+		<![CDATA[
+			and roleName = #{obj.roleName}
+		]]>
+		</if>
+	</sql>
+	
+	<insert id="insertinfo" parameterType="roleToMenuDTO">
+	<![CDATA[
+		insert into RoleToMenu ( 
+	]]>
+	<include refid="allColumn"></include>
+	<![CDATA[
+		) value(#{roleToMenuID},#{roleID},#{menuID},#{roleName},#{menuName},#{remark},#{creatorUserID},now(),null,null,1)
+	]]>
+	</insert>
+	
+	<!-- 批量插入 -->
+	<insert id="batchinsertinfo" parameterType="java.util.List">
+	<![CDATA[
+		insert into RoleToMenu ( 
+	]]>
+	<include refid="allColumn"></include>
+	<![CDATA[
+		)values 
+	]]>
+	<foreach collection="list" item="item" index="index" separator="," >  
+    <![CDATA[
+		(#{item.roleToMenuID},#{item.roleID},#{item.menuID},#{item.roleName},#{item.menuName},#{item.remark},#{item.creatorUserID},now(),null,null,1)
+	]]>
+    </foreach>
+	</insert>
+	
+	<!-- 根据角色ID删除角色菜单映射表 -->
+	<update id="deleteinfo" parameterType="String">
+	<![CDATA[
+		update RoleToMenu set sysStatus=0 where roleID=#{roleID}
+	]]>
+	</update>
+	
+	
+	<!-- 分页查询-->
+	<select id="queryPage" resultMap="roleToMenuDTO" parameterType="searchDTO">
+		<![CDATA[
+			select roleToMenuID,roleID,menuID,roleName,menuName,remark,creatorUserID,creatorDate from RoleToMenu where sysStatus=1
+		]]>
+		<include refid="queryPage_filter_sql" />
+		order by
+		<if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+		<if test="sortName!=null and sortName!=''">${sortName}</if>
+		<if test="sortOrder == 'desc'"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+		 LIMIT #{startIndex},#{endIndex}
+	</select>
+	<!-- 查询总记录 -->
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+	<![CDATA[
+			select count(*) from RoleToMenu where sysStatus=1 
+	]]>
+	<include refid="queryPage_filter_sql" />
+	</select>
+	
+	<!-- 根据角色ID查询菜单ID -->
+	<select id="getmenubyrid" resultMap="roleToMenuDTO" parameterType="String">
+		select * from RoleToMenu where sysStatus=1 and roleID=#{roleID}
+	</select>
+	
+	
+
+</mapper>

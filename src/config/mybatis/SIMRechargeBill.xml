@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.SIMRechargeBillDao">
+	
+	<resultMap type="simRechargeBillDTO" id="simRechargeBillDTO">
+		
+	</resultMap>
+
+
+	<sql id="allColumns">
+		rechargeBillID,
+		SIMCategory,
+		SIMinfoID,
+		IMSI,
+		rechargedValidDate,
+		rechargeAmount,
+		MCC,
+		countryName,
+		operatorName,
+		remark,
+		creatorUserID,
+		creatorDate,
+		modifyUserID,
+		modifyDate,
+		sysStatus
+	</sql>
+	
+	<sql id="SIMCategoryFilterSql"><!-- 待用 -->
+	   <![CDATA[
+	   AND SIMCategory=#{SIMCategory}
+	   ]]>
+	</sql>
+	
+	<!-- 查询列表 -->
+	<select id="queryAll" resultMap="simRechargeBillDTO" parameterType="String">
+		<![CDATA[
+			SELECT * FROM SIMRechargeBill WHERE sysStatus = 1
+		]]>
+	</select>
+	
+	<!-- 分页查询-->
+	<select id="queryPage" resultMap="simRechargeBillDTO" parameterType="searchDTO">
+		<![CDATA[
+			SELECT * FROM SIMRechargeBill WHERE sysStatus=1
+		]]>
+		<include refid="queryPage_filter_sql" />
+		<include refid="queryPage_order_sql" />
+		 LIMIT #{startIndex},#{endIndex}
+	</select>
+	<!-- 查询总记录 -->
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+	<![CDATA[
+			SELECT count(*) FROM SIMRechargeBill WHERE sysStatus=1
+	]]>
+	<include refid="queryPage_filter_sql" />
+	</select>
+	
+	<sql id="queryPage_filter_sql">
+        <if test="obj.SIMCategory != null and obj.SIMCategory != '' ">
+        <![CDATA[
+            AND SIMCategory = #{obj.SIMCategory}
+        ]]>
+        </if>
+		<if test="obj.IMSI != null and obj.IMSI != '' ">
+		<![CDATA[
+			AND IMSI = #{obj.IMSI}
+		]]>
+		</if>
+		<if test="obj.SIMinfoID != null and obj.SIMinfoID != '' ">
+        <![CDATA[
+            AND SIMinfoID = #{obj.SIMinfoID}
+        ]]>
+        </if>
+        <if test="obj.MCC != null and obj.MCC != '' ">
+        <![CDATA[
+            AND MCC = #{obj.MCC}
+        ]]>
+        </if>
+        <if test="obj.operatorName != null and obj.operatorName != '' ">
+        <![CDATA[
+            AND operatorName = #{obj.operatorName}
+        ]]>
+        </if>
+        <if test="obj!= null and obj.begindate !=null  and obj.enddate!=null">
+        <![CDATA[
+            and creatorDate >=#{obj.begindate} and creatorDate <=#{obj.enddate}
+        ]]>
+        </if>
+	</sql>
+	
+	<sql id="queryPage_order_sql">
+		ORDER BY
+		<if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+		<if test="sortName!=null and sortName!=''">${sortName}</if>
+		<if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+	</sql>
+	
+	<!-- 分页查询已删除记录-->
+	<select id="queryPageDeleted" resultMap="simRechargeBillDTO" parameterType="searchDTO">
+		<![CDATA[
+			SELECT * FROM SIMRechargeBill WHERE sysStatus=0
+		]]>
+		<include refid="queryPage_filter_sql" />
+		<include refid="queryPage_order_sql" />
+		<![CDATA[
+		 LIMIT #{startIndex},#{endIndex}
+		]]>
+	</select>
+	<!-- 查询已删除总记录 -->
+	<select id="getcountDeleted" resultType="Integer">
+	<![CDATA[
+			SELECT count(*) FROM SIMRechargeBill WHERE sysStatus=0
+	]]>
+    <include refid="queryPage_filter_sql" />
+	</select>
+	
+	<!-- 通过id查询详情 -->
+	<select id="queryById" resultMap="simRechargeBillDTO" parameterType="String">
+		<![CDATA[
+			SELECT
+			*
+			FROM SIMRechargeBill WHERE rechargeBillID = #{id}
+		]]>
+	</select>
+
+	<!--  插入记录 -->
+	<insert id="insertInfo"  parameterType="simRechargeBillDTO">
+	<![CDATA[
+		INSERT INTO SIMRechargeBill(
+			rechargeBillID,
+			SIMCategory,
+			SIMinfoID,
+			IMSI,
+			rechargeAmount,
+			rechargedValidDate,
+			MCC,countryName,operatorName,
+			remark,creatorUserID,creatorDate,creatorUserName,sysStatus
+		) VALUES (
+			#{rechargeBillID},
+			#{SIMCategory},
+			#{SIMinfoID},
+			#{IMSI},
+			#{rechargeAmount},
+			#{rechargedValidDate},
+			#{MCC},#{countryName},#{operatorName},
+			#{remark},#{creatorUserID},NOW(),#{creatorUserName},#{sysStatus}
+		);
+	]]>
+	</insert>
+	<!--  插入充值记录, 同时要更新卡余额等 -->
+    <update id="updateRechargeBillThenUpdateSimInfo" parameterType="simRechargeBillDTO">
+        <![CDATA[
+        UPDATE SIMInfo SET
+            cardBalance=cardBalance + #{rechargeAmount}
+        WHERE SIMinfoID = #{SIMinfoID}
+        ]]>
+    </update> <!-- 不需要更新修改者信息 modifyUserID=#{creatorUserID},modifyDate=now() -->
+	
+	<!--  更新套餐信息 目前约定只能更新金额和充值后有效期-->
+	<update id="updateInfo" parameterType="simRechargeBillDTO">
+		<![CDATA[
+			UPDATE SIMRechargeBill SET
+				rechargeAmount=#{rechargeAmount},
+				rechargedValidDate=#{rechargedValidDate},
+				remark=#{remark},
+				modifyUserID=#{modifyUserID},
+				modifyDate=#{modifyDate}
+			WHERE rechargeBillID = #{rechargeBillID}
+		]]>
+	</update>
+	
+	<!--  更新套餐sysStatus -->
+	<update id="updateInfoSysStatus" parameterType="simRechargeBillDTO">
+		<![CDATA[
+			UPDATE SIMRechargeBill SET
+				sysStatus=#{sysStatus}
+			WHERE rechargeBillID = #{rechargeBillID}
+		]]>
+	</update>
+	
+    <!-- 删除记录 用于回滚 -->
+    <update id="deleteInfo" parameterType="simRechargeBillDTO">
+        <![CDATA[
+            DELETE FROM SIMRechargeBill
+            WHERE rechargeBillID = #{rechargeBillID}
+            LIMIT 1
+        ]]>
+    </update>
+
+    <!-- 统计充值SIM卡数 -->
+    <select id="countRechargedSim" resultType="Integer" parameterType="simRechargeBillDTO">
+        select count(*) from SIMRechargeBill where 1=1
+        <if test="MCC != null and MCC != '' ">        
+        <![CDATA[
+            and MCC = #{MCC}
+        ]]>
+        </if>
+        <if test="SIMCategory != null and SIMCategory != '' ">        
+        <![CDATA[
+            and SIMCategory = #{SIMCategory}
+        ]]>
+        </if>
+        <if test="operatorName != null and operatorName != '' ">        
+        <![CDATA[
+            and operatorName = #{operatorName}
+        ]]>
+        </if>
+        <if test="begindate != null  and enddate != null">
+        <![CDATA[
+            and creatorDate >= #{begindate} and creatorDate <= #{enddate}
+        ]]>
+        </if>
+        <![CDATA[
+            and sysStatus = 1 group by SIMinfoID
+        ]]>
+    </select>
+    
+    <!-- 统计充值笔数 -->
+    <select id="countRechargedBill" resultType="Integer" parameterType="simRechargeBillDTO">
+        select count(1) from SIMRechargeBill where 1=1
+        <if test="SIMCategory != null and SIMCategory != '' ">        
+        <![CDATA[
+            and SIMCategory = #{SIMCategory}
+        ]]>
+        </if>
+        <if test="MCC != null and MCC != '' ">        
+        <![CDATA[
+            and MCC = #{MCC}
+        ]]>
+        </if>
+        <if test="operatorName != null and operatorName != '' ">        
+        <![CDATA[
+            and operatorName = #{operatorName}
+        ]]>
+        </if>
+        <if test="begindate != null  and enddate != null">
+        <![CDATA[
+            and creatorDate >= #{begindate} and creatorDate <= #{enddate}
+        ]]>
+        </if>
+        <![CDATA[
+            and sysStatus = 1
+        ]]>
+    </select>
+    
+    <!-- 合计充值总金额 -->
+    <select id="sumRechargedBill" resultType="Double" parameterType="simRechargeBillDTO">
+        select sum(rechargeAmount) from SIMRechargeBill where 1=1
+        <if test="SIMCategory != null and SIMCategory != '' ">        
+        <![CDATA[
+            and SIMCategory = #{SIMCategory}
+        ]]>
+        </if>
+        <if test="MCC != null and MCC != '' ">        
+        <![CDATA[
+            and MCC = #{MCC}
+        ]]>
+        </if>
+        <if test="operatorName != null and operatorName != '' ">        
+        <![CDATA[
+            and operatorName = #{operatorName}
+        ]]>
+        </if>
+        <if test="begindate != null  and enddate != null">
+        <![CDATA[
+            and creatorDate >= #{begindate} and creatorDate <= #{enddate}
+        ]]>
+        </if>
+        <![CDATA[
+            and sysStatus = 1
+        ]]>
+    </select>
+
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" name="defaultCache">
+
+	<diskStore path="/temp/ylcyManage/ehcache" />
+
+	<!-- 默认缓存配置. -->
+	<defaultCache maxEntriesLocalHeap="100" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
+		overflowToDisk="true" maxEntriesLocalDisk="100000" />
+	
+	<!-- 系统缓存 -->
+	<cache name="sysCache" maxEntriesLocalHeap="100" eternal="true" overflowToDisk="true"/>
+	
+	<!-- 用户缓存 -->
+	<cache name="userCache" maxEntriesLocalHeap="100" eternal="true" overflowToDisk="true"/>
+	
+	<!-- 工作流模块缓存 -->
+	<cache name="actCache" maxEntriesLocalHeap="100" eternal="true" overflowToDisk="true"/>
+	
+	<!-- 内容管理模块缓存
+	<cache name="cmsCache" maxEntriesLocalHeap="100" eternal="true" overflowToDisk="true"/> -->
+	
+	<!-- 系统活动会话缓存 -->
+    <cache name="activeSessionsCache" maxEntriesLocalHeap="10000" overflowToDisk="true"
+           eternal="true" timeToLiveSeconds="0" timeToIdleSeconds="0"
+           diskPersistent="true" diskExpiryThreadIntervalSeconds="600"/>
+           
+ 	<!--  简单页面缓存  此缓存最多可以存活60分钟，如果期间超过50分钟未访问 那么此缓存失效-->
+    <cache name = "SimplePageCachingFilter"
+           maxElementsInMemory = "20"
+           maxElementsOnDisk = "20"
+           eternal = "false"
+           overflowToDisk = "true"
+           diskSpoolBufferSizeMB = "20"
+           timeToIdleSeconds = "3000"
+           timeToLiveSeconds = "3600"
+           memoryStoreEvictionPolicy = "LFU"/>
+   
+   
+   
+  	<!-- 文件缓存永久 -->
+	<cache name="fileCache"
+           maxElementsInMemory="1"  
+           maxElementsOnDisk="10000"  
+           eternal="true"  
+           diskPersistent="true"  
+           overflowToDisk="true"  
+           diskSpoolBufferSizeMB="50"  
+           timeToIdleSeconds="0" 
+           timeToLiveSeconds="0"  
+           memoryStoreEvictionPolicy="FIFO"/>
+</ehcache>

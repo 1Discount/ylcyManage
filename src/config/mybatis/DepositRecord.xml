@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.DepositRecordDao">
+	
+	<resultMap type="depositRecordDTO" id="depositRecordDTO">
+		
+	</resultMap>
+
+	<sql id="allColumns">
+		recordID,
+		orderID,
+		SN,
+		customerID,
+		customerName,
+		phone,
+		dealAmount,
+		status,
+		expressName,
+		expressNum,
+		comment,
+		show1ImgSrc,
+		show2ImgSrc,
+		show3ImgSrc,
+		show4ImgSrc,
+		show5ImgSrc,
+		remark,
+		creatorUserID,
+		creatorUserName,
+		creatorDate,
+		modifyUserID,
+		modifyDate,
+		sysStatus
+	</sql>
+	
+    <sql id="query_filter_sql">
+        <if test="orderID != null and orderID != ''">
+        <![CDATA[
+            AND t1.orderID = #{orderID}
+        ]]>
+        </if>
+        <if test="SN != null and SN != ''">
+        <![CDATA[
+            AND t1.SN = #{SN}
+        ]]>
+        </if>
+        <if test="customerID != null and customerID != ''">
+        <![CDATA[
+            AND t1.customerID = #{customerID}
+        ]]>
+        </if>
+        <if test="customerName != null and customerName != ''">
+        <![CDATA[
+            AND t1.customerName = #{customerName}
+        ]]>
+        </if>
+        <if test="status != null and status != ''">
+        <![CDATA[
+            AND t1.status = #{status}
+        ]]>
+        </if>
+    </sql>
+    
+    <sql id="query_joint_ordersinfo_sql">
+        <if test="useJoint != null and useJoint == true">
+        <![CDATA[
+        LEFT JOIN OrdersInfo AS t2 ON t1.orderID = t2.orderID
+        ]]>
+        </if>
+    </sql>
+
+	<!-- 查询列表 为了简化, 不使用 searchDTO, 在实体中添加 limit/offset 参数 -->
+	<select id="queryAll" resultMap="depositRecordDTO" parameterType="depositRecordDTO">
+        <![CDATA[
+        SELECT t1.* 
+        ]]>
+        <if test="useJoint != null and useJoint == true">
+        <![CDATA[
+        , t2.deviceDealCount, t2.flowDealCount, t2.orderAmount, t2.IfFinish, t2.orderStatus
+        ]]>
+        </if>
+        <![CDATA[
+        FROM DepositRecord as t1
+        ]]>
+        <include refid="query_joint_ordersinfo_sql" />
+        <![CDATA[
+        WHERE t1.sysStatus = 1
+        ]]>
+        <include refid="query_filter_sql" />
+        <![CDATA[
+        ORDER BY t1.creatorDate DESC
+        ]]>
+        <if test="limit != null and limit > 0">
+        LIMIT #{limit}
+        </if>
+	</select>
+	
+	<!-- 分页查询有效记录 -->
+	<select id="queryPage" resultMap="depositRecordDTO" parameterType="searchDTO">
+		<![CDATA[
+			select t1.*,t2.deviceID,t2.orderStatus,t2.deallType,t2.ifReturn,t2.returnDate from DepositRecord as t1 
+			left join DeviceDealOrders as t2
+			on t1.orderID=t2.orderID
+			where t1.sysStatus=1
+		]]>
+		<include refid="queryPage_filter_sql" />
+		<include refid="queryPage_order_sql" />
+		 LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	<!-- 查询有效记录总数 -->
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+	<![CDATA[
+			select count(*) from DepositRecord as t1 where sysStatus=1
+	]]>
+	<include refid="queryPage_filter_sql" />
+	</select>
+	
+	<sql id="queryPage_filter_sql">
+		<if test="obj.customerName != null and obj.customerName != '' ">
+		<![CDATA[
+			AND t1.customerName LIKE '%${obj.customerName}%'
+		]]>
+		</if>
+        <if test="obj.phone != null and obj.phone != '' ">
+        <![CDATA[
+            AND t1.phone = #{obj.phone}
+        ]]>
+        </if>
+        <if test="obj.customerID != null and obj.customerID != '' ">
+        <![CDATA[
+            AND t1.customerID = #{obj.customerID}
+        ]]>
+        </if>
+        <if test="obj.orderID != null and obj.orderID!= '' ">
+        <![CDATA[
+            AND t1.orderID = #{obj.orderID}
+        ]]>
+        </if>
+        <if test="obj.SN != null and obj.SN!= '' ">
+        <![CDATA[
+            AND t1.SN LIKE '%${obj.SN}%'
+        ]]>
+        </if>
+        <!-- 传递空值时默认不显示XXX的, 若有需要, 指定XXX来检索 -->
+<!--         <if test="obj.status != null and obj.status == ''"> -->
+<!--         <![CDATA[ -->
+<!--             AND t1.status != 'XXX' -->
+<!--         ]]> -->
+<!--         </if> -->
+        <if test="obj.status != null and obj.status != ''">
+        <![CDATA[
+             AND t1.status = #{obj.status}
+        ]]>
+        </if>
+<!--         <if test="obj != null and obj.sysStatus == 1 "> -->
+<!--         <![CDATA[ -->
+<!--             AND t1.sysStatus = 1 -->
+<!--         ]]> -->
+<!--         </if> -->
+<!--         <if test="obj != null and obj.sysStatus == 0 "> -->
+<!--         <![CDATA[ -->
+<!--             AND t1.sysStatus = 0 -->
+<!--         ]]> -->
+<!--         </if> -->
+	</sql>	
+    <sql id="queryPage_order_sql">
+        ORDER BY t1.status ASC,
+        <if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> t1.creatorDate </if>
+        <if test="sortName!=null and sortName!=''">${sortName}</if>
+        <if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+        <if test="sortOrder == 'asc'"> ASC </if>
+    </sql>
+	
+	<!-- 查询详情BY ID -->
+	<select id="queryById" resultMap="depositRecordDTO" parameterType="String">
+		<![CDATA[
+			SELECT * FROM DepositRecord WHERE recordID = #{id}
+		]]>
+	</select>
+
+	<!--  插入记录 -->
+	<insert id="insertInfo"  parameterType="depositRecordDTO">
+    <![CDATA[
+        INSERT INTO DepositRecord(
+    ]]>
+    <include refid="allColumns"></include>
+    <![CDATA[
+        ) VALUES (
+            #{recordID},
+            #{orderID},
+            #{SN},
+            #{customerID},
+            #{customerName},
+            #{phone},
+            #{dealAmount},
+            #{status},
+            #{expressName},
+            #{expressNum},
+            #{comment},
+            #{show1ImgSrc},#{show2ImgSrc},#{show3ImgSrc},#{show4ImgSrc},#{show5ImgSrc},
+            #{remark},#{creatorUserID},#{creatorUserName},NOW(),"",null,#{sysStatus}
+        );
+    ]]>
+	</insert>
+	
+	<!--  更新记录 -->
+	<update id="updateInfo" parameterType="depositRecordDTO">
+		<![CDATA[
+			UPDATE DepositRecord SET
+		]]>
+		<if test="customerName != null and customerName != ''">
+        <![CDATA[
+            customerName=#{customerName},
+        ]]>
+        </if>
+        <if test="phone != null and phone != ''">
+            phone=#{phone},
+        </if>
+        <if test="status != null and status != ''">
+            status=#{status},
+        </if>
+        <if test="expressName != null and expressName != ''">
+            expressName=#{expressName},
+        </if>
+        <if test="expressNum != null and expressNum != ''">
+            expressNum=#{expressNum},
+        </if>
+        <if test="remark != null and remark != ''">
+            remark=#{remark},
+        </if>
+        <if test="comment != null and comment != ''">
+            comment=#{comment},
+        </if>
+        <!-- 图片相应位置传入 '' 即删除 -->
+        <if test="show1ImgSrc != null">
+            show1ImgSrc=#{show1ImgSrc},
+        </if>
+        <if test="show2ImgSrc != null">
+            show2ImgSrc=#{show2ImgSrc},
+        </if>
+        <if test="show3ImgSrc != null">
+            show3ImgSrc=#{show3ImgSrc},
+        </if>
+        <if test="show4ImgSrc != null">
+            show4ImgSrc=#{show4ImgSrc},
+        </if>
+        <if test="show5ImgSrc != null">
+            show5ImgSrc=#{show5ImgSrc},
+        </if>
+        <![CDATA[
+			modifyUserID=#{modifyUserID},
+			modifyDate=NOW()
+			WHERE recordID = #{recordID}
+		]]>
+		<if test="customerID != null and customerID != ''">
+        <![CDATA[
+            AND customerID = #{customerID}
+        ]]>
+        </if>
+	</update>
+	
+	<!--  更新记录sysStatus -->
+	<update id="updateInfoSysStatus" parameterType="depositRecordDTO">
+		<![CDATA[
+			UPDATE DepositRecord SET sysStatus=#{sysStatus} WHERE recordID = #{recordID}
+		]]>
+        <if test="customerID != null and customerID != ''">
+        <![CDATA[
+            AND customerID = #{customerID}
+        ]]>
+        </if>
+	</update>
+	
+	<update id="updateRefundRemarks" parameterType="depositRecordDTO">
+	   UPDATE DepositRecord SET remark=#{remark},WIDbatch_no=#{WIDbatch_no} WHERE aliPayTradeNo = #{aliPayTradeNo}
+	</update>
+	
+	<update id="updateRefundbackEnd" parameterType="depositRecordDTO">
+	   UPDATE DepositRecord SET status='退款成功',modifyUserID=#{modifyUserID},modifyDate=now() WHERE WIDbatch_no = #{WIDbatch_no}
+	</update>
+</mapper>

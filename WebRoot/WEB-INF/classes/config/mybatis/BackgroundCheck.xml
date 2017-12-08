@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Manage.dao.BackgroundCheckDao" >
+    
+    <!-- 测试数据库连接是否正常 -->
+    <select id="connectionDelayed" resultType="Map">
+        select * from AdminUserInfo where userID = '10086'
+    </select>
+    
+    <!-- 查询当前连接数 -->
+    <select id="connectionNum" resultType="int">
+        SELECT COUNT(*) FROM information_schema.PROCESSLIST
+    </select>
+    
+    <!-- 数据库定时任务是否打开正常运行 -->
+    <select id="timingTaskOpen" resultType="Map">
+        SHOW VARIABLES LIKE 'event%'
+    </select>
+    
+    <!-- 查询是否有锁表超时现象 -->
+    <select id="lockTable" resultType="Map">
+        <![CDATA[
+            SELECT * FROM information_schema.`INNODB_TRX` WHERE trx_started < SUBDATE(NOW(),INTERVAL 300 SECOND)
+        ]]>
+    </select>
+    
+    <!-- 数据同步（备份）是否正常运行 -->
+    <select id="dataSynchronization" resultType="Map">
+        SHOW MASTER STATUS
+    </select>
+    
+    <!-- 查询表结构是否完整，设备日志表是否正常 -->
+    <select id="tableIntegrity" resultType="int">
+        SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_NAME = CONCAT('DeviceLogs_',REPLACE(DATE(DATE_SUB(NOW(),INTERVAL -1 DAY)),'-',''))
+    </select>
+    
+    <!-- 检测是否有异常设备日志记录影响逻辑 -->
+    <select id="testDeviceLogs" resultType="int">
+        SELECT count(*) FROM `DeviceLogsTemp` WHERE logsDate = DATE(NOW()) AND (ISNULL(SN) OR LENGTH(SN)!=15)
+    </select>
+</mapper>

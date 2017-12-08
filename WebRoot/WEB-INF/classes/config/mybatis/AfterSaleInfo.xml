@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Manage.dao.AfterSaleInfoDao" >
+  <resultMap type="AfterSaleInfo" id="AfterSaleInfo">
+  </resultMap>
+  
+  <sql id="queryPage_filter_sql">
+    <if test="obj.flowDealID != null and obj.flowDealID != ''">
+        and flowDealID = #{obj.flowDealID}
+    </if>
+  </sql>
+  
+  <!-- 分页查询 -->
+  <select id="queryPage" resultMap="AfterSaleInfo" parameterType="searchDTO">
+    SELECT * FROM AfterSaleInfo WHERE sysStatus=1
+    <include refid="queryPage_filter_sql"/>
+    LIMIT #{startIndex},#{endIndex}
+  </select>
+  <!-- 查询总数 -->
+  <select id="getcount" resultType="Integer" parameterType="searchDTO">
+    SELECT count(*) FROM AfterSaleInfo WHERE sysStatus=1
+    <include refid="queryPage_filter_sql"/>
+  </select>
+  
+  <!-- 根据主键查询 -->
+  <select id="selectByPrimaryKey" resultMap="AfterSaleInfo" parameterType="java.lang.String" >
+    select * from AfterSaleInfo
+    where asiID = #{asiID,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 根据流量订单ID查询 -->
+  <select id="selectByFlowDealID" resultMap="AfterSaleInfo" parameterType="java.lang.String" >
+    select * from AfterSaleInfo
+    where flowDealID = #{flowDealID,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from AfterSaleInfo
+    where asiID = #{asiID,jdbcType=VARCHAR}
+  </delete>
+  
+  <!-- 根据主键删除 -->
+  <update id="deleteById" parameterType="java.lang.String" >
+    update AfterSaleInfo set sysStatus = 0 where asiID = #{asiID}
+  </update>
+  
+  <insert id="insertSelective" parameterType="com.Manage.entity.AfterSaleInfo" >
+    insert into AfterSaleInfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="asiID != null" >
+        asiID,
+      </if>
+      <if test="flowDealID != null" >
+        flowDealID,
+      </if>
+      <if test="problemType != null" >
+        problemType,
+      </if>
+      <if test="problemLevel != null" >
+        problemLevel,
+      </if>
+      <if test="handleDescription != null" >
+        handleDescription,
+      </if>
+      <if test="handleResult != null" >
+        handleResult,
+      </if>
+      <if test="refundAmount != null" >
+        refundAmount,
+      </if>
+      <if test="problemTime != null" >
+        problemTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="creatorUserID != null" >
+        creatorUserID,
+      </if>
+      <if test="creatorDate != null" >
+        creatorDate,
+      </if>
+      <if test="creatorUserName != null" >
+        creatorUserName,
+      </if>
+      <if test="modifyUserID != null" >
+        modifyUserID,
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate,
+      </if>
+      <if test="sysStatus != null" >
+        sysStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="asiID != null" >
+        #{asiID,jdbcType=VARCHAR},
+      </if>
+      <if test="flowDealID != null" >
+        #{flowDealID,jdbcType=VARCHAR},
+      </if>
+      <if test="problemType != null" >
+        #{problemType,jdbcType=VARCHAR},
+      </if>
+      <if test="problemLevel != null" >
+        #{problemLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="handleDescription != null" >
+        #{handleDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="handleResult != null" >
+        #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAmount != null" >
+        #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="problemTime != null" >
+        #{problemTime},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserID != null" >
+        #{creatorUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorDate != null" >
+        #{creatorDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorUserName != null" >
+        #{creatorUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserID != null" >
+        #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysStatus != null" >
+        #{sysStatus,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.Manage.entity.AfterSaleInfo" >
+    update AfterSaleInfo
+    <set >
+      <if test="flowDealID != null" >
+        flowDealID = #{flowDealID,jdbcType=VARCHAR},
+      </if>
+      <if test="problemType != null" >
+        problemType = #{problemType,jdbcType=VARCHAR},
+      </if>
+      <if test="problemLevel != null" >
+        problemLevel = #{problemLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="handleDescription != null" >
+        handleDescription = #{handleDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="handleResult != null" >
+        handleResult = #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAmount != null" >
+        refundAmount = #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="problemTime != null" >
+        problemTime = #{problemTime,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserID != null" >
+        creatorUserID = #{creatorUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorDate != null" >
+        creatorDate = #{creatorDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorUserName != null" >
+        creatorUserName = #{creatorUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserID != null" >
+        modifyUserID = #{modifyUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysStatus != null" >
+        sysStatus = #{sysStatus,jdbcType=BIT},
+      </if>
+    </set>
+    where asiID = #{asiID,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 查询退款售后记录 -->
+  <select id="getByFlowDealID" resultMap="AfterSaleInfo" parameterType="String">
+    select * from AfterSaleInfo where flowDealID = #{flowDealID} and sysStatus = 1 and handleResult = '退款' order by creatorDate desc limit 0,1
+  </select>
+  
+  
+  <!-- 导出excel -->
+  
+  <select id="getafterExprotExcel"  resultMap="AfterSaleInfo" parameterType="AfterSaleInfo">
+  <![CDATA[
+  	  select * from AfterSaleInfo where sysStatus=1 and creatorDate>=#{beginDate} and creatorDate <= #{endDate}
+  	  	]]>
+  </select>
+  
+</mapper>

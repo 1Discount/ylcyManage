@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Manage.dao.DeviceJumpInfoDao" >
+  <resultMap type="DeviceJumpInfo" id="DeviceJumpInfo">
+  </resultMap>
+	<sql id="allCell">
+	 deviceJumpId,sn,flowOrderId,currentTDM,currentTDMName,newMcc,newTDM,newTDMName,newTDMIfSet,newTDMIfOk,newTime,
+     backMcc,backTDM,backTDMName,backTDMIfSet,backTDMIfOk,backTime,createUserName,createUserId,modifyUserName,
+     modifyUserId,creatorDate,modifyDate,sysStatus,remarks,springNettyLog,ifNeedBack,backType
+	</sql>
+	
+	<insert id="addJump" parameterType="DeviceJumpInfo">
+		INSERT INTO devicejumpinfo(<include refid="allCell"/>)
+		VALUES(#{deviceJumpId},#{sn},#{flowOrderId},#{currentTDM},#{currentTDMName},#{newMcc},#{newTDM},#{newTDMName},
+		#{newTDMIfSet},#{newTDMIfOk},#{newTime},#{backMcc},#{backTDM},#{backTDMName},#{backTDMIfSet},#{backTDMIfOk},#{backTime},#{createUserName},
+		#{createUserId},#{modifyUserName},#{modifyUserId},#{creatorDate},#{modifyDate},#{sysStatus},#{remarks},#{springNettyLog},#{ifNeedBack},#{backType})
+	</insert>
+	
+	<select id="queryPage" parameterType="DeviceJumpInfo" resultMap="DeviceJumpInfo">
+  		 SELECT 
+		 <include refid="allCell"/>
+		 FROM devicejumpinfo
+		 where sysStatus=#{obj.sysStatus}
+		 ORDER BY sort desc,creatorDate DESC 
+		 LIMIT #{startIndex},#{endIndex}
+  	</select>
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+  		 SELECT count(1) 
+		 FROM devicejumpinfo
+		 where sysStatus=#{obj.sysStatus}
+  	</select>
+  	<update id="updateJump" parameterType="DeviceJumpInfo">
+  		UPDATE devicejumpinfo 
+		<set>
+			modifyDate=NOW(),
+			modifyUserId=#{modifyUserId},
+			modifyUserName=#{modifyUserName},
+			<if test="newTDMIfOk !=null">
+				newTDMIfOk=#{newTDMIfOk},		
+			</if>
+			<if test="backTDMIfOk !=null">
+				backTDMIfOk=#{backTDMIfOk},		
+			</if>
+			<if test="backTDMIfSet !=null">
+				backTDMIfSet=#{backTDMIfSet},		
+			</if>
+		</set> 
+		WHERE deviceJumpId=#{deviceJumpId}
+  	</update>
+</mapper>

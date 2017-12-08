@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Manage.dao.JizhanInfoDao" >
+  <resultMap type="JizhanInfo" id="JizhanInfo">
+  </resultMap>
+
+  <insert id="insertSelective" parameterType="JizhanInfo" >
+  	insert into t_jizhan_info(jizhan,lat,lon,address,resultJson,timestamp)
+	values(#{jizhan},#{lat},#{lon},#{address},#{resultJson},now())
+  </insert>
+	
+ <select id="selectJizhanInfoByParams" parameterType="map" resultType="JizhanInfo">
+ 	select * from t_jizhan_info
+ 	<include refid="selectParamsSQL"/>
+ </select>
+ <sql id="selectParamsSQL">
+ 	<where>
+ 		<if test="jizhan != null  and jizhan != ''">
+ 			and jizhan like #{jizhan}
+ 		</if>
+ 	</where>
+ </sql>
+</mapper>

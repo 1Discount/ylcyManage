@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Manage.dao.EnterpriseDao">
+	<resultMap type="EnterpriseDTO" id="EnterpriseDTO">
+	</resultMap>
+
+
+	<sql id="allColumns">
+		enterpriseName,enterprisePhone,enterpriseAddress,score,balance,priceConfiguration,creatorDate,creatorUserID,creatorUserName,modifyDate,
+		modifyUserID,modifyUserName,sysStatus,remark
+	</sql>
+
+	<sql id="queryPage_filter_sql">
+		<if test="obj.enterpriseName != null and obj.enterpriseName != '' ">
+		<![CDATA[
+			AND enterpriseName LIKE '%${obj.enterpriseName}%'
+		]]>
+		</if>
+		<if test="obj.enterprisePhone != null and obj.enterprisePhone != '' ">
+		<![CDATA[
+			AND enterprisePhone LIKE '%${obj.enterprisePhone}%'
+		]]>
+		</if>
+		<if test="obj!= null and obj.begindateForQuery !=null  and obj.enddate!=null">
+		<![CDATA[
+			and creatorDate >=#{obj.begindateForQuery} and creatorDate <=#{obj.enddate}
+		]]>
+		</if>
+	</sql>
+
+	<sql id="queryPage_order_sql">
+		ORDER BY
+		<if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate </if>
+		<if test="sortName!=null and sortName!=''">${sortName}</if>
+		<if test="sortOrder == 'desc' or sortOrder == '' or sortOrder == null"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="insertInfo" parameterType="DistributorDTO">
+		INSERT INTO Enterprise(
+		<include refid="allColumns"></include>
+		) VALUES (
+		#{enterpriseName}, #{enterprisePhone}, #{enterpriseAddress},
+		#{score}, #{balance},
+		#{priceConfiguration},now(),
+		#{creatorUserID},
+		#{creatorUserName}, #{modifyDate}, #{modifyUserID},
+		#{modifyUserName},
+		#{sysStatus}, #{remark})
+	</insert>
+
+
+	<!-- 分页查询 -->
+	<select id="queryPage" resultMap="EnterpriseDTO" parameterType="searchDTO">
+		<![CDATA[
+			SELECT * FROM Enterprise WHERE sysStatus=1
+		]]>
+		<include refid="queryPage_filter_sql" />
+		<include refid="queryPage_order_sql" />
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+
+	<!-- 查询总记录 -->
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+	<![CDATA[
+			SELECT count(*) FROM Enterprise WHERE sysStatus=1
+	]]>
+		<include refid="queryPage_filter_sql" />
+	</select>
+
+
+
+
+	<!-- 更新 -->
+	<update id="updatebyid" parameterType="com.Manage.entity.SubmitOrders">
+		update Enterprise
+		<set>
+			<if test="sysStatus != null">
+				sysStatus = #{sysStatus},
+			</if>
+			<if test="enterpriseName != null">
+				enterpriseName = #{enterpriseName},
+			</if>
+			<if test="enterprisePhone != null">
+				enterprisePhone = #{enterprisePhone},
+			</if>
+			<if test="enterpriseAddress != null">
+				enterpriseAddress = #{enterpriseAddress},
+			</if>
+			<if test="priceConfiguration != null">
+				priceConfiguration = #{priceConfiguration},
+			</if>
+			<if test="remark != null">
+				remark = #{remark},
+			</if>
+			<if test="score != null">
+				score = #{score},
+			</if>
+			<if test="balance != null">
+				balance = #{balance},
+			</if>
+			<if test="modifyUserName != null">
+				modifyUserName = #{modifyUserName},
+			</if>
+			<if test="modifyUserID != null">
+				modifyUserID = #{modifyUserID},
+			</if>
+		</set>
+		where enterpriseID = #{enterpriseID}
+	</update>
+
+	<!-- 传入查询条件获取信息 -->
+	<select id="getenterprise" parameterType="EnterpriseDTO" resultMap="EnterpriseDTO">
+		select * from Enterprise where sysStatus=1
+		<if test="enterpriseID != null and enterpriseID !=''">
+			and enterpriseID =#{enterpriseID}
+		</if>
+	</select>
+</mapper>

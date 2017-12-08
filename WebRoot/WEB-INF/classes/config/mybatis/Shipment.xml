@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.ShipmentDao">
+	<resultMap type="ShipmentDTO" id="ShipmentDTO">
+	</resultMap>
+	<!-- 所有列 -->
+	<sql id="allColumn">
+	    shipmentID,orderID,SN,shipmentDate,logisticsName,logisticsJC,LogisticsCost,expressNO,batchNO,remark,creatorUserID,
+		creatorUserName,creatorDate,modifyUserID,modifyDate,sysStatus,address,deviceStatus,recipientName,chuchu,deviceCardType
+	</sql>
+
+	<sql id="allColumnValue">
+		#{shipmentID},#{ orderID},#{ SN},#{ shipmentDate},#{ logisticsName},#{ logisticsJC},
+		#{LogisticsCost},#{ expressNO},#{ batchNO},#{ remark},#{ creatorUserID},#{ creatorUserName},
+		#{creatorDate},#{ modifyUserID},#{ modifyDate},1,#{address},#{deviceStatus},#{recipientName},#{chuchu},#{deviceCardType}
+	</sql>
+	<sql id="allColumnvalue">
+	</sql>
+	<sql id="queryPage_filter_sql">
+		<if test="obj.creatorUserName != null and obj.creatorUserName != '' ">
+			<![CDATA[
+				AND creatorUserName = #{obj.creatorUserName}
+			]]>
+		</if>
+	</sql>
+	<!-- 分页查询-->
+	<select id="queryPage" resultMap="ShipmentDTO" parameterType="ShipmentDTO">
+		<![CDATA[
+		]]>
+	</select>
+
+	<!-- 插入数据所有列哦 -->
+	<select id="insert" parameterType="OrdersInfo">
+		insert into Shipment (
+		<include refid="allColumn"></include>
+		) value(<include refid="allColumnValue"></include>)
+	</select>
+
+
+
+	<select id="getDeviceShipmentLogsPage" resultMap="ShipmentDTO" parameterType="searchDTO">
+		<![CDATA[
+           SELECT  * FROM Shipment where sysStatus=1
+     		]]>
+		<include refid="getDeviceShipmentLogs" />
+		order by
+		<if test="sortName == 'creatorDate' or sortName == '' or sortName == null"> creatorDate DESC</if>
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+
+
+	 <select id="getDeviceShipmentLogsCount" resultType="Integer" parameterType="searchDTO">
+	<![CDATA[
+      		SELECT  count(*) FROM Shipment where sysStatus=1
+      	]]>
+		<include refid="getDeviceShipmentLogs" />
+	</select>
+
+
+	<sql id="getDeviceShipmentLogs">
+		<if test="obj.SN != null and obj.SN != '' ">
+		<![CDATA[
+     			and SN like '%${obj.SN}%'
+      		]]>
+		</if>
+		<if test="obj.remark != null and obj.remark != '' ">
+		<![CDATA[
+     			and remark like '%${obj.remark}%'
+      		]]>
+		</if>
+		<if test="obj.deviceStatus != null and obj.deviceStatus != '' ">
+		<![CDATA[
+     			and deviceStatus like '%${obj.deviceStatus}%'
+      		]]>
+		</if>
+	     <if test="obj.begainTime != null and obj.begainTime != ''">
+            <![CDATA[ and creatorDate > #{obj.begainTime} ]]>
+        </if>
+        <if test="obj.endTime != null and obj.endTime != ''">
+            <![CDATA[ and creatorDate < #{obj.endTime} ]]>
+        </if>
+	</sql>
+
+
+
+	<select id="exportedShipment" resultMap="ShipmentDTO" parameterType="searchDTO">
+		<![CDATA[
+           SELECT  * FROM Shipment where sysStatus=1
+     		]]>
+        <if test="remark != null and remark != ''">
+            <![CDATA[ AND remark LIKE '%${remark}%' ]]>
+        </if>
+        <if test="deviceStatus != null and deviceStatus != ''">
+            <![CDATA[ deviceStatus LIKE '%${deviceStatus}%' ]]>
+        </if>
+        <if test="begainTime != null and begainTime != ''">
+            <![CDATA[ AND creatorDate > #{begainTime} ]]>
+        </if>
+        <if test="endTime != null and endTime != ''">
+            <![CDATA[  AND creatorDate < #{endTime} ]]>
+        </if>
+		order by creatorDate DESC
+	</select>
+
+<select id="ShipmentObject" resultMap="ShipmentDTO" parameterType="String">
+  select * from Shipment where shipmentID=#{shipmentID}
+</select>
+
+   <update id="updateOutboundDevicelogs" parameterType="ShipmentDTO">
+       update Shipment set recipientName=#{recipientName},logisticsName=#{logisticsName},expressNO=#{expressNO},remark=#{remark}
+       where shipmentID=#{shipmentID}
+   </update>
+
+</mapper>

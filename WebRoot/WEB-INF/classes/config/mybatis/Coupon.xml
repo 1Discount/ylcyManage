@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.CouponDao">
+	
+	<resultMap type="Coupon" id="Coupon"></resultMap>
+	 
+	<sql id="queryPage_filter_sql">
+		<if test="obj.couponVesion != null and obj.couponVesion != '' ">
+		<![CDATA[
+      			and couponVesion = #{obj.couponVesion}      
+        		]]>     
+		</if>
+	</sql>
+	
+   <select id="queryPage" resultMap="Coupon" parameterType="searchDTO">
+		<![CDATA[
+              SELECT couponID,couponVesion,couponTitle,couponCount,couponNumber,couponStatus,
+                     couponBeginTime,couponEndTime,couponDiscountStatus,couponValue,remark,createDate,
+                     createUserName,createUserID,modifyDate,modifyUserID,sysStatus,ispublic,coupontype
+               FROM Coupon WHERE sysStatus='1'
+     		]]>
+		<include refid="queryPage_filter_sql" />
+		GROUP BY couponVesion
+		order by
+		<if test="sortName == 'createDate' or sortName == '' or sortName == null"> createDate DESC  </if>
+		 LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	<!--  查询总记录     -->
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+	<![CDATA[
+          SELECT COUNT( DISTINCT couponVesion ) FROM Coupon WHERE sysStatus=1
+      	]]>    
+      	<include refid="queryPage_filter_sql" />
+	</select>
+	
+	
+	<insert id="saveAll"  parameterType="Coupon">
+	   insert into Coupon(couponID,couponVesion,couponCount,couponTitle,couponNumber,couponDiscountStatus,couponValue,remark
+	   ,createDate,createUserID,createUserName,sysStatus,couponBeginTime,couponEndTime,couponStatus,ispublic,couponimg,coupontype)
+	   values(#{couponID},#{couponVesion},#{couponCount},#{couponTitle},#{couponNumber},#{couponDiscountStatus},#{couponValue},#{remark},
+	   now(),#{createUserID},#{createUserName},1,#{couponBeginTime},#{couponEndTime},'未领取',#{ispublic},#{couponimg},#{coupontype});
+	</insert>
+	
+	<select id="getcouponVersion" resultMap="Coupon">
+         SELECT couponVesion FROM Coupon WHERE sysStatus = 1 GROUP BY couponVesion
+	</select>
+	
+	<update id="deleteCoupon" parameterType="String">
+	    UPDATE Coupon SET sysStatus=0 WHERE couponVesion=#{couponVesion}
+	</update>
+	
+	<select id="getOnecoupon" resultMap="Coupon">
+	SELECT COUNT(couponStatus) AS couponStatus,couponID,couponVesion,couponTitle,couponCount,couponNumber 
+FROM Coupon WHERE couponStatus='未领取' AND sysStatus=1 AND ispublic=1 GROUP BY couponVesion ORDER BY createDate DESC 
+	</select>
+	
+	<select id="getOneCouponData" parameterType="String"  resultMap="Coupon">
+	   SELECT * FROM Coupon WHERE sysStatus=1 AND ispublic=1 AND couponStatus='未领取' AND couponVesion=#{couponVesion} LIMIT 1
+	</select>
+	
+	<update id="updateOneCoupon" parameterType="String">
+	   UPDATE Coupon SET couponStatus='已领取' WHERE couponNumber=#{couponNumber}
+	</update>
+	
+</mapper>

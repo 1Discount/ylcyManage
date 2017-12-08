@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.RefundDao">
+	
+	<resultMap type="Refund" id="Refund"></resultMap>
+	
+	
+	<sql id="queryPage_filter_sql">
+		<if test="obj.orderID !=null and obj.orderID!='' ">
+		<![CDATA[
+			and orderID = #{obj.orderID}
+		]]>
+		</if>
+		 <if test="obj.refundStatus != null and obj.refundStatus != '' ">
+		<![CDATA[
+      			and refundStatus like '%${obj.refundStatus}%'    
+        		]]>    
+		</if>
+		
+	</sql>
+	
+	<select id="queryPage" resultMap="Refund" parameterType="searchDTO">
+		<![CDATA[ 
+			select * from Refund where 1=1
+		]]>
+		<include refid="queryPage_filter_sql" />
+		order by
+		<if test="sortName == 'refundMoneyTime' or sortName == '' or sortName == null"> refundMoneyTime </if>
+		<if test="sortName!=null and sortName!=''">${sortName}</if>
+		<if test="sortOrder == 'desc'"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+		<if test="sortOrder == '' or sortOrder==null"> DESC </if>
+		 LIMIT #{startIndex},#{endIndex}
+	</select>
+	 
+	<select id="getcount" resultType="Integer" parameterType="searchDTO">
+	<![CDATA[
+		select count(*) from Refund where 1=1 
+	]]>
+	<include refid="queryPage_filter_sql" />
+	</select>
+	 
+	<update id="updateRefundbackEnd" parameterType="Refund">
+	   UPDATE Refund SET refundStatus='退款成功',refundMoneyPeople=#{refundMoneyPeople},modifyDate=now() WHERE WIDbatch_no = #{WIDbatch_no}
+	</update>
+	
+	<update id="updateRefundRemarks" parameterType="depositRecordDTO">
+	   UPDATE Refund SET remark=#{remark},WIDbatch_no=#{WIDbatch_no} WHERE aliPayTradeNo = #{aliPayTradeNo}
+	</update>
+	
+</mapper>

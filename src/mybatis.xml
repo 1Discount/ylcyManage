@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC
+	"-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<!-- 分页实体 -->
+		<typeAlias alias="searchDTO" type="com.Manage.entity.common.SearchDTO" ></typeAlias>
+		<!-- 用户表实体 -->
+		<typeAlias alias="adminUserInfoDTO" type="com.Manage.entity.AdminUserInfo" ></typeAlias>
+		<!-- 邀请注册表实体 -->
+		<typeAlias alias="invitationDTO" type="com.Manage.entity.Invitation" ></typeAlias>
+		<!-- 菜单组实体 -->
+		<typeAlias alias="menuGroupInfoDTO" type="com.Manage.entity.MenuGroupInfo" ></typeAlias>
+		<!-- 菜单实体 -->
+		<typeAlias alias="menuInfoDTO" type="com.Manage.entity.MenuInfo" ></typeAlias>
+		<!-- 角色实体 -->
+		<typeAlias alias="roleInfoDTO" type="com.Manage.entity.RoleInfo" ></typeAlias>
+		<!-- 角色菜单映射实体 -->
+		<typeAlias alias="roleToMenuDTO" type="com.Manage.entity.RoleToMenu" ></typeAlias>
+		
+		<!-- 渠道商菜单组实体 -->
+		<typeAlias alias="DistributorMenuGroupInfoDTO" type="com.Manage.entity.DistributorMenuGroupInfo" ></typeAlias>
+		<!-- 渠道商菜单实体 -->
+		<typeAlias alias="DistributorMenuInfoDTO" type="com.Manage.entity.DistributorMenuInfo" ></typeAlias>
+		<!-- 渠道商角色实体 -->
+		<typeAlias alias="DistributorRoleInfoDTO" type="com.Manage.entity.DistributorRoleInfo" ></typeAlias>
+		<!-- 渠道商角色菜单映射实体 -->
+		<typeAlias alias="DistributorRoleToMenuDTO" type="com.Manage.entity.DistributorRoleToMenu" ></typeAlias>
+		
+		<!-- 套餐实体 -->
+		<typeAlias alias="flowPlanInfoDTO" type="com.Manage.entity.FlowPlanInfo" ></typeAlias>
+		<!-- 国家实体 -->
+		<typeAlias alias="countryInfoDTO" type="com.Manage.entity.CountryInfo" ></typeAlias>
+
+		<!-- SIMServer实体 -->
+        <typeAlias alias="SIMServerDTO" type="com.Manage.entity.SIMServer" ></typeAlias>
+        <!-- SIM卡表实体 -->
+        <typeAlias alias="simInfoDTO" type="com.Manage.entity.SIMInfo" ></typeAlias>
+        <!-- 虚拟SIM卡表实体 -->
+        <typeAlias alias="VirtualSIMInfoDTO" type="com.Manage.entity.VirtualSIMInfo" ></typeAlias>
+        <!-- SIM卡充值记录实体 -->
+        <typeAlias alias="simRechargeBillDTO" type="com.Manage.entity.SIMRechargeBill" ></typeAlias>
+        <!-- 运营商实体 -->
+        <typeAlias alias="operatorInfoDTO" type="com.Manage.entity.OperatorInfo" ></typeAlias>
+        <!-- 按国家SIM卡状态统计实体 -->
+        <typeAlias alias="SimStatusStatByCountry" type="com.Manage.entity.report.SimStatusStatByCountry" ></typeAlias>
+        <!-- 按运营商SIM卡状态统计实体 -->
+        <typeAlias alias="SimStatusStatByOperator" type="com.Manage.entity.report.SimStatusStatByOperator" ></typeAlias>
+
+		<!-- 客户 -->
+		<typeAlias alias="CustomerInfo" type="com.Manage.entity.CustomerInfo" ></typeAlias>
+		<!-- 渠道商 -->
+		<typeAlias alias="DistributorDTO" type="com.Manage.entity.Distributor" ></typeAlias>
+
+        <!-- 设备 -->
+        <typeAlias alias="DeviceInfo" type="com.Manage.entity.DeviceInfo"></typeAlias>
+
+        <!-- 设备订单 -->
+        <typeAlias alias="DeviceDealOrders" type="com.Manage.entity.DeviceDealOrders"></typeAlias>
+        <!-- 流量订单 -->
+        <typeAlias alias="flowDealOrdersDTO" type="com.Manage.entity.FlowDealOrders"></typeAlias>
+        <!-- 订单表test -->
+        <typeAlias alias="OrdersInfo" type="com.Manage.entity.OrdersInfo"></typeAlias>
+          <!-- 数据字典 -->
+        <typeAlias alias="Dictionary" type="com.Manage.entity.Dictionary"></typeAlias>
+        <!-- 用户操作日志表 -->
+        <typeAlias alias="AdminOperate" type="com.Manage.entity.AdminOperate"></typeAlias>
+        <!-- 设备日志表 -->
+        <typeAlias alias="DeviceLogs" type="com.Manage.entity.DeviceLogs"></typeAlias>
+        <!-- 设备内部日志表 -->
+        <typeAlias alias="EquipLogsDTO" type="com.Manage.entity.EquipLogs"></typeAlias>
+
+
+        <!-- 押金申请 -->
+        <typeAlias alias="depositRecordDTO" type="com.Manage.entity.DepositRecord"></typeAlias>
+
+         <!-- 微信用户设备绑定关系表 -->
+         <typeAlias alias="wxBindDeviceDTO" type="com.Manage.entity.WxBindDevice"></typeAlias>
+         <!-- 兑换码表 -->
+         <typeAlias alias="exchangeKeyDTO" type="com.Manage.entity.ExchangeKey"></typeAlias>
+         <!-- 兑换码兑换记录表 -->
+         <typeAlias alias="exchangeRecordDTO" type="com.Manage.entity.ExchangeRecord"></typeAlias>
+
+         <!-- 退款 -->
+         <typeAlias alias="Refund" type="com.Manage.entity.Refund"></typeAlias>
+         <!-- 优惠劵 -->
+         <typeAlias alias="Coupon" type="com.Manage.entity.Coupon"></typeAlias>
+
+         <typeAlias alias="CouponRelationship" type="com.Manage.entity.CouponRelationship"></typeAlias>
+		 <typeAlias alias="GStrenthDataDTO" type="com.Manage.entity.GStrenthData"></typeAlias>
+		 <!--VIP优惠卡  -->
+		 <typeAlias alias="VIPCardInfoDTO" type="com.Manage.entity.VIPCardInfo"></typeAlias>
+
+		 <typeAlias alias="DeviceLogsTest" type="com.Manage.entity.DeviceLogsTest"></typeAlias>
+		 <typeAlias alias="LocTemp" type="com.Manage.entity.LocTemp"></typeAlias>
+		 <typeAlias alias="VpnInfo" type="com.Manage.entity.VpnInfo"></typeAlias>
+         <typeAlias alias="SIMAndSN" type="com.Manage.entity.SIMAndSN"></typeAlias>
+         <typeAlias alias="AcceptOrder" type="com.Manage.entity.AcceptOrder"></typeAlias>
+         <typeAlias alias="AfterSaleInfo" type="com.Manage.entity.AfterSaleInfo"></typeAlias>
+         <typeAlias alias="ShipmentDTO" type="com.Manage.entity.Shipment"></typeAlias>
+         <!-- 工作流程记录表 -->
+         <typeAlias alias="WorkFlowDTO" type="com.Manage.entity.WorkFlow"></typeAlias>
+         <!-- 设备升级配置表 -->
+         <typeAlias alias="DeviceUpgradingDTO" type="com.Manage.entity.DeviceUpgrading"></typeAlias>
+
+         <typeAlias alias="IpPhoneClient" type="com.Manage.entity.IpPhoneClient"></typeAlias>
+         <!-- 提工单表 -->
+         <typeAlias alias="SubmitOrders" type="com.Manage.entity.SubmitOrders"></typeAlias>
+         <!--  设备短信记录 -->
+         <typeAlias alias="DevMessage" type="com.Manage.entity.DevMessage"/>
+
+         <!-- 合作方绑定设备绑定码表 -->
+         <typeAlias alias="vendorDeviceBindKeyDTO" type="com.Manage.entity.VendorDeviceBindKey"></typeAlias>
+         
+         <!-- VPN预警表 -->
+         <typeAlias alias="vpnWarningDTO" type="com.Manage.entity.VPNWarning"></typeAlias>
+         
+         <!-- 工厂测试记录表 -->
+         <typeAlias alias="factoryTestInfoDTO" type="com.Manage.entity.FactoryTestInfo"></typeAlias>
+
+		 <typeAlias alias="DeviceFlowDTO" type="com.Manage.entity.DeviceFlow"/>
+         
+         <!-- SIM卡记录 -->
+         <typeAlias alias="simRecordDTO" type="com.Manage.entity.SIMRecord"/>
+         <!-- 企业用户表 -->
+         <typeAlias alias="EnterpriseDTO" type="com.Manage.entity.Enterprise"/>
+         <typeAlias alias="SIMCardUsageRecordDTO" type="com.Manage.entity.SIMCardUsageRecord"/>
+         <typeAlias alias="PrepareCardTempDTO" type="com.Manage.entity.PrepareCardTemp"/>
+         <typeAlias alias="SIMcostStatisticsDTO" type="com.Manage.entity.SIMcostStatistics"/>
+         <typeAlias alias="SIMCostDTO" type="com.Manage.entity.SIMCost"/>
+         <typeAlias alias="MSMRecord" type="com.Manage.entity.MSMRecord"/>
+         <!-- 基站信息 -->
+         <typeAlias alias="JizhanInfo" type="com.Manage.entity.JizhanInfo"/>
+         
+         <!-- 推送信息 -->
+         <typeAlias alias="PushMessageInfo" type="com.Manage.entity.PushMessageInfo"/>
+         <!-- 推送信息 详情-->
+         <typeAlias alias="PushMessageDetails" type="com.Manage.entity.PushMessageDetails"/>
+         
+         <!-- 固件信息 -->
+         <typeAlias alias="UpgradeFileInfo" type="com.Manage.entity.UpgradeFileInfo"/>
+         
+         <!-- 备卡查询表 -->
+         <typeAlias alias="SIMInfoCountryTemp" type="com.Manage.entity.SIMInfoCountryTemp"/>
+         
+         <!-- tdm实体类 -->
+         <typeAlias alias="TDMInfo" type="com.Manage.entity.TDMInfo"/>
+         
+         <!-- 设备跳转实体类 -->
+         <typeAlias alias="DeviceJumpInfo" type="com.Manage.entity.DeviceJumpInfo"/>
+	</typeAliases>
+
+	<mappers>
+		<!-- 封装基本的数据操作 -->
+		<mapper resource="config/mybatis/base.xml" ></mapper>
+		<!-- 用户表sql映射 -->
+		<mapper resource="config/mybatis/AdminUserInfo.xml" ></mapper>
+		<!-- 邀请表sql映射 -->
+		<mapper resource="config/mybatis/Invitation.xml"></mapper>
+		<!-- 菜单组表sql映射 -->
+		<mapper resource="config/mybatis/MenuGroupInfo.xml"></mapper>
+		<!-- 菜单表sql映射 -->
+		<mapper resource="config/mybatis/MenuInfo.xml"></mapper>
+		<!-- 角色表sql映射 -->
+		<mapper resource="config/mybatis/RoleInfo.xml"></mapper>
+		<!-- 角色-菜单sql映射 -->
+		<mapper resource="config/mybatis/RoleToMenu.xml"></mapper>
+		
+		<!-- 渠道商菜单组表sql映射 -->
+		<mapper resource="config/mybatis/DistributorMenuGroupInfo.xml"></mapper>
+		<!-- 渠道商菜单表sql映射 -->
+		<mapper resource="config/mybatis/DistributorMenuInfo.xml"></mapper>
+		<!-- 渠道商角色表sql映射 -->
+		<mapper resource="config/mybatis/DistributorRoleInfo.xml"></mapper>
+		<!-- 渠道商角色-菜单sql映射 -->
+		<mapper resource="config/mybatis/DistributorRoleToMenu.xml"></mapper>
+
+		<!-- 套餐sql映射 -->
+		<mapper resource="config/mybatis/FlowPlanInfo.xml" ></mapper>
+		<!-- 国家sql映射 -->
+		<mapper resource="config/mybatis/CountryInfo.xml" ></mapper>
+
+		<!-- SIMServer sql映射 -->
+		<mapper resource="config/mybatis/SIMServer.xml" ></mapper>
+		<!-- SIMInfo sql映射 -->
+        <mapper resource="config/mybatis/SIMInfo.xml" ></mapper>
+		<!-- VirtualSIMInfo sql映射 -->
+        <mapper resource="config/mybatis/VirtualSIMInfo.xml" ></mapper>
+
+        <!-- RoamingSIMInfo sql映射 漫游卡 -->
+        <mapper resource="config/mybatis/RoamingSIMInfo.xml" ></mapper>
+        <!-- SIMRechargeBill sql映射 -->
+        <mapper resource="config/mybatis/SIMRechargeBill.xml" ></mapper>
+        <!-- OperatorInfo sql映射 -->
+        <mapper resource="config/mybatis/OperatorInfo.xml" ></mapper>
+
+		<!-- 设备 -->
+		<mapper resource="config/mybatis/DeviceInfo.xml"></mapper>
+		<!-- 客户 -->
+		<mapper resource="config/mybatis/CustomerInfo.xml" ></mapper>
+		<!-- 渠道商 -->
+		<mapper resource="config/mybatis/Distributor.xml" ></mapper>
+
+		<!-- 设备订单 -->
+		<mapper resource="config/mybatis/DeviceDealOrders.xml"></mapper>
+		<!-- 流量订单 -->
+		<mapper resource="config/mybatis/FlowDealOrders.xml"></mapper>
+        <!-- 订单表 -->
+		<mapper resource="config/mybatis/OrdersInfo.xml"></mapper>
+<!-- 		<mapper resource="config/mybatis/DeviceDealOrders2.xml"/> -->
+		<mapper resource="config/mybatis/DeviceDealOrders.xml"></mapper>
+        <!-- 订单表test -->
+<!-- 		<mapper resource="config/mybatis/OrdersInfo2.xml"/> -->
+		<mapper resource="config/mybatis/OrdersInfo.xml"></mapper>
+		<!-- 数据字典 -->
+		<mapper resource="config/mybatis/Dictionary.xml"></mapper>
+		<!-- 用户操作日志 -->
+		<mapper resource="config/mybatis/AdminOperate.xml"></mapper>
+		<!-- 设备日志 -->
+		<mapper resource="config/mybatis/DeviceLogs.xml"></mapper>
+		<!-- 设备内部日志 -->
+		<mapper resource="config/mybatis/EquipLogs.xml"></mapper>
+		<mapper resource="config/mybatis/DeviceLogsTemp.xml"></mapper>
+		<!-- 押金申请单SQL映射 -->
+		<mapper resource="config/mybatis/DepositRecord.xml"></mapper>
+
+         <!-- 微信用户设备绑定关系表 -->
+         <mapper resource="config/mybatis/WxBindDevice.xml"></mapper>
+         <!-- 兑换码表 -->
+         <mapper resource="config/mybatis/ExchangeKey.xml"></mapper>
+         <!-- 兑换码兑换记录表 -->
+         <mapper resource="config/mybatis/ExchangeRecord.xml"></mapper>
+         <!-- 退款 -->
+         <mapper resource="config/mybatis/Refund.xml"></mapper>
+         <!-- 优惠劵 -->
+         <mapper resource="config/mybatis/Coupon.xml"></mapper>
+         <mapper resource="config/mybatis/CouponRelationship.xml"></mapper>
+         <mapper resource="config/mybatis/GStrenthData.xml"></mapper>
+         <!--VIP优惠表sql映射 -->
+         <mapper resource="config/mybatis/VIPCardInfo.xml"></mapper>
+
+         <mapper resource="config/mybatis/DeviceLogsTest.xml"></mapper>
+         <!-- VPN -->
+         <mapper resource="config/mybatis/VpnInfo.xml"></mapper>
+         <!-- 接单表 -->
+         <mapper resource="config/mybatis/AcceptOrder.xml"></mapper>
+         <!-- 售后服务记录表 -->
+         <mapper resource="config/mybatis/AfterSaleInfo.xml"></mapper>
+         <mapper resource="config/mybatis/Shipment.xml"></mapper>
+         <!-- 工作流程记录表 -->
+         <mapper resource="config/mybatis/WorkFlow.xml"></mapper>
+         <mapper resource="config/mybatis/IpPhoneClient.xml"></mapper>
+         <!-- 提工单表 -->
+         <mapper resource="config/mybatis/SubmitOrders.xml"></mapper>
+         <!-- 合作方绑定设备绑定码表 -->
+         <mapper resource="config/mybatis/VendorDeviceBindKey.xml"></mapper>
+         <!-- 设备短信记表 -->
+         <mapper resource="config/mybatis/DevMessage.xml"></mapper>
+         
+		 <mapper resource="config/mybatis/DeviceFlow.xml"/>
+		 <!-- 企业用户表 -->
+		 <mapper resource="config/mybatis/Enterprise.xml"/>
+         <mapper resource="config/mybatis/BackgroundCheck.xml"/>
+         <mapper resource="config/mybatis/PrepareCardTemp.xml"/>
+		
+		 <!-- 基站信息 -->
+		 <mapper resource="config/mybatis/JizhanInfo.xml"/>
+		 <!-- 推送信息 -->
+		 <mapper resource="config/mybatis/PushMessageInfo.xml"/>
+		 <!-- 推送信息详情-->
+		 <mapper resource="config/mybatis/PushMessageDetails.xml"/>
+		 
+		 <!-- 固件信息-->
+		 <mapper resource="config/mybatis/UpgradeFileInfo.xml"/>
+		 <!-- 备卡查询表 -->
+         <mapper resource="config/mybatis/SIMInfoCountryTemp.xml"/>
+         <!-- tdm查询表 -->
+         <mapper resource="config/mybatis/TDMInfo.xml"/>
+         <!-- 设备跳转记录 -->
+         <mapper resource="config/mybatis/DeviceJumpInfo.xml"/>
+	</mappers>
+</configuration>

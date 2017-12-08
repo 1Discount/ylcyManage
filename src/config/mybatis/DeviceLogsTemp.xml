@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Manage.dao.DeviceLogsTempDao">
+	<resultMap type="DeviceLogs" id="DeviceLogs"></resultMap>
+	
+	
+	<!--  接入时插入记录 -->
+    <insert id="insertInfo"  parameterType="DeviceLogs" useGeneratedKeys="true" keyProperty="deviceLogID">
+    <![CDATA[
+          INSERT INTO DeviceLogsTemp (deviceLogID,SN,type,location,firmWareVer,version,SIMAllot,UploadFlowCount,wifiCount,battery,wifiState,gSta,gStrenth,upFlowAll,downFlowAll,dayUsedFlow,roamGStrenth,roamUpFlowAll,roamDownFlowAll,roamDayUsedFlow,lastTime,IMSI,TTCnt,TTContext,mcc,mnc,cid,status,jizhan,newStart,minsRemaining,ContextLen,FlowDistinction,customerName,panlUserDate,userCountry,flowExpireDate,OrderRemark,orderStatus,speedType,logsDate,lastTime01)  
+          values(#{deviceLogID},#{SN},#{type},#{location},#{firmWareVer},#{version},#{SIMAllot},#{UploadFlowCount},#{wifiCount},#{battery},#{wifiState},#{gSta},#{gStrenth},#{upFlowAll},#{downFlowAll},#{dayUsedFlow},#{roamGStrenth},#{roamUpFlowAll},#{roamDownFlowAll},#{roamDayUsedFlow},#{lastTime},#{IMSI},#{TTCnt},#{TTContext},#{mcc},#{mnc},#{cid},#{status},#{jizhan},#{newStart},#{minsRemaining},#{ContextLen},#{FlowDistinction},#{customerName},#{panlUserDate},#{userCountry},#{flowExpireDate},#{OrderRemark},#{orderStatus},#{speedType},#{logsDate},#{lastTime01})  
+      ]]>  
+    </insert>
+    
+    <!-- 分配SIM时更新 -->
+    <update id="updateSIM" parameterType="map">
+    	update DeviceLogsTemp set IMSI=#{IMSI},speedType=#{speedType} where SN=#{SN} and logsDate=#{logsDate}
+    </update>
+    
+    <!-- 01日志时更新 -->
+    <update id="updateFlow" parameterType="map">
+    	update DeviceLogsTemp set type='01',upFlowAll=#{upFlowAll},downFlowAll=#{downFlowAll},dayUsedFlow=#{dayUsedFlow},lastTime=#{lastTime},lastTime01=#{lastTime01} where SN=#{SN} and logsDate=#{logsDate}
+    </update>
+    
+    <!-- 00时更新 -->
+    <update id="updateLogin" parameterType="DeviceLogs">
+        update DeviceLogsTemp set type='00',lastTime=#{lastTime},jizhan=#{jizhan},SIMAllot=#{SIMAllot},mcc=#{mcc} where SN=#{SN} and logsDate=#{logsDate}
+    </update>
+    <!--  其他日志更新 -->
+    <update id="updateOtherLogs" parameterType="map">
+        update DeviceLogsTemp set type=#{type},lastTime=#{lastTime} where SN=#{SN} and logsDate=#{logsDate} and type!='06'
+    </update>
+    <!-- 查询是否有记录 -->
+    <select id="selectlogs" resultMap="DeviceLogs" parameterType="DeviceLogs">
+    	select SN from  DeviceLogsTemp where SN=#{SN} and logsDate=#{logsDate} limit 1
+    </select>
+    
+    
+    
+    <select id="getNowPage" resultType="DeviceLogs" parameterType="searchDTO">
+    	<![CDATA[
+ 
+    	SELECT phone,orderExplain,orderID,logsDate,speedType,orderStatus,orderRemark,flowExpireDate,flowOrderID,
+userCountry,panlUserDate,DeviceLogsTemp.customerID,DeviceLogsTemp.customerName,deviceLogID,SN,simAlias,SIMID,TYPE,location,TTCnt,
+SIMAllot,UploadFlowCount,wifiCount,battery,upFlowAll,downFlowAll,dayUsedFlow,roamDayUsedFlow,lastTime,IMSI,mcc,jizhan,MAX(lastTime01) AS lastTime01,COUNT(DISTINCT SN)  
+    	FROM DeviceLogsTemp LEFT JOIN CustomerInfo ON(DeviceLogsTemp.`customerID`=CustomerInfo.`customerID`) WHERE TYPE!='06' AND UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(lastTime)<600 
+    	
+    	]]>
+    	<if test="obj.SN!=null and obj.SN!=''">
+    		and SN like '%${obj.SN}%'
+    	</if>
+    	<if test="obj.mcc!=null and obj.mcc!=''">
+    		and location =#{obj.mcc}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+    	<![CDATA[
+    		and (unix_timestamp(now())-unix_timestamp(lastTime01)>120  or SIMAllot!=0)
+    	]]>
+    	</if>
+    	group by SN 
+    	ORDER BY
+		<if test="sortName == '' or sortName == null"> mcc,IMSI </if>
+		<if test="sortName!=null and sortName!='' and sortName!='dayUsedFlow'">${sortName}</if>
+		<if test="sortName!=null and sortName=='dayUsedFlow'"><![CDATA[ CAST(dayUsedFlow AS SIGNED) ]]></if>
+		<if test="sortOrder == 'desc'"> DESC </if>
+		<if test="sortOrder == 'asc'">  asc</if>
+		<if test="sortOrder == '' or sortOrder==null"> ASC </if>
+		  LIMIT #{startIndex},#{endIndex}
+    </select>
+    
+    <select id="getNowCount" resultType="Integer" parameterType="searchDTO">
+       <![CDATA[
+    	select count(DISTINCT(SN)) from DeviceLogsTemp where type!='06' and unix_timestamp(now())-unix_timestamp(lastTime)<600
+    	]]>
+    	<if test="obj.SN!=null and obj.SN!=''">
+    		and SN like '%${obj.SN}%'
+    	</if>
+    	<if test="obj.mcc!=null and obj.mcc!=''">
+    		and location =#{obj.mcc}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+    	<![CDATA[
+    		and (unix_timestamp(now())-unix_timestamp(lastTime01)>120  or SIMAllot!=0)
+    	]]>
+    	</if>
+    </select>
+    
+    <select id="getHisPage" resultMap="DeviceLogs" parameterType="searchDTO">
+    	<![CDATA[
+    	select DeviceLogsTemp.*,CustomerInfo.phone,MAX(lastTime) AS lastTime02
+    	  from DeviceLogsTemp LEFT JOIN CustomerInfo ON(DeviceLogsTemp.`customerID`=CustomerInfo.`customerID`) where (lastTime like '%${obj.logsDate}%' or logsDate=#{obj.logsDate})
+    	]]>
+    	<if test="obj.SN!=null and obj.SN!=''">
+    		and SN like '%${obj.SN}%'
+    	</if>
+    	<if test="obj.mcc!=null and obj.mcc!=''">
+    		and location =#{obj.mcc}
+    	</if>
+    	<if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+    	   and   lastTime01 = '1970-01-01 00:00:00'
+    	</if>
+    	<if test="obj.ifExcOut!=null and obj.ifExcOut!='' and obj.ifExcOut!='123'">
+    	<![CDATA[
+    	  and  unix_timestamp(now())-unix_timestamp(lastTime)>600 and type!='06' and SIMAllot=0 and logsDate like '%${obj.logsDate}%'
+    	 ]]>
+    	</if>
+    	<if test="obj.ifExcOut!=null and obj.ifExcOut!='' and obj.ifExcOut=='123'">
+    	<![CDATA[
+    	 and (lastTime01='1970-01-01 00:00:00' or (unix_timestamp(now())-unix_timestamp(lastTime)>600 and type!='06' and SIMAllot=0 and logsDate like '%${obj.logsDate}%'))
+    	 ]]>
+    	</if>
+    	group by SN HAVING 1=1 
+    	<!-- 判断异常退出 -->
+    	
+    	<!-- 纯日志 10分钟之后的-->
+    	<if test="obj.ifChunString!=null and obj.ifChunString!=''">
+    	<![CDATA[
+    	  and (unix_timestamp(now())-unix_timestamp(lastTime)>=600 or type='06')
+    	 ]]>
+    	</if>
+    	ORDER BY
+		<if test="sortName == '' or sortName == null"> lastTime02 </if>
+		<if test="sortName!=null and sortName!='' and sortName!='dayUsedFlow' and sortName!='lastTime'">${sortName}</if>
+		<if test="sortName!=null and sortName=='dayUsedFlow'"><![CDATA[ CAST(dayUsedFlow AS SIGNED) ]]></if>
+		<if test="sortName!=null and sortName=='lastTime'"><![CDATA[ lastTime02 ]]></if>
+		<if test="sortOrder == 'desc'"> DESC </if>
+		<if test="sortOrder == 'asc'"> ASC </if>
+		<if test="sortOrder == '' or sortOrder==null"> desc </if>
+		  LIMIT #{startIndex},#{endIndex}
+    </select>
+    
+    <select id="getHisCount" resultType="Integer" parameterType="searchDTO">
+       <![CDATA[
+    	select count(DISTINCT(SN)) from DeviceLogsTemp where (lastTime like '%${obj.logsDate}%' or logsDate=#{obj.logsDate})
+    	]]>
+    	<if test="obj.SN!=null and obj.SN!=''">
+    		and SN like '%${obj.SN}%'
+    	</if>
+    	<if test="obj.mcc!=null and obj.mcc!=''">
+    		and location =#{obj.mcc}
+    	</if>
+    	<if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+    	   and   lastTime01 = '1970-01-01 00:00:00'
+    	</if>
+    	<!-- 判断异常退出 -->
+    	<if test="obj.ifExcOut!=null and obj.ifExcOut!=''">
+    	<![CDATA[
+    	  and  unix_timestamp(now())-unix_timestamp(lastTime)>600 and type!='06' and SIMAllot=0 and logsDate like '%${obj.logsDate}%'
+    	 ]]>
+    	</if>
+    	<if test="obj.ifExcOut!=null and obj.ifExcOut!='' and obj.ifExcOut=='123'">
+    	<![CDATA[
+    	 and (lastTime01='1970-01-01 00:00:00' or (unix_timestamp(now())-unix_timestamp(lastTime)>600 and type!='06' and SIMAllot=0 and logsDate like '%${obj.logsDate}%'))
+    	 ]]>
+    	</if>
+    	<!-- 纯日志 10分钟之后的-->
+    	<if test="obj.ifChunString!=null and obj.ifChunString!=''">
+    	<![CDATA[
+    	  and (unix_timestamp(now())-unix_timestamp(lastTime)>=600 or type='06')
+    	 ]]>
+    	</if>
+    	
+    </select>
+    
+    <!-- 按日期最近一个月的日设备接入数, 有上传流量的部分统计 -->
+    <select id="getDeviceInCountByDay" resultType="DeviceLogs" parameterType="DeviceLogs">
+    <if test="beginTime=='' and endTime==''">
+    	  <![CDATA[
+	        SELECT logsDate, COUNT(*) as countByDay FROM DeviceLogsTemp WHERE customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' 
+			AND DATE(logsDate) >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+			GROUP BY logsDate ORDER BY logsDate ASC;
+        ]]>
+    </if>
+      <if test="beginTime!='' and endTime!=''">
+    	  <![CDATA[
+	        SELECT logsDate, COUNT(*) as countByDay FROM DeviceLogsTemp WHERE customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' 
+			AND DATE(logsDate) >=#{beginTime} and DATE(logsDate)<=#{endTime}
+			GROUP BY logsDate ORDER BY logsDate ASC;
+        ]]>
+    </if>
+    </select>
+    
+    <!-- 按日期最近一个月的日设备接入数, 包括有或没有上传流量的全部统计 -->
+    <select id="getDeviceInCountByDayAll" resultType="DeviceLogs" parameterType="DeviceLogs">
+     <if test="beginTime=='' and endTime==''">
+       <![CDATA[
+	        SELECT logsDate, COUNT(*) as countByDay FROM DeviceLogsTemp WHERE customerID!='10086' AND (SIMAllot='0' or lastTime01!='1970-01-01 00:00:00')
+			AND DATE(logsDate) >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+			GROUP BY logsDate ORDER BY logsDate ASC;
+        ]]>
+        </if>
+       <if test="beginTime!='' and endTime!=''">
+         <![CDATA[
+            SELECT logsDate, COUNT(*) as countByDay FROM DeviceLogsTemp WHERE customerID!='10086' AND (SIMAllot='0' or lastTime01!='1970-01-01 00:00:00')
+			AND DATE(logsDate) >=#{beginTime} and DATE(logsDate)<=#{endTime}
+			GROUP BY logsDate ORDER BY logsDate ASC;
+		 ]]>
+        </if>
+    </select>
+    
+    <!-- 按国家最近一个月的设备接入数 -->
+    <select id="getDeviceInCountByMCC" resultType="DeviceLogs" parameterType="DeviceLogs">
+    	<if test="beginTime==null or beginTime=='' or endTime==null or endTime==''">
+    	   <!--  SELECT mcc, countryName, COUNT(DISTINCT(SN)) AS countByMCC FROM DeviceLogsTemp AS d
+			LEFT JOIN CountryInfo AS c ON c.countryCode=d.mcc
+			WHERE d.customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' AND SIMAllot=0
+			AND DATE(logsDate) >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+			GROUP BY mcc ORDER BY countByMCC DESC; -->
+	       <![CDATA[
+			SELECT mcc, countryName, COUNT(SN) AS countByMCC FROM 
+			(select id,mcc,SN from DeviceLogsTemp WHERE customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' AND SIMAllot=0    
+               AND DATE(logsDate) >= DATE_SUB(NOW(), INTERVAL 30 DAY) group by SN) AS d   
+            LEFT JOIN CountryInfo AS c ON c.countryCode=d.mcc   
+            GROUP BY mcc ORDER BY countByMCC DESC;
+	        ]]>
+		</if>
+		<if test="beginTime!=null and beginTime!='' and endTime!=null and endTime!=''">
+		<!--  SELECT mcc, countryName, COUNT(DISTINCT(SN)) AS countByMCC FROM DeviceLogsTemp AS d
+			LEFT JOIN CountryInfo AS c ON c.countryCode=d.mcc
+			WHERE d.customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' AND SIMAllot=0
+			AND DATE(logsDate) >=#{beginTime} and DATE(logsDate)<=#{endTime}
+			GROUP BY mcc ORDER BY countByMCC DESC; -->
+	       <![CDATA[
+			SELECT mcc, countryName, COUNT(SN) AS countByMCC FROM 
+			(select id,mcc,SN from DeviceLogsTemp WHERE customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' AND SIMAllot=0    
+               AND DATE(logsDate) >=#{beginTime} and DATE(logsDate)<=#{endTime} group by SN) AS d   
+            LEFT JOIN CountryInfo AS c ON c.countryCode=d.mcc   
+            GROUP BY mcc ORDER BY countByMCC DESC;
+	        ]]>
+		</if>
+	
+    </select>
+
+    <!-- 按日期最近一个月的日设备接入数, 有上传流量的部分统计 -->
+    <select id="getDeviceInCountByDay1" resultType="DeviceLogs" parameterType="DeviceLogs">
+       <![CDATA[
+        SELECT logsDate, COUNT(*) as countByDay FROM DeviceLogsTemp WHERE customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' 
+		AND DATE(logsDate) >= DATE_SUB(#{lastTime01}, INTERVAL 1 DAY)
+		GROUP BY logsDate ORDER BY logsDate ASC;
+        ]]>
+    </select>
+    <select id="getDeviceInCountByDay2" resultType="DeviceLogs" parameterType="DeviceLogs">
+      
+        SELECT COUNT(1) as UploadFlowCount FROM(
+		SELECT SN
+		FROM devicelogs_${logsDate} dl,
+		(
+			SELECT (CONVERT(flowDealID USING utf8) COLLATE utf8_general_ci  ) flowDealID ,
+			creatorUserID		
+			FROM flowdealorders 
+		) fdo
+		WHERE  dl.lastTime!='1970-01-01 00:00:00'
+			AND fdo.flowDealID=dl.flowOrderID
+			AND fdo.creatorUserID!='10086'
+			<if test="type != null and type == 1">
+				AND  dl.UploadFlowCount>0
+			</if>
+			GROUP BY SN
+			) AS countByDay2
+       
+    </select>
+    
+    
+    <!-- 按日期最近一个月的日设备接入数, 包括有或没有上传流量的全部统计 -->
+    <select id="getDeviceInCountByDayAll1" resultType="DeviceLogs" parameterType="DeviceLogs">
+       <![CDATA[
+        SELECT logsDate, COUNT(*) as countByDay FROM DeviceLogsTemp WHERE customerID!='10086' AND (SIMAllot='0' or lastTime01!='1970-01-01 00:00:00')
+		AND DATE(logsDate) >= DATE_SUB(#{lastTime01}, INTERVAL 1 DAY)
+		GROUP BY logsDate ORDER BY logsDate ASC;
+        ]]>
+    </select>
+    
+    <!-- 按国家最近一个月的设备接入数 -->
+    <select id="getDeviceInCountByMCC1" resultType="DeviceLogs" parameterType="DeviceLogs">
+       <![CDATA[
+        SELECT mcc, countryName, COUNT(DISTINCT(SN)) AS countByMCC FROM DeviceLogsTemp AS d
+		LEFT JOIN CountryInfo AS c ON c.countryCode=d.mcc
+		WHERE d.customerID!='10086' AND lastTime01!='1970-01-01 00:00:00' AND SIMAllot=0
+		AND DATE(logsDate) >= DATE_SUB(#{lastTime01}, INTERVAL 1 DAY)
+		GROUP BY mcc ORDER BY countByMCC DESC;
+        ]]>
+    </select>
+    
+	
+    <select id="getbeginDate" parameterType="DeviceLogs" resultMap="DeviceLogs">
+    	SELECT COUNT(*) AS logsDate FROM DeviceLogsTemp WHERE SN = #{SN} and customerID=#{customerID} AND logsDate != '1970-01-01 00:00:00.0'  ORDER BY logsDate
+    </select>
+    
+    <!-- 设备按时间段查看每天接入情况和统计流量 已确认, 不需要排除中国 AND `mcc`!='460'  经确认,不需要 AND (`SIMAllot`='0' OR `lastTime01`!='1970-01-01 00:00:00') -->
+    <select id="getDeviceInBySnAndDate" resultType="DeviceLogs" parameterType="DeviceLogs">
+		<![CDATA[
+			SELECT
+				`lastTime01`,
+				`SIMAllot`,
+				`logsDate`,
+				`FlowDistinction`,
+				TRUE AS ifIn,
+				(
+					IF (
+						lastTime01 != '1970-01-01 00:00:00',
+						TRUE,
+						FALSE
+					)
+				) AS ifInAndHasFlow,
+	
+			left(jizhan, 3) AS mcc,
+			jizhan,
+			location,
+			COUNT(1) AS InCount
+			FROM `DeviceLogsTemp`
+
+			WHERE `SN`=#{SN} 
+			AND logsDate>=#{beginTime} 
+			AND logsDate<=#{endTime} 
+			AND SIMAllot!=3
+		]]> 
+	   
+		<if test="FlowDistinction!=null and FlowDistinction!=''">
+			and FlowDistinction>=#{FlowDistinction}
+		</if>
+		GROUP BY left(jizhan, 3)
+		ORDER BY `logsDate` DESC
+    </select>
+    
+	<!-- 渠道对帐页面已使用订单查询 -->
+	<select id="getdevicelogTempbysn" parameterType="DeviceLogs" resultMap="DeviceLogs">
+	<![CDATA[
+		select  count(*) as userDays ,mcc,sum(FlowDistinction) as FlowDistinction from DeviceLogsTemp 
+		 where SN=#{SN} 
+		and mcc is not null and lastTime01!='1970-01-01 00:00:00'
+		and FlowDistinction>=#{FlowDistinction} 
+		group by mcc
+	   ]]>
+	   <!--  and (logsDate>=#{beginTime} AND logsDate<=#{endTime}) -->
+	</select>
+	
+	<select id="getLast01" parameterType="DeviceLogs" resultMap="DeviceLogs">
+		select * from  DeviceLogsTemp where SN=#{SN} order by lastTime01 desc limit 1
+	</select>
+	
+	<!-- 查询抢卡 -->
+	<select id="searchGrabCard" resultMap="DeviceLogs" parameterType="String">
+	    SELECT orderExplain,COUNT(DISTINCT(SN)),SN,IMSI,SIMAllot,battery FROM DeviceLogsTemp WHERE IMSI IN  
+            (SELECT IMSI FROM 
+               (SELECT SN,COUNT(*) snCount,IMSI FROM `DeviceLogsTemp` WHERE lastTime > SUBDATE(NOW(),INTERVAL 300 SECOND) AND logsDate = CURDATE() GROUP BY IMSI) t 
+            WHERE t.snCount > 1) 
+        AND lastTime > SUBDATE(NOW(),INTERVAL 300 SECOND) AND logsDate = CURDATE() 
+        AND SIMAllot NOT IN (3,4,5,6) AND battery>3 AND SN NOT IN (
+        SELECT SN FROM (
+            SELECT sn,TYPE,lastTime FROM (
+                SELECT sn,TYPE,lastTime FROM ${_parameter} WHERE 1=1 AND TYPE IN('00','06') ORDER BY lastTime DESC
+            ) s GROUP BY s.sn
+        ) ss WHERE ss.type = '06'
+        ) GROUP BY sn ORDER BY IMSI 
+	</select>
+	
+	<select id="getNowPage1" resultType="DeviceLogs" parameterType="searchDTO">
+        <![CDATA[
+        SELECT orderExplain,orderID,logsDate,speedType,orderStatus,orderRemark,flowExpireDate,flowOrderID,
+userCountry,panlUserDate,customerID,customerName,deviceLogID,SN,simAlias,SIMID,TYPE,location,TTCnt,
+SIMAllot,UploadFlowCount,wifiCount,battery,upFlowAll,downFlowAll,dayUsedFlow,roamDayUsedFlow,lastTime,IMSI,mcc,jizhan,MAX(lastTime01) AS lastTime01,COUNT(DISTINCT SN)  
+        FROM DeviceLogsTemp WHERE UNIX_TIMESTAMP(NOW())-UNIX_TIMESTAMP(lastTime)<600 
+        ]]>
+        <if test="obj.SN!=null and obj.SN!=''">
+            and SN like '%${obj.SN}%'
+        </if>
+        <if test="obj.mcc!=null and obj.mcc!=''">
+            and location =#{obj.mcc}
+        </if>
+        <if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+            and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+        </if>
+        <if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+            and TTCnt >#{obj.TTCnt}
+        </if>
+        <if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+            and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+        </if>
+        <if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+            and TTCnt >#{obj.TTCnt}
+        </if>
+        <if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+            and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+        </if>
+        <if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+            and TTCnt >#{obj.TTCnt}
+        </if>
+        <if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+            and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+        </if>
+        <if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+            and TTCnt >#{obj.TTCnt}
+        </if>
+        <if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+            and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+        </if>
+        <if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+            and TTCnt >#{obj.TTCnt}
+        </if>
+        <if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+        <![CDATA[
+            and (unix_timestamp(now())-unix_timestamp(lastTime01)>120  or SIMAllot!=0)
+        ]]>
+        </if>
+        group by SN 
+        ORDER BY
+        <if test="sortName == '' or sortName == null"> mcc,IMSI </if>
+        <if test="sortName!=null and sortName!='' and sortName!='dayUsedFlow'">${sortName}</if>
+        <if test="sortName!=null and sortName=='dayUsedFlow'"><![CDATA[ CAST(dayUsedFlow AS SIGNED) ]]></if>
+        <if test="sortOrder == 'desc'"> DESC </if>
+        <if test="sortOrder == 'asc'">  asc</if>
+        <if test="sortOrder == '' or sortOrder==null"> ASC </if>
+          LIMIT #{startIndex},#{endIndex}
+    </select>
+    
+    <select id="getNowCount1" resultType="Integer" parameterType="searchDTO">
+       <![CDATA[
+        select count(DISTINCT(SN)) from DeviceLogsTemp where unix_timestamp(now())-unix_timestamp(lastTime)<600
+        ]]>
+        <if test="obj.SN!=null and obj.SN!=''">
+            and SN like '%${obj.SN}%'
+        </if>
+        <if test="obj.mcc!=null and obj.mcc!=''">
+            and location =#{obj.mcc}
+        </if>
+        <if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+            and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+        </if>
+        <if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+            and TTCnt >#{obj.TTCnt}
+        </if>
+        <if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+        <![CDATA[
+            and (unix_timestamp(now())-unix_timestamp(lastTime01)>120  or SIMAllot!=0)
+        ]]>
+        </if>
+    </select>
+    
+    <select id="gitJieruInfoPage" parameterType="DeviceLogs" resultMap="DeviceLogs">
+    	<![CDATA[
+    		SELECT count(*) as InCount,logsDate,mcc FROM DeviceLogsTemp WHERE lastTime01 != '1970-01-01 00:00:00'  AND customerID != 10086
+    	]]>
+    	 <if test="obj.beginDate != null and obj.beginDate != ''">
+	        <![CDATA[
+	          	AND (logsDate >= #{obj.beginDate} AND logsDate <= 	#{obj.endDate})
+	        ]]>
+        </if>
+    	<if test="obj.mcc != null and obj.mcc!=null != ''">
+	        <![CDATA[
+	          	AND mcc =#{obj.mcc}
+	        ]]>
+        </if>
+        GROUP BY logsDate
+        ORDER BY
+		<if test="sortName == '' or sortName == null">logsDate</if>
+    </select>
+    
+     <select id="gitJieruInfoCount" parameterType="DeviceLogs" resultType="Integer">
+       	SELECT count(*) FROM (
+	     	<![CDATA[
+	    		SELECT * FROM DeviceLogsTemp WHERE lastTime01 != '1970-01-01 00:00:00'  AND customerID != 10086
+	    	]]>
+	    	 <if test="obj.beginDate != null and obj.beginDate!= ''">
+		        <![CDATA[
+		          	AND (logsDate >= #{obj.beginDate} AND logsDate <= 	#{obj.endDate})
+		        ]]>
+	        </if>
+	    	<if test="obj.mcc != null and obj.mcc!=null != ''">
+		        <![CDATA[
+		          	AND mcc =#{obj.mcc}
+		        ]]>
+	        </if>	
+	        GROUP BY logsDate 
+	     )T;
+     </select>
+     
+     
+     <!-- 夸大的数据查询（假的） -->
+       <select id="getNowPageVM" resultType="DeviceLogs" parameterType="searchDTO">
+    	<![CDATA[
+ 
+    	SELECT phone,orderExplain,orderID,logsDate,speedType,orderStatus,orderRemark,flowExpireDate,flowOrderID,
+userCountry,panlUserDate,DeviceLogsTemp.customerID,DeviceLogsTemp.customerName,deviceLogID,SN,simAlias,SIMID,TYPE,location,TTCnt,
+SIMAllot,UploadFlowCount,wifiCount,battery,upFlowAll,downFlowAll,dayUsedFlow,roamDayUsedFlow,lastTime,IMSI,mcc,jizhan,MAX(lastTime01) AS lastTime01,COUNT(DISTINCT SN)  
+    	FROM DeviceLogsTemp LEFT JOIN CustomerInfo ON(DeviceLogsTemp.`customerID`=CustomerInfo.`customerID`) WHERE TYPE!='06' AND logsDate='2016-10-03'
+    	
+    	]]>
+    	<if test="obj.SN!=null and obj.SN!=''">
+    		and SN like '%${obj.SN}%'
+    	</if>
+    	<if test="obj.mcc!=null and obj.mcc!=''">
+    		and location =#{obj.mcc}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<!-- <if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+    	<![CDATA[
+    		and (unix_timestamp(now())-unix_timestamp(lastTime01)>120  or SIMAllot!=0)
+    	]]>
+    	</if> -->
+    	group by SN 
+    	ORDER BY
+		<if test="sortName == '' or sortName == null"> mcc,IMSI </if>
+		<if test="sortName!=null and sortName!='' and sortName!='dayUsedFlow'">${sortName}</if>
+		<if test="sortName!=null and sortName=='dayUsedFlow'"><![CDATA[ CAST(dayUsedFlow AS SIGNED) ]]></if>
+		<if test="sortOrder == 'desc'"> DESC </if>
+		<if test="sortOrder == 'asc'">  asc</if>
+		<if test="sortOrder == '' or sortOrder==null"> ASC </if>
+		  LIMIT #{startIndex},#{endIndex}
+    </select>
+    
+     <!-- 夸大的数据查询（假的） -->
+    <select id="getNowCountVM" resultType="Integer" parameterType="searchDTO">
+       <![CDATA[
+    	select count(DISTINCT(SN)) from DeviceLogsTemp where type!='06' and logsDate='2016-10-03'
+    	]]>
+    	<if test="obj.SN!=null and obj.SN!=''">
+    		and SN like '%${obj.SN}%'
+    	</if>
+    	<if test="obj.mcc!=null and obj.mcc!=''">
+    		and location =#{obj.mcc}
+    	</if>
+    	<if test="obj.roamDayUsedFlow!=null and obj.roamDayUsedFlow!=''">
+    		and roamDayUsedFlow >#{obj.roamDayUsedFlow}
+    	</if>
+    	<if test="obj.TTCnt!=null and obj.TTCnt!='' and obj.TTCnt!=0 ">
+    		and TTCnt >#{obj.TTCnt}
+    	</if>
+    	<!-- <if test="obj.ifOnlyString!=null and obj.ifOnlyString!=''">
+    	<![CDATA[
+    		and (unix_timestamp(now())-unix_timestamp(lastTime01)>120  or SIMAllot!=0)
+    	]]> 
+    	</if>-->
+    </select>
+</mapper>
