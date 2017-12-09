@@ -1,4 +1,4 @@
-*.class
+ WebRoot/WEB-INF/classes/*.class
 .idea
 .classpath
 .settings/
