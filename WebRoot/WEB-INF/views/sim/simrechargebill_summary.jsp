@@ -30,7 +30,7 @@
           <label class="inline-label">SIM卡使用类型：</label>
           <select id="SIMCategory" name="SIMCategory" style="width: 130px;" class="form-control">
             <option value="本地卡">本地卡</option>
-            <option value="漫游卡">漫游卡</option>
+            <option value="漫游卡">种子卡</option>
           </select>
         </div>
         <div class="form-group">

@@ -44,7 +44,7 @@ id="main-content"><SECTION class="wrapper">
 <DIV class="panel">
 <DIV class="panel-heading"> <b>设备登录记录</b>
   <LABEL class="label label-info label-xs" id='sbid'></LABEL>
- <b>漫游卡ICCID:</b><b>${ICCID }</b>
+ <b>种子卡ICCID:</b><b>${ICCID }</b>
   <b>日期:</b><b>${sj }</b>
 </DIV>
 <DIV class="panel-body">
@@ -180,7 +180,7 @@ id="main-content"><SECTION class="wrapper">
    </DIV>
 <DIV class="col-md-12">
 <DIV class="panel">
-<DIV class="panel-heading"><LABEL>漫游卡流量记录（漫游软件版本：<span>${res}</span>,漫游APK版本:<span>${resAPK}</span>）</LABEL></DIV>
+<DIV class="panel-heading"><LABEL>种子卡流量记录（漫游软件版本：<span>${res}</span>,漫游APK版本:<span>${resAPK}</span>）</LABEL></DIV>
 <DIV class="panel-body">
 <DIV class="table-responsive">
 <!-- <TABLE class="table table-bordered table-hover">

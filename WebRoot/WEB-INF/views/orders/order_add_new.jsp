@@ -867,7 +867,7 @@
 				data : $('#flowdeal_form').serialize(),
 				dataType : 'json',
 				success : function(data) {
-					//-1表示SN不存在。-2表示SN使用中,0表示SN或漫游卡不支持国家
+					//-1表示SN不存在。-2表示SN使用中,0表示SN或种子卡不支持国家
 					if (data.code == '00') {
 						easy2go.toast('info', '订单创建成功！！！');
 						gridObj1.refreshPage();
@@ -882,7 +882,7 @@
 						easy2go.toast('warn', data.Msg + '使用中！！！');
 					}
 					else if (data.code == '0') {
-						easy2go.toast('warn', data.Msg + 'SN或漫游卡不支持国家！！！');
+						easy2go.toast('warn', data.Msg + 'SN或种子卡不支持国家！！！');
 					}
 				}
 			});

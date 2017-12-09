@@ -88,7 +88,7 @@ function getFullPath(obj)
                 <div class="col-md-6">
                     <select name="SIMCategory" required class="form-control" readonly="readonly" disabled>
                       <option value="0">本地卡</option>
-                      <option value="1" selected="selected">漫游卡</option>
+                      <option value="1" selected="selected">种子卡</option>
                     </select>
                 </div>
             </div>
@@ -106,7 +106,7 @@ function getFullPath(obj)
                 </div>
               </div>
               <div class="col-sm-3">
-              <div class="btn-toolbar"><button type="button" onclick="javascript:clearAllRoamingSim();"class="btn btn-danger">导入前清除漫游卡</button></div>
+              <div class="btn-toolbar"><button type="button" onclick="javascript:clearAllRoamingSim();"class="btn btn-danger">导入前清除种子卡</button></div>
               </div>
             </div>
 
@@ -123,14 +123,14 @@ function getFullPath(obj)
 注意：<br><br>
 
 <div class="well red">
-<p>导入要求、规则更改历史： 漫游卡与本地卡有很大的不同, 所以分开为不同的模板。(1) 漫游卡根据 ICCID 来添加记录;
-(2) 若需要支持更新漫游卡, 需要开发人员处理, 方法见后;
-(3) <del>目前漫游卡导入只有"新增", 不涉及"更新", 若模板中带有已经导入的数据, 则该行数据会提示为"插入失败". 所以,
+<p>导入要求、规则更改历史： 种子卡与本地卡有很大的不同, 所以分开为不同的模板。(1) 种子卡根据 ICCID 来添加记录;
+(2) 若需要支持更新种子卡, 需要开发人员处理, 方法见后;
+(3) <del>目前种子卡导入只有"新增", 不涉及"更新", 若模板中带有已经导入的数据, 则该行数据会提示为"插入失败". 所以,
 为了减少重复插入这种情况影响不好分辨哪些插入成功或失败, 请保证每次添加的数据在单独一个xls档, 或者不理会,
 但务必最后仔细检查提示为"插入失败"的数据行.</del> 若后期需要考虑更新, 请联系开发打开一个开关, 或扩展为可配置.
 <strong>最近更新：按需求现在已经打开了支持更新。若该 ICCID 已存在，则该条记录为更新，否则为新增</strong>
-<br /><br />注意：“导入前清除漫游卡”这个功能系何广超根据漫游卡管理实际情况提出的需求，在导入前手动执行将清除全部漫游卡信息！请只有在清楚问题情况下再继续清。原则上，
-应该不要使用此功能，因为平时可能已经单个编辑了若干漫游卡的状态，若导入覆盖就丢失那些编辑了。目前也还未有导出功能。请相关人员逐渐完善漫游卡的文档管理，避免问题出现</p>
+<br /><br />注意：“导入前清除种子卡”这个功能系何广超根据种子卡管理实际情况提出的需求，在导入前手动执行将清除全部种子卡信息！请只有在清楚问题情况下再继续清。原则上，
+应该不要使用此功能，因为平时可能已经单个编辑了若干种子卡的状态，若导入覆盖就丢失那些编辑了。目前也还未有导出功能。请相关人员逐渐完善种子卡的文档管理，避免问题出现</p>
 </div>
 
 <p>1. 批量导入数据只支持 excel 2003版本 ，具体格式请按照 2中的地址进行下载</p>
@@ -203,9 +203,9 @@ function updateProgress(){
     <%-- 这里某些页面有内容, 见带  block script 的那些 jade 文件--%>
     <script type="text/javascript">
     function clearAllRoamingSim() {
-    	bootbox.confirm("这个功能系何广超根据漫游卡管理实际情况提出的需求，在导入前手动执行将清除全部漫游卡信息！请只有在清楚问题情况下再继续清除，并且做好旧备份！确定继续?", function(result) {
+    	bootbox.confirm("这个功能系何广超根据种子卡管理实际情况提出的需求，在导入前手动执行将清除全部种子卡信息！请只有在清楚问题情况下再继续清除，并且做好旧备份！确定继续?", function(result) {
             if(result){
-            	bootbox.confirm("继续操作将清除目前系统止全部漫游卡信息！请确保旧的 Excel 漫游卡表已备份！请进行二次确认！否则取消返回", function(result) {
+            	bootbox.confirm("继续操作将清除目前系统止全部种子卡信息！请确保旧的 Excel 种子卡表已备份！请进行二次确认！否则取消返回", function(result) {
             		if(result){
             			$.ajax({
                             type:"POST",

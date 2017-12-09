@@ -43,7 +43,7 @@
         </div>
 		<div class="form-group">
 		<button class="btn btn-primary" 
-		type="button" onclick="$('input').each(function(){$(this).val(jQuery.trim($(this).val()));});gridObj.options.otherParames = $('#searchForm').serializeArray();gridObj.page(1);"><c:if test="${initCategory eq null or initCategory eq 0}">搜索本地卡</c:if><c:if test="${initCategory eq 1}">搜索漫游卡</c:if></button></div></form></div></div>
+		type="button" onclick="$('input').each(function(){$(this).val(jQuery.trim($(this).val()));});gridObj.options.otherParames = $('#searchForm').serializeArray();gridObj.page(1);"><c:if test="${initCategory eq null or initCategory eq 0}">搜索本地卡</c:if><c:if test="${initCategory eq 1}">搜索种子卡</c:if></button></div></form></div></div>
 		<div class="panel">
 		<div class="panel-heading">
 		

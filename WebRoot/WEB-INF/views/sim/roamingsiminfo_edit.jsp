@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
   <head><c:if test="${Model.ICCID eq null}"><%-- 通过必选字符串字段为null判断为添加记录 --%>
-    <title>添加漫游卡-漫游SIM卡管理-EASY2GO ADMIN</title></c:if><c:if test="${Model.ICCID ne null}">
-    <title>编辑漫游卡-漫游卡管理-EASY2GO ADMIN</title></c:if>
+    <title>添加种子卡-漫游SIM卡管理-EASY2GO ADMIN</title></c:if><c:if test="${Model.ICCID ne null}">
+    <title>编辑种子卡-种子卡管理-EASY2GO ADMIN</title></c:if>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -50,7 +50,7 @@
                 <label class="col-md-3 control-label">SIM使用类型：</label>
                 <div class="col-md-6">
                     <select name="SIMCategory" required class="form-control" readonly="readonly">
-                      <c:if test="${Model.SIMCategory eq '漫游卡'}"><option value="漫游卡" selected="selected">漫游卡</option></c:if>
+                      <c:if test="${Model.SIMCategory eq '漫游卡'}"><option value="漫游卡" selected="selected">种子卡</option></c:if>
                       <c:if test="${Model.SIMCategory ne '漫游卡'}"><option value=""></option></c:if>
 <%--                      <c:if test="${Model.SIMCategory eq '本地卡'}"><option value="本地卡" selected="selected">本地卡</option></c:if>
                       <c:if test="${Model.SIMCategory ne '本地卡'}"><option value="本地卡">本地卡</option></c:if> --%>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md-3">
                     <p class="form-control-static">
-                        <c:if test="${Model.SIMCategory eq '漫游卡'}"><span class="red">* 本地卡或漫游卡</span></c:if><c:if test="${Model.SIMCategory ne '漫游卡'}"><span class="yellow-b">* 出错了, 这不是漫游卡, 请返回检查</span></c:if></span>
+                        <c:if test="${Model.SIMCategory eq '漫游卡'}"><span class="red">* 本地卡或种子卡</span></c:if><c:if test="${Model.SIMCategory ne '漫游卡'}"><span class="yellow-b">* 出错了, 这不是种子卡, 请返回检查</span></c:if></span>
                     </p>
                 </div>
             </div>

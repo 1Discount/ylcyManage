@@ -55,7 +55,7 @@
 									</DIV>
 								</DIV>
 								<DIV class="form-group">
-									<LABEL class="col-md-3 control-label" for="device_sn">漫游卡代号：</LABEL>
+									<LABEL class="col-md-3 control-label" for="device_sn">种子卡代号：</LABEL>
 									<DIV class="col-md-6">
 										<INPUT id="device_sn"  value="${device.cardID}" class="form-control" name="CardID" type="text" data-popover-offset="0,8">
 									</DIV>

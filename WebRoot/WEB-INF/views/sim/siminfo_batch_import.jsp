@@ -73,7 +73,7 @@ function getFullPath(obj)
                 <div class="col-md-6">
                     <select name="SIMCategory" required class="form-control" readonly="readonly" disabled>
                       <option value="0" selected="selected">本地卡</option>
-                      <option value="1">漫游卡</option>
+                      <option value="1">种子卡</option>
                     </select>
                 </div>
             </div>

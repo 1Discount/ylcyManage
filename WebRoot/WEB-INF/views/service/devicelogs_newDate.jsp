@@ -79,7 +79,7 @@ if(request.getSession().getAttribute("nowpagesize")==null){
 </DIV>
 
 <DIV class="panel">
-<DIV class="panel-heading">10分钟内活动设备：<span   style="color: red;font-weight:bold;" id="snCount"></span><input type="hidden"  id="snCountInput"><span style="color: orange;margin-left: 20px;">提示：有黄色叹号的表示有标记过的，注意查看。红色vip表示重要客户，绿色vip表示合作伙伴</span><span style="color: red;margin-left: 20px;">飘黄为漫游卡累计流量大于100KB,飘蓝为透传次数大于80次</span><span id="grabCard" style="color: red;margin-left: 20px;"></span></DIV>
+<DIV class="panel-heading">10分钟内活动设备：<span   style="color: red;font-weight:bold;" id="snCount"></span><input type="hidden"  id="snCountInput"><span style="color: orange;margin-left: 20px;">提示：有黄色叹号的表示有标记过的，注意查看。红色vip表示重要客户，绿色vip表示合作伙伴</span><span style="color: red;margin-left: 20px;">飘黄为种子卡累计流量大于100KB,飘蓝为透传次数大于80次</span><span id="grabCard" style="color: red;margin-left: 20px;"></span></DIV>
 <DIV class="panel-body">
 <DIV class="table-responsive">
 <TABLE id="searchTable">

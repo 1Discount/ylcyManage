@@ -54,9 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </DIV>
                 </DIV>
                 <DIV class="form-group">
-                   <LABEL class="col-md-3 control-label" for="device_desc">漫游卡编号：</LABEL>
+                   <LABEL class="col-md-3 control-label" for="device_desc">种子卡编号：</LABEL>
                    <DIV class="col-md-6"> 
-                       <input id="device_cardid" class="form-control"  name="CardID" data-popover-offset="0,8" placeholder="漫游卡编号"/>
+                       <input id="device_cardid" class="form-control"  name="CardID" data-popover-offset="0,8" placeholder="种子卡编号"/>
                    </DIV>
                </DIV>
                 <DIV class="form-group">

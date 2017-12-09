@@ -41,7 +41,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="panel">
-							<div class="panel-heading">设备漫游卡日志:${SN}</div>
+							<div class="panel-heading">设备种子卡日志:${SN}</div>
 							<div class="panel-body">
 								<TABLE id="searchTable">
   <TR>

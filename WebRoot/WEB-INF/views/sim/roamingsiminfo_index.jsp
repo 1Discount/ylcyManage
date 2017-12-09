@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><c:if test="${IsIndexView}">全部漫游SIM卡-漫游卡管理-EASY2GO ADMIN</c:if><c:if test="${IsTrashView}">全部已删除SIM卡-漫游卡管理-EASY2GO ADMIN</c:if></title>
+    <title><c:if test="${IsIndexView}">全部漫游SIM卡-种子卡管理-EASY2GO ADMIN</c:if><c:if test="${IsTrashView}">全部已删除SIM卡-种子卡管理-EASY2GO ADMIN</c:if></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -129,7 +129,7 @@
 
             <DIV class="panel" style="margin-top:20px;">
                         <DIV class="panel-body">
-                        <label class="checkbox-items" style="padding-right:10px;"><INPUT name="exportRange" value="1" id="exportRangeAll" checked type="radio">导出全部搜索结果(默认即为全部漫游卡)</label>
+                        <label class="checkbox-items" style="padding-right:10px;"><INPUT name="exportRange" value="1" id="exportRangeAll" checked type="radio">导出全部搜索结果(默认即为全部种子卡)</label>
                         <label class="checkbox-items" style="padding-right:10px;"><INPUT name="exportRange" value="0" id="exportRangeCurPage" type="radio" >导出当前页</label>
                         <br /><button id="exportExcelButton"><a href="javascript:void(0);">导出到 Excel</a></button><br /><br />
                         <p>导出后，如果要修改下列字段：关联设备SN，ICCID，电话号码，PUK，PIN等几个，那开始修改前手动把
