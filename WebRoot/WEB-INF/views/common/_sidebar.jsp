@@ -15,9 +15,10 @@
 			<ul id="nav-accordion" class="sidebar-menu">
 			 <c:if test="${sessionScope.User.email ne '362331359@qq.com'}">
 			 <li><a id="dashboardMenu" href="<%=basePath%>admin/adminuserinfo/index"><i class="fa fa-dashboard"></i>
-					<span>主页概览</span></a>
+					<span>控制台</span></a>
 				</li>
 			 </c:if>
+			 <!-- 
 			 <li class="sub-menu"><a id="DeviceJumpInfo" href="javascript:;"><i class="fa fa-desktop"></i><span>设备跳转管理</span></a>
           	<ul class="sub">
             	<li id="allDeviceJumpInfo"><a href="<%=path %>/deviceJumpInfo/index">全部跳转记录</a></li>
@@ -30,6 +31,7 @@
             	<li id="deletedTDM"><a href="<%=path %>/tdm/deletedTDMList">已删除TDM</a></li>
           	</ul>
         	</li>
+          	-->
 				<!--  动态加载菜单的部分 -->
 				<c:forEach items="${sessionScope.mgList}" var="mg">
 					<li class="sub-menu">
