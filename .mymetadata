@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ylcyManage"
+  id="myeclipse.1432016604750"
+  context-root="/ylcyManage"
+  j2ee-spec="1.6"
+  archive="ylcyManage.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
