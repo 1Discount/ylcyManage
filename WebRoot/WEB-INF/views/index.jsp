@@ -18,7 +18,7 @@
 <%@include file="/WEB-INF/views/common/_ie8support.html"%>
 <%-- 这里某些页面有内容, 见带  block head 的那些 jade 文件--%>
 </head>
-<body>
+<body class="skin-blue">
 	<section id="container">
 		<jsp:include page="/WEB-INF/views/common/_top_menu.jsp" flush="true" />
 		<jsp:include page="/WEB-INF/views/common/_sidebar.jsp" flush="true" />

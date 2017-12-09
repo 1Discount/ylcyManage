@@ -5,7 +5,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <header class="header fixed-top clearfix"><!--logo start-->
-  <div class="brand"><a href="<%=basePath %>admin/adminuserinfo/index" style="color:#fff" class="logo"><i style="font-size:24px" class="fa fa-gears"></i><span style="padding:0 10px;font-size:16px;color: #fff">ADMIN</span><span id="version" class="pull-right">beta 2.0</span></a>
+  <div class="brand"><a href="<%=basePath %>admin/adminuserinfo/index" style="color:#fff" class="logo"><i style="font-size:24px" class="fa fa-gears"></i><span style="padding:0 10px;font-size:16px;color: #fff">流量运营中心</span></a>
     <div class="sidebar-toggle-box">
       <div class="fa fa-bars"></div>
     </div>

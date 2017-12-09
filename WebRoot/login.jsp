@@ -40,9 +40,9 @@
 				</label>
 				<button type="submit" class="btn btn-lg btn-login btn-block">登
 					入</button>
-				<div class="registration">
-					没有帐号?<a href="<%=basePath%>login_up.jsp">前往注册</a>
-				</div>
+<!-- 				<div class="registration"> -->
+<%-- 					没有帐号?<a href="<%=basePath%>login_up.jsp">前往注册</a> --%>
+<!-- 				</div> -->
 			</div>
 		</form>
 		

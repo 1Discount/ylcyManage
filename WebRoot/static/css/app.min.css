@@ -6,13 +6,13 @@
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%
-    ;height: 100% /*����Ի��򱳾�*/
+    ;height: 100% /*锟斤拷锟斤拷曰锟斤拷虮尘锟�*/
 }
 a{cursor: pointer;}
 
 body {
     margin: 0
-    ;min-height: 100% /*����Ի��򱳾�*/
+    ;min-height: 100% /*锟斤拷锟斤拷曰锟斤拷虮尘锟�*/
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
@@ -5812,7 +5812,7 @@ button.close {
 
 .modal {
     position: fixed;
-    top: 80px; /*����Ի��򱳾�*/
+    top: 80px; /*锟斤拷锟斤拷曰锟斤拷虮尘锟�*/
     right: 0;
     bottom: 0;
     left: 0;
@@ -5865,11 +5865,11 @@ button.close {
 }
 
 .modal-backdrop {
-    position: fixed; /*absolute; ����Ի��򱳾� �������������*/
+    position: fixed; /*absolute; 锟斤拷锟斤拷曰锟斤拷虮尘锟� 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟�*/
     top: 0;
     right: 0;
     left: 0;
-    bottom: 0;  /*����Ի��򱳾�*/
+    bottom: 0;  /*锟斤拷锟斤拷曰锟斤拷虮尘锟�*/
     background-color: #000
 }
 
@@ -9420,8 +9420,8 @@ ul {
 }
 
 .btn-primary {
-    background-color: #1fb5ad;
-    border-color: #1fb5ad;
+    background-color: #367fa9;
+    border-color: #367fa9;
     color: #FFFFFF;
 }
 
@@ -9684,7 +9684,7 @@ html {
 body {
     color: #4E4E4E;
     background: #f1f2f7;
-    font-family: "微软雅黑", "Microsoft Yahei", Helvetica, 'Open Sans', Ubuntu, Arial, sans-serif;
+    font-family: "寰蒋闆呴粦", "Microsoft Yahei", Helvetica, 'Open Sans', Ubuntu, Arial, sans-serif;
     padding: 0px !important;
     margin: 0px !important;
     font-size: 13px;
@@ -9708,12 +9708,12 @@ a:focus {
 }
 
 ::selection {
-    background: #1FB5AD;
+    background: #367fa9;
     color: #fff;
 }
 
 ::-moz-selection {
-    background: #1FB5AD;
+    background: #367fa9;
     color: #fff;
 }
 
@@ -9953,7 +9953,7 @@ ul.sidebar-menu li ul.sub li a {
 
 ul.sidebar-menu li ul.sub li a:hover,
 ul.sidebar-menu li ul.sub li.active a {
-    color: #1fb5ad;
+    color: #367fa9;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -9997,7 +9997,7 @@ ul.sidebar-menu li a.active,
 ul.sidebar-menu li a:hover,
 ul.sidebar-menu li a:focus {
     background: #28282e;
-    color: #1FB5AD;
+    color: #367fa9;
     display: block;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -10013,11 +10013,11 @@ ul.sidebar-menu li a i {
 
 ul.sidebar-menu li a:hover i,
 ul.sidebar-menu li a:focus i {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 ul.sidebar-menu li a.active i {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .mail-info,
@@ -10067,7 +10067,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .brand {
-    background: #1fb5ad;
+    background: #367fa9;
     float: left;
     width: 240px;
     height: 80px;
@@ -11291,7 +11291,7 @@ h3.timeline-title {
 }
 
 .timeline-desk a {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .timeline-desk .panel {
@@ -11888,16 +11888,16 @@ ul.ft-link li a i {
 .mail-nav > li > a:hover,
 .mail-nav > li > a:focus {
     background: #fafafa;
-    color: #1fb5ad;
-    border-right: 3px solid #1fb5ad;
+    color: #367fa9;
+    border-right: 3px solid #367fa9;
 }
 
 .mail-nav > li.active > a,
 .mail-nav > li.active > a:hover,
 .mail-nav > li.active > a:focus {
     background: #fafafa;
-    color: #1fb5ad;
-    border-right: 3px solid #1fb5ad;
+    color: #367fa9;
+    border-right: 3px solid #367fa9;
 }
 
 .mail-nav > li + li {
@@ -11959,7 +11959,7 @@ a.mail-dropdown {
 }
 
 .btn-compose {
-    background: #1fb5ad;
+    background: #367fa9;
     padding: 12px 0;
     text-align: center;
     width: 100%;
@@ -12480,7 +12480,7 @@ ul.inbox-pagination li {
 }
 
 .profile-information .profile-desk h1 {
-    color: #1fb5ad;
+    color: #367fa9;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 0;
@@ -12526,7 +12526,7 @@ ul.inbox-pagination li {
 }
 
 .profile-information .profile-statistics ul li a:hover {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 /*-----*/
 .profile-nav .user-heading {
@@ -12628,7 +12628,7 @@ ul.inbox-pagination li {
 
 .recent-act h1 {
     text-align: center;
-    color: #1fb5ad;
+    color: #367fa9;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
@@ -12680,7 +12680,7 @@ ul.inbox-pagination li {
 }
 
 .activity-desk h2 {
-    color: #1fb5ad;
+    color: #367fa9;
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 10px 0;
@@ -12688,7 +12688,7 @@ ul.inbox-pagination li {
 }
 
 .activity-desk .terques {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .activity-desk .red {
@@ -12733,7 +12733,7 @@ ul.inbox-pagination li {
 }
 
 .prf-border-head {
-    color: #1fb5ad;
+    color: #367fa9;
     border-bottom: 1px solid #f1f2f7;
     font-size: 16px;
     font-weight: bold;
@@ -12772,7 +12772,7 @@ ul.inbox-pagination li {
 }
 /*profile contact*/
 .prf-contacts h2 {
-    color: #1fb5ad;
+    color: #367fa9;
     font-size: 16px;
     margin-top: 0;
     text-transform: uppercase;
@@ -12782,7 +12782,7 @@ ul.inbox-pagination li {
     width: 40px;
     height: 40px;
     line-height: 42px;
-    background: #1fb5ad;
+    background: #367fa9;
     color: #fff;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -12834,13 +12834,13 @@ ul.inbox-pagination li {
 }
 
 .invoice-title {
-    background: #1fb5ad;
+    background: #367fa9;
     color: #fff;
     display: inline-block;
 }
 
 .inv-label {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .itatic {
@@ -12852,7 +12852,7 @@ ul.inbox-pagination li {
 }
 
 ul.amounts li.grand-total {
-    background: #1fb5ad;
+    background: #367fa9;
     color: #fff;
     font-weight: bold;
 }
@@ -13094,8 +13094,8 @@ ul.amounts li {
 }
 
 .fc-event-skin {
-    background-color: #1FB5AD !important;
-    border-color: #1FB5AD !important;
+    background-color: #367fa9 !important;
+    border-color: #367fa9 !important;
     color: #FFFFFF !important;
 }
 
@@ -13215,7 +13215,7 @@ ul.amounts li {
 .tab-bg-dark-navy-blue li.active a {
     border-radius: 0 !important;
     background: #fff !important;
-    color: #1FB5AD !important;
+    color: #367fa9 !important;
 }
 
 .panel-heading .nav > li > a,
@@ -13232,7 +13232,7 @@ ul.amounts li {
 
 .panel-heading .nav > li.active > a,
 .panel-heading .nav > li > a:hover {
-    color: #1fb5ad;
+    color: #367fa9;
     background: #fff;
 }
 
@@ -13544,11 +13544,11 @@ select:focus:invalid:focus,
 }
 
 .terques-bg {
-    background: #1fb5ad;
+    background: #367fa9;
 }
 
 .profile-nav.alt.green-border ul > li > a:hover i {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .user-heading.alt a {
@@ -13753,13 +13753,13 @@ ul.clock-category li a i {
 
 ul.clock-category li a:hover,
 ul.clock-category li a.active {
-    color: #1fb5ad !important;
+    color: #367fa9 !important;
     background: none !important;
 }
 
 ul.clock-category li a:hover i,
 ul.clock-category li a.active i {
-    color: #1fb5ad !important;
+    color: #367fa9 !important;
 }
 
 .clock-row h1 {
@@ -13886,7 +13886,7 @@ ul.clock-category li a.active i {
 
 .weather-full-info .today-status i {
     font-size: 40px;
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .weather-full-info .degree {
@@ -13987,7 +13987,7 @@ ul.clock-category li a.active i {
 }
 
 .prd-row p.terques {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .prd-row .price {
@@ -13996,7 +13996,7 @@ ul.clock-category li a.active i {
 }
 
 .prd-row .price .amnt {
-    color: #1fb5ad;
+    color: #367fa9;
     font-size: 25px;
     font-weight: 600;
 }
@@ -14069,7 +14069,7 @@ span.customSelect.changed {
 
 .timeline-messages h3 {
     margin-bottom: 30px;
-    color: #1fb5ad;
+    color: #367fa9;
     font-size: 16px;
     text-transform: uppercase;
     background: #fff;
@@ -14634,7 +14634,7 @@ tr.odd.gradeU td.sorting_1 {
 .full-width .nav .open > a,
 .full-width .nav .open > a:hover,
 .full-width .nav .open > a:focus {
-    background-color: #1FB5AD;
+    background-color: #367fa9;
     text-decoration: none;
     color: #fff;
     transition: all 0.3s ease 0s;
@@ -14736,7 +14736,7 @@ tr.odd.gradeU td.sorting_1 {
     text-align: left;
     border-radius: 5px 0 0 5px;
     -webkit-border-radius: 5px 0 0 5px;
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .lock-pwd {
@@ -14749,7 +14749,7 @@ tr.odd.gradeU td.sorting_1 {
     padding: 0 0 0 80px;
     border-radius: 0 5px 5px 0;
     -webkit-border-radius: 0 5px 5px 0;
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .lock-pwd input {
@@ -14794,7 +14794,7 @@ tr.odd.gradeU td.sorting_1 {
     margin-right: 3px;
 }
 
-#time-rename {/* #time ���id����û�б����õ�Ӱ�쵽΢���豸�󶨹�ϵ����Ա�����ݸ���*/
+#time-rename {/* #time 锟斤拷锟絠d锟斤拷锟斤拷没锟叫憋拷锟斤拷锟矫碉拷影锟届到微锟斤拷锟借备锟襟定癸拷系锟斤拷锟斤拷员锟斤拷锟斤拷锟捷革拷锟斤拷*/
     width: 100%;
     color: #fff;
     font-size: 125px;
@@ -14899,7 +14899,7 @@ tr.odd.gradeU td.sorting_1 {
 /*active and hover*/
 .breadcrumbs-alt a:hover:before,
 .breadcrumbs-alt a.current:before {
-    border-color: #1fb5ad #1fb5ad #1fb5ad rgba(0, 0, 0, 0);
+    border-color: #367fa9 #367fa9 #367fa9 rgba(0, 0, 0, 0);
     border-style: solid;
     border-width: 1.5em 0 1.7em 1em;
     content: "";
@@ -14913,7 +14913,7 @@ tr.odd.gradeU td.sorting_1 {
 .breadcrumbs-alt a:hover:after,
 .breadcrumbs-alt a.current:after {
     border-bottom: 1.5em solid rgba(0, 0, 0, 0);
-    border-left: 1em solid #1FB5AD;
+    border-left: 1em solid #367fa9;
     border-top: 1.5em solid rgba(0, 0, 0, 0);
     content: "";
     margin-top: -1.5em;
@@ -14925,7 +14925,7 @@ tr.odd.gradeU td.sorting_1 {
 
 .breadcrumbs-alt a:hover,
 .breadcrumbs-alt a.current {
-    background: #1FB5AD;
+    background: #367fa9;
     color: #fff;
     float: left;
     font-size: 12px;
@@ -14972,7 +14972,7 @@ tr.odd.gradeU td.sorting_1 {
 .price-head h1 {
     font-size: 32px;
     font-weight: normal;
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .pricing-table {
@@ -14994,7 +14994,7 @@ tr.odd.gradeU td.sorting_1 {
 }
 
 .most-popular .pricing-head {
-    background: #1fb5ad;
+    background: #367fa9;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     position: relative;
@@ -15003,11 +15003,11 @@ tr.odd.gradeU td.sorting_1 {
 
 .most-popular .pricing-quote,
 .most-popular ul li i {
-    color: #1fb5ad;
+    color: #367fa9;
 }
 
 .most-popular .price-actions .btn {
-    background: #1fb5ad !important;
+    background: #367fa9 !important;
     cursor: pointer;
 }
 
@@ -16435,7 +16435,7 @@ div.tagsinput span.tag {
 }
 
 .default-theme {
-    background-color: #1FB5AD;
+    background-color: #367fa9;
 }
 
 .blue-theme {
@@ -16504,7 +16504,7 @@ div.tagsinput span.tag {
 
 .media-filter li a:hover,
 .media-filter li a:focus {
-    background: #1FB5AD;
+    background: #367fa9;
     color: #fff;
 }
 
