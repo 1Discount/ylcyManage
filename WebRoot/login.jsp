@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>EASY2GO ADMIN</title>
+<title>流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -33,11 +33,11 @@
 						type="password" id="user_pwd" name="password"
 						placeholder="Password" class="form-control">
 				</div>
-				<label class="checkbox"> <input style="display: none;"
-					type="checkbox" id="rememberme_pwd" name="rememberme" value="true"><span
-					class="pull-right"><a data-toggle="modal"
-						href="<%=basePath%>admin/adminuserinfo/tofindpassword">我忘记密码了?</a></span>
-				</label>
+<!-- 				<label class="checkbox"> <input style="display: none;" -->
+<!-- 					type="checkbox" id="rememberme_pwd" name="rememberme" value="true"><span -->
+<!-- 					class="pull-right"><a data-toggle="modal" -->
+<%-- 						href="<%=basePath%>admin/adminuserinfo/tofindpassword">我忘记密码了?</a></span> --%>
+<!-- 				</label> -->
 				<button type="submit" class="btn btn-lg btn-login btn-block">登
 					入</button>
 <!-- 				<div class="registration"> -->

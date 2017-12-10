@@ -9753,7 +9753,7 @@ a:focus {
     text-transform: uppercase;
     font-weight: 300;
     font-family: 'Open Sans', sans-serif;
-    border-bottom: 10px solid #a0b87e;
+    /* border-bottom: 10px solid #a0b87e; */
 }
 
 .form-signin .checkbox {

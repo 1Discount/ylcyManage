@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <HTML>
 <HEAD>
-<TITLE>EASY2GO ADMIN</TITLE>
+<TITLE>流量运营中心</TITLE>
 <META charset="utf-8">
 <META content="IE=edge" http-equiv="X-UA-Compatible">
 <META name="viewport"
