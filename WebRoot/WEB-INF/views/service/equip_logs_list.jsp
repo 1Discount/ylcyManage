@@ -45,7 +45,7 @@
 							<div class="panel-body">
 								<TABLE id="searchTable">
   <TR>
-    <TH w_index="SN" width="10%;"><b>SN</b></TH>
+    <TH w_index="SN" width="10%;"><b>机身码</b></TH>
     <th w_index="NO" width="5%;"><b>编号</b></th>
     <th w_index="logSize" width="5%;"><b>大小KB</b></th>
     <th w_index="creatorDate" width="10%;"><b>获取时间</b></th>
@@ -62,7 +62,7 @@
 								<div class="table-responsive">
 									<TABLE id="searchTable1">
   <TR>
-    <TH w_index="SN" width="10%;"><b>SN</b></TH>
+    <TH w_index="SN" width="10%;"><b>机身码</b></TH>
     <th w_index="NO" width="5%;"><b>编号</b></th>
     <th w_index="logSize" width="5%;"><b>大小KB</b></th>
     <th w_index="creatorDate" width="10%;"><b>获取时间</b></th>

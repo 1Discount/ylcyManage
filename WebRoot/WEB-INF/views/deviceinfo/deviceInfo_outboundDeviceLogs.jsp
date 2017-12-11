@@ -49,15 +49,15 @@
                                     </select>
 								</DIV>
 								<DIV class="form-group">
-									<LABEL class="inline-label">序列号：</LABEL>
-									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="序列号">
+									<LABEL class="inline-label">机身码：</LABEL>
+									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
 								</DIV>
 
 							   <DIV class="form-group">
 									<LABEL class="inline-label">时间段：</LABEL>
-									<INPUT name="begainTime" id="begainTime" type="text" placeholder="序列号" data-popover-offset="0,8" class="form_datetime form-control">
+									<INPUT name="begainTime" id="begainTime" type="text" placeholder="机身码" data-popover-offset="0,8" class="form_datetime form-control">
 									 ——
-									<INPUT  name="endTime" id="endTime" type="text" placeholder="序列号" data-popover-offset="0,8" class="form_datetime form-control">
+									<INPUT  name="endTime" id="endTime" type="text" placeholder="机身码" data-popover-offset="0,8" class="form_datetime form-control">
 								</DIV>
                                 <div class="form-group">
 									<label class="inline-label">&nbsp;&nbsp;&nbsp;备注：</label>
@@ -78,7 +78,7 @@
 							<DIV class="table-responsive">
 								<TABLE id="searchTable2">
 									<TR>
-										<TH w_index="SN"  width="10%"><b>序列号</b></TH>
+										<TH w_index="SN"  width="10%"><b>机身码</b></TH>
 										<TH w_index="deviceStatus"  width="10%"><b>状态</b></TH>
 										<th w_index="creatorUserName"  width="10%"><b>创建人</b></th>
 										<th w_index="recipientName" width="10%"><b>领用人</b></th>

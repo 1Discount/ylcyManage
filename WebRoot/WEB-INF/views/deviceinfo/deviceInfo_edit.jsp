@@ -47,7 +47,7 @@
 								<INPUT name="_csrf" value="2w5HyXLN-PpEHUAtXe26G2sWBVeB1rG1G-kw"type="hidden">
 								<INPUT name="_method" value="put" type="hidden">
 								<DIV class="form-group">
-									<LABEL class="col-md-3 control-label" for="device_sn">序列号：</LABEL>
+									<LABEL class="col-md-3 control-label" for="device_sn">机身码：</LABEL>
 									<DIV class="col-md-6">
 										<INPUT id="device_sn" disabled="true" value="${device.SN}" class="form-control" name="deviceSn1" type="text" required=""data-popover-offset="0,8">
 										<INPUT id="device_sn" type="hidden" value="${device.SN}" class="form-control" name="SN" type="text" required=""data-popover-offset="0,8">

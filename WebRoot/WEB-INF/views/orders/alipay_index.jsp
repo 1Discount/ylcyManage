@@ -193,7 +193,7 @@ ul,ol{
 					<dd>
 						<span class="null-star">*</span>
 						<input size="30" name="WIDbatch_no" value="2015110617011207001"/>
-						<span>必填，格式：当天日期[8位]+序列号[3至24位]，如：201008010000001</span>
+						<span>必填，格式：当天日期[8位]+机身码[3至24位]，如：201008010000001</span>
 					</dd>
 					<dt>退款笔数：</dt>
 					<dd>

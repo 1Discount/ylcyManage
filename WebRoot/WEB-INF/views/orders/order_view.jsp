@@ -108,7 +108,7 @@
 								<table id="searchTable1">
         <tr>
             <th w_index="deviceDealID"  width="10%;">交易ID</th>
-            <th w_index="SN" width="10%;">设备SN</th>
+            <th w_index="SN" width="10%;">设备机身码</th>
             <th w_index="deallType"  width="10%;">交易类型</th>
             <th w_index="dealAmount"  width="10%;">金额</th>
             <th w_index="ifReturn"  width="10%;">是否归还</th>
@@ -133,7 +133,7 @@
             <th w_index="flowDealID"  width="10%;">交易ID</th>
             
             <th w_index="userCountry" width="10%;">国家</th>
-            <th w_index="SN" width="10%;">SN</th>
+            <th w_index="SN" width="10%;">机身码</th>
             <th w_index="flowDays" width="5%;">天数</th>
             <th w_index="orderAmount"  width="10%;">金额</th>
              <th w_index="orderStatus"  width="10%;">状态</th>

@@ -10380,10 +10380,10 @@ ul.top-menu > li > a:focus {
 }
 
 .top-nav ul.top-menu > li > a {
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    padding: 0px;
-    background: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+/*     padding: 0px; */
+/*     background: none; */
     margin-right: 0;
     border: 1px solid #F6F6F6;
     background: #F6F6F6;
@@ -10415,8 +10415,8 @@ ul.top-menu > li > a:focus {
 .top-nav ul.top-menu > li > a:focus {
     border: 1px solid #f6f6f6;
     background: #f6f6f6 !important;
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
 }
 
 .top-nav .dropdown-menu.extended.logout {

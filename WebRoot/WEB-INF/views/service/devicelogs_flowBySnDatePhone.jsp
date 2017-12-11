@@ -28,8 +28,8 @@ td{border:1px solid gray;}
         <div class="panel-body">
 	        <form class="form-inline" id="searchForm" role="form" method="get" action="<%=basePath %>devicelogs/flowbydevicelogsTest">
 	        <div class="form-group">
-	          <label class="inline-label">设备序列号SN：</label>
-              <input type="text" name="SN" value="" style="width: 150px;" placeholder="输入15位完整SN" class="form-control" data-popover-offset="10,-105">
+	          <label class="inline-label">设备机身码：</label>
+              <input type="text" name="SN" value="" style="width: 150px;" placeholder="输入15位完整机身码" class="form-control" data-popover-offset="10,-105">
 	        </div>
 	        <label class="inline-label">选取时间段：</label>从
                <select name="beginTime">
@@ -51,7 +51,7 @@ td{border:1px solid gray;}
 				<table id="searchTable"  >
 				        <tr style="text-align:center;">
 				            <td style="width:25%;"><b>日期</b></td>
-				            <td style="width:20%;"><b>SN</b></td>
+				            <td style="width:20%;"><b>机身码</b></td>
 				            <td style="width:15%;"><b>是否接入过</b></td>
 				            <td style="width:15%;"><b>是否接入成功</b></td>
 				            <td style="width:20%;"><b>使用流量</b></td>

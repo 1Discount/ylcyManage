@@ -42,7 +42,7 @@
 
 
 				</select>
-				<lable style=" display: inline-block; float: left; font-weight: 700;font-size:14px;line-height:34px; max-width: 100%; margin-bottom: 5px;max-width: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SN：</lable>
+				<lable style=" display: inline-block; float: left; font-weight: 700;font-size:14px;line-height:34px; max-width: 100%; margin-bottom: 5px;max-width: 100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机身码：</lable>
 				<!-- SN -->
 				<input class="form-control" style="width: 200px; float: left;" type="text" id="SN">
 				<br />
@@ -60,7 +60,7 @@
 				<FORM id="add_test_floworder" action="<%=basePath%>orders/flowdealorders/addTestOrderexcel" enctype="multipart/form-data" method="post">
 					<DIV class="form-group">
 						<LABEL for="client_phone">
-							录入SN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							录入机身码:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						</LABEL>
 						<label class="radio-inline" onclick="$('#sn_list').css({'display':'block'});$('#file').css({'display':'none'});">
 							<input type="radio" name="type" checked="checked" value="手动录入">
@@ -69,11 +69,11 @@
 						
 						<label class="radio-inline" onclick="$('#file').css({'display':'block'});$('#sn_list').css({'display':'none'});">
 							<input type="radio" name="type" value="导入excel">
-							<span>导入excel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="color:red;">1.手动输入sn时，请输入sn后六位,多个用/隔开,例如001234/130029 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.excel导入时请使用excel2003,并输入长度为15位的SN</a></span>
+							<span>导入excel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="color:red;">1.手动输入sn时，请输入sn后六位,多个用/隔开,例如001234/130029 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.excel导入时请使用excel2003,并输入长度为15位的机身码</a></span>
 						</label>
 						<br />
 						<br />
-					 	<INPUT id="sn_list" class="client form-control" name="SNlist" maxLength="1000" type="text" data-popover-offset="0,8" style="margin-left: 4%" placeholder="请输入SN后6位,多个用/隔开,例如001234/130029"> 
+					 	<INPUT id="sn_list" class="client form-control" name="SNlist" maxLength="1000" type="text" data-popover-offset="0,8" style="margin-left: 4%" placeholder="请输入机身码后6位,多个用/隔开,例如001234/130029"> 
 						<input type="file" id="file" name="file" id="file" data-popover-offset="0,8" required class="form-control" style="border:none;padding:0px; width:100%; display: none; margin-left: 4%;">
 						<br />
 					</DIV>
@@ -130,7 +130,7 @@
             <DIV class="panel-body">
                 <FORM class="form-inline" id="leibie" method="get" action="#">
                     <DIV class="form-group">
-                        <LABEL class="inline-label">SN：</LABEL> 
+                        <LABEL class="inline-label">机身码：</LABEL> 
                         <input type="text" id="sn" name="SN" class="form-control"/>
                     </DIV>
                     <div class="form-group">
@@ -155,7 +155,7 @@
                 <TABLE id="searchTable">
                    <TR>
                        <TH w_render="check" width="5%"><b><input type="checkbox" id="checkAll"></b></TH>
-                       <TH w_index="SN" width="19"><b>SN</b></TH>
+                       <TH w_index="SN" width="19"><b>机身码</b></TH>
                        <TH w_render="panlUserDate" width="19%"><b>预约使用时间</b></TH>
                        <TH w_render="flowExpireDate" width="19%"><b>流量到期时间</b></TH>
                        <TH w_index="orderStatus" width="19%"><b>订单状态</b></TH>
@@ -222,7 +222,7 @@
 		  			}else if(data=="-1"){
 		  				easy2go.toast('warn',"请选择平台");
 		  			}else if(data=="-2"){
-		  				easy2go.toast('warn',"请输入SN");
+		  				easy2go.toast('warn',"请输入机身码");
 		  			}
 		  		 }
 			   }); 
@@ -232,7 +232,7 @@
 			var type=  $("input[name='type']:checked").val();
 			if(type=="手动录入"){
 				if($("#sn_list").val()==''){
-					easy2go.toast('warn',"请输入SN");
+					easy2go.toast('warn',"请输入机身码");
 					return;
 				}
 				$.ajax({
@@ -247,7 +247,7 @@
 			  			}else if(data>=0){
 			  				easy2go.toast('warn',data+"条测试单生成成功!");
 			  			}else if(data==-1){
-			  				easy2go.toast('warn',"SN为空");
+			  				easy2go.toast('warn',"机身码为空");
 			  			}
 			  		 }
 				   });

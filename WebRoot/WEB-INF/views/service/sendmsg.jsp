@@ -131,7 +131,7 @@
 											<DIV class="table-responsive">
 											<TABLE id="searchTable">
 											  <TR  classs="extend_render_per_row">
-											    <TH w_index="sn" width="5%"><b>设备序列号</b></TH>
+											    <TH w_index="sn" width="5%"><b>设备机身码</b></TH>
 											    <th w_index="phone" width="5%"><b>手机号</b></th>
 											    <th w_render="smsType" width="5%"><b>短信类型</b></th>
 											    <th w_index="datetime" width="5%"><b>发送时间</b></th>

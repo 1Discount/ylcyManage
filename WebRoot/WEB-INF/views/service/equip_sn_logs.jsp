@@ -41,11 +41,11 @@
 				<div class="row">
 				<div class="col-md-12">
 						<div class="panel">
-							<div class="panel-heading">根据SN搜索设备日志</div>
+							<div class="panel-heading">根据机身码搜索设备日志</div>
 							<div class="panel-body">
 							<FORM class="form-inline" id="searchForm"  method="get" action="#">
          <DIV class="form-group">
-             <LABEL class="inline-label">设备序列号：</LABEL>
+             <LABEL class="inline-label">设备机身码：</LABEL>
              <INPUT class="form-control" name="sn" id="sn" type="text" placeholder="sn">
          </DIV>
         <!--  <DIV class="form-group">
@@ -64,7 +64,7 @@
 							<div class="panel-body">
 								<TABLE id="searchTable">
   <TR>
-    <TH w_index="SN" width="10%;"><b>SN</b></TH>
+    <TH w_index="SN" width="10%;"><b>机身码</b></TH>
     <th w_index="NO" width="5%;"><b>编号</b></th>
     <th w_index="logSize" width="5%;"><b>大小KB</b></th>
     <th w_index="creatorDate" width="10%;"><b>获取时间</b></th>
@@ -81,7 +81,7 @@
 								<div class="table-responsive">
 									<TABLE id="searchTable1">
   <TR>
-    <TH w_index="SN" width="10%;"><b>SN</b></TH>
+    <TH w_index="SN" width="10%;"><b>机身码</b></TH>
     <th w_index="NO" width="5%;"><b>编号</b></th>
     <th w_index="logSize" width="5%;"><b>大小KB</b></th>
     <th w_index="creatorDate" width="10%;"><b>获取时间</b></th>

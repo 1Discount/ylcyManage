@@ -160,8 +160,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	             message:'<div class="row">  ' +
 	                '<div class="col-md-12"> ' +
 	                '<form class="form-horizontal form-inline"  id="form" mothod="post" style="text"> ' +
-	                '<label class="col-md-3 control-label">请输入SN:</label> ' +
-	                '<input name="SN" type="text" value="" class="form-control"  style="width:350px;" placeholder="请输入SN后六位，多个用/隔开"  > ' +
+	                '<label class="col-md-3 control-label">请输入机身码:</label> ' +
+	                '<input name="SN" type="text" value="" class="form-control"  style="width:350px;" placeholder="请输入机身码后六位，多个用/隔开"  > ' +
 	                '</form></div></div>',
 	             buttons: {
 	                 cancel: {

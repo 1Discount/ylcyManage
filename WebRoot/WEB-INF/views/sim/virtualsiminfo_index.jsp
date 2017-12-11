@@ -41,8 +41,8 @@
           <input type="text" name="IMSI" style="width: 173px;" placeholder="IMSI" class="form-control" id="IMSI">
         </div>
         <div class="form-group">
-          <label class="inline-label">SN：</label>
-          <input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备序列号" class="form-control">
+          <label class="inline-label">机身码：</label>
+          <input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备机身码" class="form-control">
         </div>
           
       
@@ -80,7 +80,7 @@
 											<th w_index="SIMinfoID" w_hidden="true">SIM卡ID</th>
 											<th w_index="IMSI">IMSI</th>
 											<th w_index="countryName">可用国家</th>
-											<th w_index="lastDeviceSN">最近设备SN</th>
+											<th w_index="lastDeviceSN">最近设备机身码</th>
 										    <th w_index="simAlias">代号</th>
 											<th w_render="render_cardStatus">卡状态</th>
 											<th w_index="historyUsedFlow">已使用流量</th>

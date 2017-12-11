@@ -41,8 +41,8 @@
 								
 								
 								<DIV class="form-group">
-									<LABEL class="inline-label">序列号：</LABEL>
-									<INPUT class="form-control" name="sn" id="sn" type="text" placeholder="序列号">
+									<LABEL class="inline-label">机身码：</LABEL>
+									<INPUT class="form-control" name="sn" id="sn" type="text" placeholder="机身码">
 								</DIV>
 								<DIV class="form-group">
 									<LABEL class="inline-label">標題：</LABEL>
@@ -76,7 +76,7 @@
 							<DIV class="table-responsive">
 								<TABLE id="searchTable">
 									<TR>
-										<TH w_index="sn"  width="10%"><b>序列号</b></TH>
+										<TH w_index="sn"  width="10%"><b>机身码</b></TH>
 										<TH w_index="title"  width="10%"><b>标题</b></TH>
 										<TH w_index="content"  width="10%"><b>内容</b></TH>
 										<TH w_index="deviceTypes" width="10%"><b>设备类型</b></TH>

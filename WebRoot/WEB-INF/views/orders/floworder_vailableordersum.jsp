@@ -69,7 +69,7 @@ scale=1.0, user-scalable=no">
 					<tr classs="extend_render_per_row">
 						 <th w_index="countrName"  width="10%;">国家</th>
 					 	 <th w_index="flowdealCount" sum="12" id="flowCount" width="10%;">用户订单数</th> 
-						 <th maxLength="" w_index="SN" w_length="9999999999999"  id="SN" width="10%;">订单SN</th> 
+						 <th maxLength="" w_index="SN" w_length="9999999999999"  id="SN" width="10%;">订单机身码</th> 
 					</tr>
 					   <tfoot>
 					        <tr>
@@ -99,7 +99,7 @@ scale=1.0, user-scalable=no">
 		    for(var i=0;i<j-1;i++){
 				SN=SN.replace("/","w");
 		   	}   
-         return '<a href="#" id="'+rowIndex+'" onmousemove="copy('+rowIndex+',\''+SN+'\')" class="glyphicon  btn-primary btn-xs">复制SN</a>';
+         return '<a href="#" id="'+rowIndex+'" onmousemove="copy('+rowIndex+',\''+SN+'\')" class="glyphicon  btn-primary btn-xs">复制机身码</a>';
 	  }
 	 $.bsgrid.forcePushPropertyInObject($.fn.bsgrid.defaults.extend.renderPerRowMethods, 'extend_render_per_row', function(record, rowIndex, trObj, options){
 		/*  var c=parseInt(record.availableing)+parseInt(record.available);

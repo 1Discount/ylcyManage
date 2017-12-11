@@ -102,7 +102,7 @@
                 <td width="10%">IMSI：</td>
                 <td width="40%"><span class="label label-success label-xs">${Model.IMSI}</span>
                 </td>
-                <td>最近设备SN：</td>
+                <td>最近设备机身码：</td>
                 <td><a href="#">${Model.lastDeviceSN}</a></td>
               </tr>
               <tr>

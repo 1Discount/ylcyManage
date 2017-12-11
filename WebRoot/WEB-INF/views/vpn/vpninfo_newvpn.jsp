@@ -119,7 +119,7 @@
                                     <div class="col-sm-3"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="lastDeviceSN" class="col-md-3 control-label">SN:</label>
+                                    <label for="lastDeviceSN" class="col-md-3 control-label">机身码:</label>
                                     <div class="col-md-6">
                                         <input id="lastDeviceSN" type="text" name="lastDeviceSN" value="${vpnInfo.lastDeviceSN}"
                                             data-popover-offset="0,8" class="form-control">

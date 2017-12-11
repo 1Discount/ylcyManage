@@ -19,10 +19,10 @@
 	<section id="container"> <jsp:include page="/WEB-INF/views/common/_top_menu.jsp" flush="true" /> <jsp:include page="/WEB-INF/views/common/_sidebar.jsp" flush="true" /> <SECTION id="main-content"> <SECTION class="wrapper">
 	<DIV class="col-md-12">
 		<div>
-			<!-- 输入SN搜索表单 -->
+			<!-- 输入机身码搜索表单 -->
 			<FORM class="form-inline" id="searchForm3" role="form" method="post" enctype="multipart/form-data" action="<%=basePath%>orders/ordersinfo/excelsearch" style="display: inline-block;">
 				<DIV class="form-group">
-					<lable class="inline-label" style="display: inline-block;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SN：</lable>
+					<lable class="inline-label" style="display: inline-block;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机身码：</lable>
 					<input class="form-control" value="" name="SN" id="SN" style="display: inline-block; width: 800px;">
 				</DIV>
 				<div class="form-group">
@@ -82,7 +82,7 @@
 						<th w_check="true" width="3%;"></th>
 						<th w_render="orderidOP" width="10%;">订单ID</th>
 						<th w_index="customerName" width="10%;">客户</th>
-						<th w_index="SN" width="10%;">SN</th>
+						<th w_index="SN" width="10%;">机身码</th>
 						<th w_index="deviceDealCount" width="10%;">设备交易数</th>
 						<th w_index="flowDealCount" width="10%;">流量交易数</th>
 						<th w_render="render_orderAmount" width="10%;">总金额</th>

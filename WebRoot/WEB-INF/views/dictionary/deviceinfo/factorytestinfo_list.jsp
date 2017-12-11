@@ -25,8 +25,8 @@
         <div class="panel-body">
         <form class="form-inline" id="searchForm" role="form" method="get" action="#">
         <div class="form-group">
-          <label class="inline-label">SN:</label>
-          <input class="form-control" name="roam_SN" id="SN" type="text" placeholder="SN" >
+          <label class="inline-label">机身码:</label>
+          <input class="form-control" name="roam_SN" id="SN" type="text" placeholder="机身码" >
         </div>
         <div class="form-group">
           <label class="inline-label">结果:</label>
@@ -79,7 +79,7 @@
                     <th w_index="roam_appVersionNum" w_sort="roam_appVersionNum,ase" >应用版本号</th>
                     <th w_index="roam_apkVersionNum" w_sort="roam_apkVersionNum,ase" >APK版本号</th>
                     
-                    <th w_index="roam_SN" w_sort="roam_SN,ase">SN</th>
+                    <th w_index="roam_SN" w_sort="roam_SN,ase">机身码</th>
                     <th w_index="roam_ICCID" w_length="11" w_sort="roam_ICCID,ase" >ICCID</th>
                     <th w_index="roam_calibrationMark" w_length="15" w_sort="roam_calibrationMark,ase" >校准标志位</th>
                     <th w_index="roam_networkType" w_sort="roam_networkType,ase" >网络类型</th>
@@ -91,7 +91,7 @@
                     <th w_index="local_networkStrength" w_sort="local_networkStrength,ase" >信号强度</th>
                     <th w_index="local_appVersionNum" w_sort="local_appVersionNum,ase" >应用版本号</th>
                     <th w_index="local_apkVersionNum" w_sort="local_apkVersionNum,ase" >APK版本号</th>
-                    <th w_index="local_SN"  w_sort="local_SN,ase">SN</th>
+                    <th w_index="local_SN"  w_sort="local_SN,ase">机身码</th>
                     <th w_index="local_ICCID" w_length="11" w_sort="local_ICCID,ase" >ICCID</th>
                     <th w_index="local_calibrationMark" w_length="15" w_sort="local_calibrationMark,ase" >校准标志位</th>
                     <th w_index="local_networkType" w_sort="local_networkType,ase" >网络类型</th>

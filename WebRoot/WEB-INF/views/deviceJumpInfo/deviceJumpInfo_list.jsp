@@ -50,7 +50,7 @@ a {cursor: pointer;}
 										</div>
 									</div>
 							<div class="form-group">
-								<label class="col-md-3 control-label">设备序列号SN</label>
+								<label class="col-md-3 control-label">设备机身码</label>
 								<div class="col-md-9">
 									<input type="text" id="SN" name="SN" data-popover-offset="0,8" class="form-control">
 									<p class="help-block">
@@ -114,7 +114,7 @@ a {cursor: pointer;}
 					<div class="panel-body">
 						<form class="form-inline" id="searchForm" role="form" method="get" action="#">
 							<div class="form-group">
-								<label class="inline-label">设备序列号(SN)：</label>
+								<label class="inline-label">设备机身码：</label>
 								<input class="form-control" name="countryName" type="text" placeholder="">
 							</div>
 							<div class="form-group">
@@ -142,7 +142,7 @@ a {cursor: pointer;}
 								<tr>
 									<th w_index="deviceJumpId" w_hidden="true">记录id</th>
 									<th w_index="flowOrderId" width="15%;">订单号</th>
-									<th w_index="sn" width="15%;">设备SN</th>
+									<th w_index="sn" width="15%;">设备机身码</th>
 									<th w_index="currentTDMName" width="15%;">当前TDM</th>
 									<th w_index="newTDMName" width="10%;">目的TDM</th>
 									<th w_index="newTDMIfSet" width="10%;">设置跳转</th>
@@ -197,7 +197,7 @@ a {cursor: pointer;}
 		var backType=$("input[name='backType']:checked").val();
 		alert(sn+";"+tdmUrl+";"+remarks+";"+ifNeedBack+";"+backType);
 		if(sn==''){
-			easy2go.toast('warn',"请输入SN");
+			easy2go.toast('warn',"请输入机身码");
 			return;
 		}
 		if(tdmUrl==''){
@@ -217,7 +217,7 @@ a {cursor: pointer;}
 	  			}else if(data=="-1"){
 	  				easy2go.toast('warn',"请选择平台");
 	  			}else if(data=="-2"){
-	  				easy2go.toast('warn',"请输入SN");
+	  				easy2go.toast('warn',"请输入机身码");
 	  			}
 	  		 }
 		   }); 

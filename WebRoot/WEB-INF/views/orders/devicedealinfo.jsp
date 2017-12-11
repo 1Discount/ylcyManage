@@ -36,7 +36,7 @@
 							<H3 class="panel-title"
 								style="float: left; display: inline-block;">流量订单详情页</H3>
 							<p style="float: left; margin-left: 100px;">*提示：设备使用天数表示该用户使用此设备
-								( SN ) 总天数</p>
+								( 机身码 ) 总天数</p>
 						</DIV>
 					</DIV> -->
 					<DIV class="panel">
@@ -57,7 +57,7 @@
 							<table id="searchTable">
 								<tr>
 									<th w_render="orderidOP" width="10%;">交易ID</th>
-									<th w_index="SN" width="10%;">设备SN</th>
+									<th w_index="SN" width="10%;">设备机身码</th>
 									<th w_index="customerName" width="10%;">客户</th>
 									<th w_index="creatorUserName" width="6%;">创建人</th>
 									<th w_index="creatorDate" width="10%;">创建时间</th>

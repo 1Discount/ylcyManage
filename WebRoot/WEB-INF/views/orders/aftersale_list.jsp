@@ -100,9 +100,9 @@
 										name="customerName" type="text" placeholder="姓名">
 								</DIV>
 								<DIV class="form-group">
-									<LABEL class="inline-label">SN：</LABEL><INPUT
+									<LABEL class="inline-label">机身码：</LABEL><INPUT
 										class="form-control" id="SN" name="SN" type="text"
-										placeholder="设备SN">
+										placeholder="设备机身码">
 								</DIV>
 								<DIV class="form-group">
 									<LABEL class="inline-label">时间段：</LABEL> <INPUT id="order_creatorDatebegin" class="form-control form_datetime"  
@@ -129,7 +129,7 @@
 							<table id="searchTable">
 								<tr>
 									<th w_render="orderidOP" width="10%;">交易ID</th>
-									<th w_index="SN" width="10%;">设备SN</th>
+									<th w_index="SN" width="10%;">设备机身码</th>
 									<th w_index="customerName" width="10%;">客户</th>
 									<th w_index="userCountry" width="10%;">国家</th>
 									<th w_index="orderSource" width="10%;">订单来源</th>
@@ -461,7 +461,7 @@
 			        +'<input type="hidden" name="flowDealID" value="'+flowDealID+'">'
 			        +'<table width="90%" cellspacing="2px">'
 			        +'<tr style="height: 40px;">'
-			        +'<td style="text-align:right;" width="100"><b>设&nbsp;备&nbsp;SN：</b></td>'
+			        +'<td style="text-align:right;" width="100"><b>设&nbsp;备&nbsp;机身码：</b></td>'
 			        +'<td><b>'+SN+'</b></td>'
 			        +'<td style="text-align:right;" width="80"><b>客户姓名：</b></td>'
 			        +'<td><b>'+customerName+'</b></td>'

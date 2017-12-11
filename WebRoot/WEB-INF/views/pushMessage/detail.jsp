@@ -67,8 +67,8 @@
 						<DIV class="panel-body">
 							<FORM class="form-inline" role="form" id="searchForm" method="get" action="" >
 								<DIV class="form-group">
-									<LABEL class="inline-label">序列号：</LABEL>
-									<INPUT class="form-control" name="sn" id="sn" type="text" placeholder="序列号">
+									<LABEL class="inline-label">机身码：</LABEL>
+									<INPUT class="form-control" name="sn" id="sn" type="text" placeholder="机身码">
 								</DIV>
 								<DIV class="form-group">
 									<LABEL class="inline-label">是否成功：</LABEL>
@@ -109,7 +109,7 @@
 							<DIV class="table-responsive">
 								<TABLE id="searchTable">
 									<TR>
-										<TH w_index="sn"  width="10%"><b>序列号</b></TH>
+										<TH w_index="sn"  width="10%"><b>机身码</b></TH>
 										<TH w_index="pushStartTime"  width="10%"><b>开始推送时间</b></TH>
 										<TH w_index="pushArriveTime"  width="10%"><b>推送到达时间</b></TH>
 										<TH w_render="render_pushStatus" width="10%"><b>是否成功</b></TH>

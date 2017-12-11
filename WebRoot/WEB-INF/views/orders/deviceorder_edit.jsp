@@ -40,7 +40,7 @@
 								<input type="hidden" name="deviceDealID"
 									value="${devorder.deviceDealID}">
 								<div class="form-group">
-									<label for="devicedeal_sn" class="col-md-3 control-label">设备SN:</label>
+									<label for="devicedeal_sn" class="col-md-3 control-label">设备机身码:</label>
 									<div class="col-md-6">
 										<input type="text" name="SN"
 											value="${devorder.SN }" data-popover-offset="0,8" readonly

@@ -52,8 +52,8 @@ if(request.getSession().getAttribute("nowpagesize")==null){
 <DIV class="panel-body" style="padding-top:5px;padding-bottom:5px;">
    <FORM class="form-inline" id="searchForm"  method="get" action="#">
          <DIV class="form-group"><input type="hidden" id="pagenum" value="1" /><input type="hidden" id="pagesize" value="<%=Spagesize %>" />
-             <LABEL class="inline-label">设备序列号：</LABEL>
-             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="SN" value="${SN }">
+             <LABEL class="inline-label">设备机身码：</LABEL>
+             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码" value="${SN }">
          </DIV>
          <div class="form-group">
           <label class="inline-label">国&nbsp;家：</label>
@@ -84,7 +84,7 @@ if(request.getSession().getAttribute("nowpagesize")==null){
 <DIV class="table-responsive">
 <TABLE id="searchTable">
   <TR  classs="extend_render_per_row">
-    <TH w_render="SN" width="5%"><b>设备序列号</b></TH>
+    <TH w_render="SN" width="5%"><b>设备机身码</b></TH>
     <th w_render="IMSI" width="10%"><b>IMSI</b></th>
     <th w_index="simAlias" width="5%"><b>SIM卡代号</b></th>
     <th w_render="sim_speedType" width="5%"><b>高/低速</b></th>
@@ -338,7 +338,7 @@ if(request.getSession().getAttribute("nowpagesize")==null){
     	var record= gridObj.getRecord(index);
     	var tags=record.tag.split("|")[0];
     	bootbox.dialog({
-            title: "请输入/修改标注内容 SN:"+record.SN,
+            title: "请输入/修改标注内容 机身码:"+record.SN,
             message: '<div class="row">  ' +
                 '<div class="col-md-12"> ' +
                 '<form class="form-horizontal" id="sim-notes-form" mothod="post"> ' +

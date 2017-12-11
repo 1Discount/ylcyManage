@@ -90,7 +90,7 @@ scale=1.0, user-scalable=no">
 					<tr>
 						 <TH w_index="countryName" width="5%;"><b style="font-weight: 700px;">国家</b></TH>
 					 	 <th w_render="orderCount" id="flowCount" width="5%;"><b>订单数</b></th> 
-						 <th w_index="snArray" id="SN" width="61%;" w_length="999999999999999999999999" ><b>订单SN</b></th> 
+						 <th w_index="snArray" id="SN" width="61%;" w_length="999999999999999999999999" ><b>订单机身码</b></th> 
 						 <!-- <th w_index="SIMCount"  id="SIMCount"  width="4%;"><b>卡总数</b></th> -->
 						 <th w_index="useing"   width="4%;"><b>使用中</b></th>
 						 <th w_index="available"   width="4%;"><b>可使用</b></th>

@@ -45,10 +45,10 @@
 								<input type="hidden" name="enterpriseID"    value="${enterprise.enterpriseID }"/>
 								<input type="hidden" name="enterpriseName"  value="${enterprise.enterpriseName }"/>
 								<div class="form-group">
-									<label class="col-md-3 control-label">SN：</label>
+									<label class="col-md-3 control-label">机身码：</label>
 									<div class="col-md-6">
 										<input type="text" name="snList"
-											data-popover-offset="0,8" required maxlength="32" placeholder="请输入SN后六位，多个用“/”隔开，例如：123456/666666"
+											data-popover-offset="0,8" required maxlength="32" placeholder="请输入机身码后六位，多个用“/”隔开，例如：123456/666666"
 											class="form-control">
 									</div>
 									<div class="col-md-3">

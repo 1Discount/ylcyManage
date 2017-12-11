@@ -129,7 +129,7 @@
 							<div class="table-responsive">
 								<table id="searchTable2">
 							        <tr>
-							            <th w_index="SN" width="10%;">设备SN</th>
+							            <th w_index="SN" width="10%;">设备机身码</th>
 										<th w_index="customerName" width="10%;">客户</th>
 										<th w_index="userCountry" width="10%;">国家</th>
 										<th w_index="orderAmount" width="10%;">总金额</th>

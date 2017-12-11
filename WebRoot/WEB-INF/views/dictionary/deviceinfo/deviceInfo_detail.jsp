@@ -49,7 +49,7 @@
 <TABLE class="table table-bordered table-hover">
   <TBODY>
   <TR>
-    <TD><LABEL>序列号：</LABEL></TD>
+    <TD><LABEL>机身码：</LABEL></TD>
     <TD>${deviceinfo.SN}</TD>
     <TD><LABEL>状态：</LABEL></TD>
     <TD>

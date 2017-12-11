@@ -67,9 +67,9 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <LABEL class="inline-label">SN：</LABEL><INPUT
+                  <LABEL class="inline-label">机身码：</LABEL><INPUT
                     class="form-control" id="SN" name="SN" type="text"
-                    placeholder="设备SN">
+                    placeholder="设备机身码">
                 </div>
                 <br />
                 <div class="form-group">
@@ -105,7 +105,7 @@
                 <tr>
                   <th w_render="orderidOP" width="10%;">交易ID</th>
                   <th w_index="orderID">总ID</th>
-                  <th w_index="SN" width="10%;">设备SN</th>
+                  <th w_index="SN" width="10%;">设备机身码</th>
                   <th w_render="render_bindStatus">是否绑定</th>
                   <th w_index="customerName" width="10%;">客户</th>
                   <th w_index="userCountry" width="10%;">国家</th>
@@ -141,12 +141,12 @@
         <div id="tabCreate" class="tab-pane">
             <div class="panel" style="margin-bottom:0;">
             <div class="panel-heading">
-              <H3 class="panel-title">第一步: 先导入设备SN Excel 档</H3>
+              <H3 class="panel-title">第一步: 先导入设备机身码 Excel 档</H3>
             </div>
-<!--             <h5>第一步: 先导入设备SN Excel 档</h5> -->
+<!--             <h5>第一步: 先导入设备机身码 Excel 档</h5> -->
             <div class="panel-body">
                 <form id="uploadForm" action="<%=basePath%>device/special/upload" method="post" enctype="multipart/form-data">
-                <p>导入 SN 的 Excel 模板文档与批量发货使用的模板系同一个。注意只有该设备正常“可使用”才能成功创建相应订单。</p>
+                <p>导入 机身码 的 Excel 模板文档与批量发货使用的模板系同一个。注意只有该设备正常“可使用”才能成功创建相应订单。</p>
                 <div class="form-group">
                         <label for="upload_orderID" class="col-md-2 control-label">特殊总订单ID:</label>
                         <div class="col-md-6">
@@ -159,7 +159,7 @@
                 <div class="form-group">
                   <div class="col-sm-2">
                   <label style="display: inline-block; float: left; line-height: 34px; clear: left; max-width: 100%; font-size: 14px; font-weight: 700; margin-bottom: 5px; max-width: 100%;">
-                                                      导入 SN 列表：</label></div>
+                                                      导入 机身码 列表：</label></div>
                   <div class="col-sm-10">
                     <input type="file" name="file" id="file" data-popover-offset="0,8" required
                       class="form-control">
@@ -661,7 +661,7 @@
         	    $("#uploadForm").submit();
         	    return;
            } else {
-            easy2go.toast('warn',"请先选择设备SN列表 Excel 档");
+            easy2go.toast('warn',"请先选择设备机身码列表 Excel 档");
            }
        }
 
@@ -671,7 +671,7 @@
     	   var uploadFileName = $("input[name='uploadFileName']").val();
     	   if(uploadFileName=='' || orderId=='' || orderIdCheck=='' || orderId!=orderIdCheck){
     		   $("#upload_orderID").focus();
-    		   easy2go.toast('error',"请先上传设备SN列表, 确保全部SN有效");
+    		   easy2go.toast('error',"请先上传设备机身码列表, 确保全部机身码有效");
     		   return false;
     	   }
     	   if(0 == $("input[name='userCountry']:checked").length){

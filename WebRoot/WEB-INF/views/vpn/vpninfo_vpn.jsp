@@ -29,8 +29,8 @@
           <input class="form-control" name="vpn" type="text" placeholder="IP" >
         </div>
         <div class="form-group">
-          <label class="inline-label">SN:</label>
-          <input class="form-control" name="lastDeviceSN" type="text" placeholder="SN" >
+          <label class="inline-label">机身码:</label>
+          <input class="form-control" name="lastDeviceSN" type="text" placeholder="机身码" >
         </div>
 		<div class="form-group">
 			<label class="inline-label">代号：</label><input class="form-control" name="number" type="text" placeholder="代号" >
@@ -61,7 +61,7 @@
 		            <th w_render="availableNum" width="5%;">状态</th>
                     <th w_index="vpnPackageType" width="5%;">套餐类型</th>
                     <th w_render="vpnType" width="5%;" >VPN类型</th>
-		            <th w_index="lastDeviceSN" width="15%;" >SN</th>
+		            <th w_index="lastDeviceSN" width="15%;" >机身码</th>
  		            <th w_render="begainTime" width="8%;">开始时间</th>
  		            <th w_render="endTime" width="8%;">截止时间</th>
                     <th w_render="includeFlow" width="5%;">总账号剩余流量</th>

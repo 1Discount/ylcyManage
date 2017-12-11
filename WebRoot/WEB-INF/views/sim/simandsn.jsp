@@ -53,7 +53,7 @@
 										<TABLE id="searchTable">
 											<TR>
 												<th w_index="IMSI"><b>IMSI</b></th>
-												<th w_index="SN"><b>SN</b></th>
+												<th w_index="SN"><b>机身码</b></th>
                                                 <th w_index="countryName"><b>国家名称</b></th>
 												<th w_index="allotTime"><b>分配时间</b></th>
 											</TR>

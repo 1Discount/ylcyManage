@@ -41,8 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <FORM class="form-inline"  method="get" action="<%=basePath %>customer/customerInfolist/getSearchCustomerinfolist">
    <FORM class="form-inline" id="searchForm"  method="get" action="#">
          <DIV class="form-group">
-             <LABEL class="inline-label">设备序列号：</LABEL>
-             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="sn">
+             <LABEL class="inline-label">设备机身码：</LABEL>
+             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
          </DIV>
          <DIV class="form-group">
              <LABEL class="inline-label">在线日期：</LABEL>
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </DIV> --%>
 
 <DIV class="panel">
-<DIV class="panel-heading">IMSI分配到的SN的历史记录</DIV>
+<DIV class="panel-heading">IMSI分配到的机身码的历史记录</DIV>
 <DIV class="panel-body">
 <DIV class="table-responsive">
 <TABLE id="searchTable">

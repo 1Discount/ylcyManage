@@ -32,7 +32,7 @@
 
 							<FORM class="form-inline" id="searchForm" role="form" method="get" action="#">
 								<DIV class="form-group">
-									<LABEL class="inline-label">SN：</LABEL>
+									<LABEL class="inline-label">机身码：</LABEL>
 									<INPUT class="form-control" id="SN" name="SN" type="text" placeholder="SN">
 								</DIV>
 
@@ -66,7 +66,7 @@
 						<DIV class="panel-body">
 							<table id="searchTable">
 								<tr>
-									<th w_index="SN" width="5%;">SN</th>
+									<th w_index="SN" width="5%;">机身码</th>
 									<th w_index="type" width="3%;">类型</th>
 									<th w_render="imsi" width="15%;">IMSI</th>
 									<th w_index="content" w_align="left" w_length="90" width="65%">短信内容</th>

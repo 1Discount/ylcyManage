@@ -25,7 +25,7 @@
 		<div class="panel-body">
 		<form class="form-inline" id="searchForm" role="form" method="get" action="#">
         <div class="form-group">
-            <label class="inline-label">设备序列号：</label><input class="form-control" name="SN" type="text" placeholder=""  id="SN"></div>
+            <label class="inline-label">设备机身码：</label><input class="form-control" name="SN" type="text" placeholder=""  id="SN"></div>
         <div class="form-group">
             <label class="inline-label">客户名称：</label><input class="form-control" name="customerName" type="text" placeholder="" ></div>
         <div class="form-group">
@@ -55,7 +55,7 @@
                 <th w_index="flowExpireDate"  width="10%;">订单到期时间</th>
                 <th w_index="orderStatus"  width="5%;">订单状态</th>
                 
-                <th w_render="render_SN"  width="5%;">SN</th>
+                <th w_render="render_SN"  width="5%;">机身码</th>
 <%--                <th w_index="IMSI"  width="5%;">IMSI</th>--%>
 <%--                <th w_index="ICCID"  width="5%;">ICCID</th>--%>
 <%--                <th w_render="render_flowStatus"  width="5%;">流量状态</th>--%>

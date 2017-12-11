@@ -87,8 +87,8 @@
 
 		<input type="hidden" value="20" id="pageSize"/>
          <DIV class="form-group">
-             <LABEL class="inline-label">设备序列号：</LABEL>
-             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="sn">
+             <LABEL class="inline-label">设备机身码：</LABEL>
+             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
          </DIV>
          <div class="form-group">
           <label class="inline-label">国&nbsp;家：</label>
@@ -145,7 +145,7 @@
 <TABLE id="searchTable">
   <TR>
     <th w_render="IMSI" width="15%"><b>IMSI</b></th>
-    <TH w_render="SN" width="15%"><b>设备序列号</b></TH>
+    <TH w_render="SN" width="15%"><b>设备机身码</b></TH>
     <th w_render="customerName" width="10%"><b>客户姓名</b></th>
     <th w_index="lastTime" width="15%"><b>最近活动时间</b></th>
     <th w_render="remotesj"><b>远程升级</b></th>
@@ -218,9 +218,9 @@
     	//流量个数
     	flowNum=data.total;
     	if(flowNum==1){
-    		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个SN后6位");
+    		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个机身码后6位");
     	}else if(flowNum>1){
-    		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个SN后6位,用/隔开");
+    		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个机身码后6位,用/隔开");
     	}
     }
 

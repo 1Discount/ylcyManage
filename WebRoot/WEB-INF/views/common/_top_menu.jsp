@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <!-- user login dropdown start-->
       <li class="dropdown">
         <span style="color: red;"></span>
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle" style="border-radius: 0;-webkit-border-radius: 0;">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
           <i style="font-size:24px;color: #bbb;padding:2px 8px;" class="fa fa-user"></i>
           <span class="username">${sessionScope.User.userName}【${sessionScope.User.roleName}】</span>
           <b class="caret"></b>

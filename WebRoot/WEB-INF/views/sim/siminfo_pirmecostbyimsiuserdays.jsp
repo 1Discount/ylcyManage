@@ -78,7 +78,7 @@
                                  <TR>
                                      <TH w_index="IMSI" width="8%"><b>IMSI</b></TH>
                                      <TH w_index="creatorDate" width="6%"><b>使用时间</b></TH>
-                                     <TH w_index="assignedSN" width="50%" w_length="999999999999999999999999"><b>SN</b></TH>
+                                     <TH w_index="assignedSN" width="50%" w_length="999999999999999999999999"><b>机身码</b></TH>
                                      <TH w_index="country" width="5%"><b>使用国家</b></TH>
                                      <TH w_index="useFlow" width="5%"><b>使用流量</b></TH>
                                      <!-- <TH w_index="planType" width="10%"><b>套餐类型</b></TH>

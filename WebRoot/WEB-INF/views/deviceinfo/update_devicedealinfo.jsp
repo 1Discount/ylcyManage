@@ -98,8 +98,8 @@
 							
 							<FORM class="form-inline" role="form" method="get" action="#" >
 								<DIV class="form-group">
-									<LABEL class="inline-label">序列号：</LABEL>
-									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="请输入SN后六位">
+									<LABEL class="inline-label">机身码：</LABEL>
+									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="请输入机身码后六位">
 									<button type="button" class="btn btn-primary" onclick="updateSN();">更换设备</button>
 								</DIV>
 							</FORM>
@@ -132,7 +132,7 @@
 						easy2go.toast('info', "更新成功");
 					}
 					else if (data == "-1") {
-						easy2go.toast('warn', "该SN对应的设备已有订单，或不可用");
+						easy2go.toast('warn', "该机身码对应的设备已有订单，或不可用");
 					}
 				 }
 			});

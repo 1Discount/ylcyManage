@@ -84,8 +84,8 @@
 
 		<input type="hidden" value="20" id="pageSize"/>
          <DIV class="form-group">
-             <LABEL class="inline-label">设备序列号：</LABEL>
-             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="sn">
+             <LABEL class="inline-label">设备机身码：</LABEL>
+             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
          </DIV>
          <div class="form-group">
           <label class="inline-label">国&nbsp;家：</label>
@@ -112,7 +112,7 @@
 <DIV class="table-responsive">
 <TABLE id="searchTable">
   <TR>
-    <TH w_render="SN" width="15%"><b>设备序列号</b></TH>
+    <TH w_render="SN" width="15%"><b>设备机身码</b></TH>
     <th w_render="IMSI" width="15%"><b>IMSI</b></th>
     <th w_render="customerName" width="10%"><b>客户姓名</b></th>
     <th w_index="lastTime" width="15%"><b>最近活动时间</b></th>
@@ -131,7 +131,7 @@
                            <input type="hidden" value="1" id="pagenumUpload" />
                            <input type="hidden" value="1" name="updateSource" id="updateSource" />
                                <DIV class="form-group">
-                                   <LABEL class="inline-label">SN：</LABEL> 
+                                   <LABEL class="inline-label">机身码：</LABEL> 
                                    <input class="form-control" name="SN" id="sn_select" />
                                </DIV>
                                <DIV class="form-group">
@@ -167,7 +167,7 @@
 							<table id="searchTableUpload">
 								<tr>
 									<th w_render="deviceUpgradingID" width="4%;"><input id="selectAll" type="checkbox" value="全选" />全选</th>
-									<th w_render="render_SN" width="16%;">SN</th>
+									<th w_render="render_SN" width="16%;">机身码</th>
 									<th w_index="upgradeFileType" width="16%;">文件升级类型</th>
 									<th w_render="ifForcedToUpgrade" width="16%;">是否下发成功</th>
 									<th w_render="ifUpdated" width="16%;">是否已升级</th>

@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </DIV>
 
 <DIV class="form-group">
-  <LABEL class="col-md-3 control-label" for="client_phone">推送设备SN：</LABEL>
+  <LABEL class="col-md-3 control-label" for="client_phone">推送设备机身码：</LABEL>
   <DIV class="col-md-6">
      <textarea id="client_sn" class="client form-control"  name="sn" value="${pushMessage.sn}" required data-popover-offset="0,8" rows="8" cols="30"></textarea>
   </DIV>
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </DIV>
 
 <%-- <DIV class="form-group">
-  <LABEL class="col-md-3 control-label" for="client_phone">推送设备SN：</LABEL>
+  <LABEL class="col-md-3 control-label" for="client_phone">推送设备机身码：</LABEL>
   <DIV class="col-md-6">
      <textarea id="client_sn" class="client form-control"  name="sn" value="${pushMessage.sn}" required data-popover-offset="0,8" rows="8" cols="30"></textarea>
   </DIV>

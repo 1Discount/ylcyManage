@@ -34,9 +34,9 @@
 							<FORM id="menu_form" class="form-horizontal" action="javascript:return;" role="form" enctype="multipart/form-data" method="post">
 								<input type="hidden" id="menu_ID" name="menuInfoID" value="" />
 								<DIV class="form-group">
-									<LABEL class="col-md-2 control-label" for="SN" >SN:</LABEL>
+									<LABEL class="col-md-2 control-label" for="SN" >机身码:</LABEL>
 									<DIV class="col-md-6">
-										<INPUT id="sn_list" class="form-control" placeholder="请输入SN后6位,多个用/隔开,例如123456/123457" name="SN" type="text" data-popover-offset="0,8">
+										<INPUT id="sn_list" class="form-control" placeholder="请输入机身码后6位,多个用/隔开,例如123456/123457" name="SN" type="text" data-popover-offset="0,8">
 									</DIV>
 									<DIV class="col-md-4">
 										<P class="form-control-static"></P>
@@ -218,7 +218,7 @@
                            <input type="hidden" value="1" id="pagenum" />
                            <input type="hidden" value="0" id="updateSource" />
                                <DIV class="form-group">
-                                   <LABEL class="inline-label">SN：</LABEL> 
+                                   <LABEL class="inline-label">机身码：</LABEL> 
                                    <input class="form-control" name="SN" id="sn_select" />
                                </DIV>
                                <DIV class="form-group">
@@ -254,7 +254,7 @@
 							<table id="searchTable">
 								<tr>
 									<th w_render="deviceUpgradingID" width="4%;"><input id="selectAll" type="checkbox" value="全选" />全选</th>
-									<th w_render="render_SN" width="16%;">SN</th>
+									<th w_render="render_SN" width="16%;">机身码</th>
 									<th w_index="upgradeFileType" width="16%;">文件升级类型</th>
 									<th w_render="ifForcedToUpgrade" width="16%;">是否强制升级</th>
 									<th w_render="ifUpdated" width="16%;">是否已升级</th>
@@ -333,7 +333,7 @@
 	});
 	function addsub() {
 		if ($("#sn_list").val() == '') {
-			easy2go.toast('warn', "请输入SN");
+			easy2go.toast('warn', "请输入机身码");
 			return;
 		}
 		
@@ -362,7 +362,7 @@
                  }else if(data>=0){
                      easy2go.toast('warn',data+"条设备更新配置生成成功!");
                  }else if(data==-1){
-                     easy2go.toast('warn',"SN为空");
+                     easy2go.toast('warn',"机身码为空");
                  }
                  $("#sn_list").val("");
                  $("input[type='checkbox']").prop("checked",false);

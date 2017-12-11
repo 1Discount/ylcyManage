@@ -47,8 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <FORM class="form-inline" id="searchForm"  method="get" action="#">
    <input type="hidden" value="1" id="pagenum"/><input type="hidden" id="pagesize" value="20" />
          <DIV class="form-group">
-             <LABEL class="inline-label">设备序列号：</LABEL>
-             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="sn" value="${SN==''?'':SN }">
+             <LABEL class="inline-label">设备机身码：</LABEL>
+             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码" value="${SN==''?'':SN }">
          </DIV>
          <div class="form-group">
           <label class="inline-label">国&nbsp;家：</label>
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <DIV class="table-responsive">
 <TABLE id="searchTable">
   <TR>
-    <TH w_render="SN"><b>设备序列号</b></TH>
+    <TH w_render="SN"><b>设备机身码</b></TH>
     <th w_render="IMSI"><b>IMSI</b></th>
     <th w_index="simAlias"><b>SIM卡代号</b></th>
     <th w_render="sim_speedType"><b>高/低速</b></th>

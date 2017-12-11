@@ -369,7 +369,7 @@
            	 if(grade!='1'){  easy2go.toast('warn', "你不能跳级分发设备");  return ; }
          	 bootbox.dialog({
 	             title: "分发设备",
-	             message:'<div><input class="form-control" id="SN" name="SN" type="text" placeholder="请输入SN后六位, 多个SN用 / 隔开" /></div>'+
+	             message:'<div><input class="form-control" id="SN" name="SN" type="text" placeholder="请输入机身码后六位, 多个机身码用 / 隔开" /></div>'+
 	            	 	 '<input type="hidden" name="distributorID" id="" class="form-control" value="'+distributorID+'">'+
                  		 '<input type="hidden" name="distributorName" id="" class="form-control" value="'+operatorName+'">',
 	             buttons: {
@@ -384,7 +384,7 @@
 	                     callback: function () {
 	                    	 var SN = $("#SN").val();
 	                    	 if(SN==''){
-	                    		 easy2go.toast('warn','请输入设备SN');
+	                    		 easy2go.toast('warn','请输入设备机身码');
 	                    		 return;
 	                    	 }
 	                    	 $.ajax({
@@ -425,7 +425,7 @@
 			             '<div class="col-sm-9">'+
 			             '<input type="file" name="file" id="file" data-popover-offset="0,8" required class="form-control">'+
 			             '<input type="hidden" name="distributorID" id="" class="form-control" value="'+distributorID+'">'+
-			             '<input type="hidden" name="distributorName" id="" class="form-control" value="'+operatorName+'"> <span style="color:red;">使用excel2003,并确认SN为后六位</span>'+
+			             '<input type="hidden" name="distributorName" id="" class="form-control" value="'+operatorName+'"> <span style="color:red;">使用excel2003,并确认机身码为后六位</span>'+
 			             '</div>'+
 			             '</div>'+
 			             '</form>',

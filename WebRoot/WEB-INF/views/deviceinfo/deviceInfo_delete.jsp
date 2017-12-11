@@ -50,8 +50,8 @@
 									<INPUT class="form-control"   name="deviceStatus" id="deviceStatus" type="hidden" placeholder="状态">
 								</DIV>
 								<DIV class="form-group">
-									<LABEL class="inline-label">序列号：</LABEL> 
-									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="序列号">
+									<LABEL class="inline-label">机身码：</LABEL> 
+									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
 								</DIV>
 								<DIV class="form-group">
 									<BUTTON class="btn btn-primary"
@@ -68,8 +68,8 @@
 							<DIV class="table-responsive">
 								<TABLE id="searchTable2">
 									<TR>
-										<TH w_render="device_num"  width="15%"><b>序列号</b></TH>
-										<TH w_index="deviceDealID" w_hidden="true" width="15%"><b>序列号</b></TH>
+										<TH w_render="device_num"  width="15%"><b>机身码</b></TH>
+										<TH w_index="deviceDealID" w_hidden="true" width="15%"><b>机身码</b></TH>
 <!-- 										<TH w_render="device_Status" w_index="deviceStatus"  width="5%"><b>状态</b></TH> -->
 										<!-- <TH w_index="deviceColour"  width="5%"><b>设备颜色</b></TH> -->
 <!-- 										<TH w_index="repertoryStatus" width="5%"><b>出入库状态</b></TH> -->

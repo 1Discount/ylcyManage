@@ -46,8 +46,8 @@
 									</select>
 								</div>
 								<DIV class="form-group">
-									<LABEL class="inline-label">SN：</LABEL>
-									<INPUT class="form-control" id="SN" name="SN" type="text" placeholder="设备SN">
+									<LABEL class="inline-label">机身码：</LABEL>
+									<INPUT class="form-control" id="SN" name="SN" type="text" placeholder="设备机身码">
 								</DIV>
 								<DIV class="form-group">
 									<LABEL class="inline-label">时间段：</LABEL>
@@ -87,7 +87,7 @@
 									<table id="searchTable">
 										<tr>
 											<th w_render="orderidOP" width="1%;">ID</th>
-											<th w_index="SN" width="2%;">设备SN</th>
+											<th w_index="SN" width="2%;">设备机身码</th>
 											<th w_index="customerName" width="10%;">客户</th>
 											<th w_index="userCountry" width="10%;">可使用国家</th>
 											<th w_index="orderAmount" width="10%;">总金额</th>
@@ -123,7 +123,7 @@
 								<DIV class="table-responsive">
 									<table id="searchTable1">
 										<tr>
-											<th w_render="opsn" width="10%;">设备SN</th>
+											<th w_render="opsn" width="10%;">设备机身码</th>
 											<th w_index="customerName" width="10%;">客户</th>
 											<th w_index="userCountry" width="10%;">国家</th>
 											<th w_index="orderAmount" width="10%;">总金额</th>

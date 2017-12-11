@@ -73,7 +73,7 @@
 													<form class="form-inline" id="searchFormOnline" role="form"
 														method="get" action="#">
 														<div class="form-group">
-															<label class="inline-label">设备序列号：</label><input
+															<label class="inline-label">设备机身码：</label><input
 																class="form-control" name="SN" type="text"
 																placeholder="">
 														</div>
@@ -104,7 +104,7 @@
 																<th w_index="panlUserDate" width="10%;">预约使用时间</th>
 																<th w_index="flowExpireDate" width="10%;">到期时间</th>
 																<th w_index="beginDate" width="10%;">实际开始使用时间</th>
-																<th w_render="render_SN" width="5%;">设备序列号</th>
+																<th w_render="render_SN" width="5%;">设备机身码</th>
 																<th w_index="IMSI" width="5%;">IMSI</th>
 																<th w_render="flowUsed_look" width="5%;">已使用流量</th>
 															</tr>
@@ -146,7 +146,7 @@
 														</div>
 														<form class="form-inline" id="searchFormOffline" role="form" method="get" action="#">
 															<div class="form-group">
-																<label class="inline-label">设备序列号：</label>
+																<label class="inline-label">设备机身码：</label>
 																<input class="form-control" name="SN" type="text" placeholder="">
 															</div>
 															<div class="form-group">
@@ -173,7 +173,7 @@
 																	<th w_index="panlUserDate" width="10%;">预约使用时间</th>
 																<th w_index="flowExpireDate" width="10%;">到期时间</th>
 																<th w_index="beginDate" width="10%;">实际开始使用时间</th>
-																	<th w_render="render_SN" width="5%;">设备序列号</th>
+																	<th w_render="render_SN" width="5%;">设备机身码</th>
 																	<th w_index="IMSI" width="5%;">IMSI</th>
 																	<th w_render="render_flowStatus" width="5%;">流量状态</th>
 																	<th w_index="flowUsed" width="5%;">已使用流量</th>
@@ -213,7 +213,7 @@
 													<form class="form-inline" id="searchFormAvailable"
 														role="form" method="get" action="#">
 														<div class="form-group">
-															<label class="inline-label">设备序列号：</label>
+															<label class="inline-label">设备机身码：</label>
 															<input class="form-control" name="SN" type="text" placeholder="">
 														</div>
 														<div class="form-group">
@@ -250,7 +250,7 @@
 																<th w_index="panlUserDate" width="10%;">预约使用时间</th>
 																<th w_index="flowExpireDate" width="10%;">到期时间</th>
 																<th w_index="beginDate" width="10%;">实际开始使用时间</th>
-																<th w_render="render_SN" width="5%;">设备序列号</th>
+																<th w_render="render_SN" width="5%;">设备机身码</th>
 																<th w_render="render_deviceDealID" width="5%;">相关设备交易</th>
 																<th w_index="IMSI" width="5%;">IMSI</th>
 																<th w_render="operateAvailable">操作</th>
@@ -289,7 +289,7 @@
 													</div>
 													<form class="form-inline" id="searchFormnotuser" role="form" method="get" action="#">
 														<div class="form-group">
-															<label class="inline-label">设备序列号：</label>
+															<label class="inline-label">设备机身码：</label>
 															<input class="form-control" name="SN" type="text" placeholder="">
 														</div>
 														<div class="form-group">
@@ -333,7 +333,7 @@
 																<th w_index="panlUserDate" width="10%;">预约使用时间</th>
 																<th w_index="flowExpireDate" width="10%;">到期时间</th>
 																<th w_index="beginDate" width="10%;">实际开始使用时间</th>
-																<th w_render="render_SN" width="5%;">设备序列号</th>
+																<th w_render="render_SN" width="5%;">设备机身码</th>
 																<th w_index="IMSI" width="5%;">IMSI</th>
 																<th w_render="render_flowStatus" width="5%;">流量状态</th> 
 																<th w_index="flowUsed" width="5%;">已使用流量</th>

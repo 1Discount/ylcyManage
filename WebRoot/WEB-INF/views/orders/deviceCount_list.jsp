@@ -103,7 +103,7 @@
 								<table id="searchTable" class="bsgrid">
 									<tr>
 										<th w_index="company" width="10%;">渠道商名称</th>
-										<th w_index="SN" width="10%;">SN</th>
+										<th w_index="SN" width="10%;">机身码</th>
 										<th w_render="deviceStatus1" width="10%;">设备状态</th>
 										<th w_index="creatorDate" width="10%;">设备创建时间</th>
 										<th w_index="creatorUserName" width="10%;">创建人</th>
@@ -171,7 +171,7 @@
 
 								<div class="form-group">
 									<label class="inline-label">设备号：</label>
-									<input class="form-control" name=SN type="text" placeholder="SN">
+									<input class="form-control" name=SN type="text" placeholder="机身码">
 								</div>
 <!-- 								<div class="form-group"> -->
 <!-- 									<label class="inline-label">订单号：</label> -->
@@ -213,7 +213,7 @@
 							<form class="form-inline" id="searchForm3" role="form"method="get" action="#">
 	                       <div class="form-group">
 							  <label class="inline-label">设备号：</label>
-							  <input class="form-control" id="ygqSN" name=SN type="text" placeholder="SN">
+							  <input class="form-control" id="ygqSN" name=SN type="text" placeholder="机身码">
 						   </div>
 						   <div class="form-group">
 									<button class="btn btn-primary" type="button"

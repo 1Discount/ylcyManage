@@ -49,8 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%--    <FORM class="form-inline"  method="get" action="<%=basePath %>customer/customerInfolist/getSearchCustomerinfolist"> --%>
    <FORM class="form-inline" id="searchForm"  method="get" action="#">
          <DIV class="form-group">
-             <LABEL class="inline-label">设备序列号：</LABEL>
-             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="sn">
+             <LABEL class="inline-label">设备机身码：</LABEL>
+             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
          </DIV>
          <DIV class="form-group">
              <LABEL class="inline-label">日期：</LABEL>
@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <DIV class="table-responsive">
   <TABLE id="searchTable">
   <TR>
-   	<th w_render="SN1"><b>设备SN</b></th>
+   	<th w_render="SN1"><b>设备机身码</b></th>
     <th w_render="IMSI"><b>IMSI</b></th>
     <th w_render="jizhan"><b>基站信息</b></th>
     <th w_index="lastTime"><b>记录时间</b></th>
@@ -127,7 +127,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<input type="hidden" value="1" id="pagenum" /><input
 															type="hidden" id="pagesize" value="20" />
 														<DIV class="form-group">
-															<LABEL class="inline-label">设备序列号：</LABEL> <INPUT
+															<LABEL class="inline-label">设备机身码：</LABEL> <INPUT
 																class="form-control" name="SN" id="SN" type="text"
 																placeholder="sn">
 														</DIV>
@@ -174,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<DIV class="table-responsive">
 													 	<TABLE id="histTable">
 															<TR>
-																<TH w_render="SN"><b>设备序列号</b></TH>
+																<TH w_render="SN"><b>设备机身码</b></TH>
 																<th w_render="HIMSI"><b>IMSI</b></th>
 																<th w_index="simAlias"><b>SIM卡代号</b></th>
 																<th w_render="sim_speedType"><b>高/低速</b></th>
@@ -418,7 +418,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	var record= gridObj.getRecord(index);
     	var tags=record.tag.split("|")[0];
     	bootbox.dialog({
-            title: "请输入/修改标注内容 SN:"+record.SN,
+            title: "请输入/修改标注内容 机身码:"+record.SN,
             message: '<div class="row">  ' +
                 '<div class="col-md-12"> ' +
                 '<form class="form-horizontal" id="sim-notes-form" mothod="post"> ' +
@@ -482,7 +482,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	var record= gridObj1.getRecord(index);
     	var tags=record.tag.split("|")[0];
     	bootbox.dialog({
-            title: "请输入/修改标注内容 SN:"+record.SN,
+            title: "请输入/修改标注内容 机身码:"+record.SN,
             message: '<div class="row">  ' +
                 '<div class="col-md-12"> ' +
                 '<form class="form-horizontal" id="sim-notes-form" mothod="post"> ' +

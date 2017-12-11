@@ -77,7 +77,7 @@
                              <TABLE id="searchTable">
                                  <TR>
                                      <TH w_index="IMSI" width="17%"><b>IMSI</b></TH>
-                                     <TH w_index="assignedSN" width="17%"><b>当天分配过的SN</b></TH>
+                                     <TH w_index="assignedSN" width="17%"><b>当天分配过的机身码</b></TH>
                                      <TH w_index="country" width="17%"><b>国家</b></TH>
                                      <TH w_index="code" width="17%"><b>SIM卡代号</b></TH>
                                      <TH w_render="useFlow" width="17%"><b>累计使用流量</b></TH>

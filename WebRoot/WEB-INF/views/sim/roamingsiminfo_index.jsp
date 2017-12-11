@@ -49,7 +49,7 @@
         </div>
         <div class="form-group">
           <label class="inline-label">设备号：</label>
-          <input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备序列号" class="form-control" value="${SN}">
+          <input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备机身码" class="form-control" value="${SN}">
         </div>
         <div class="form-group">
           <label class="inline-label">ICCID：</label>
@@ -132,7 +132,7 @@
                         <label class="checkbox-items" style="padding-right:10px;"><INPUT name="exportRange" value="1" id="exportRangeAll" checked type="radio">导出全部搜索结果(默认即为全部种子卡)</label>
                         <label class="checkbox-items" style="padding-right:10px;"><INPUT name="exportRange" value="0" id="exportRangeCurPage" type="radio" >导出当前页</label>
                         <br /><button id="exportExcelButton"><a href="javascript:void(0);">导出到 Excel</a></button><br /><br />
-                        <p>导出后，如果要修改下列字段：关联设备SN，ICCID，电话号码，PUK，PIN等几个，那开始修改前手动把
+                        <p>导出后，如果要修改下列字段：关联设备机身码，ICCID，电话号码，PUK，PIN等几个，那开始修改前手动把
                         该列的“单元格格式”设定数字分类为“文本”。</p>
                         </DIV>
                     </DIV>

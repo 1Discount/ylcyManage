@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       </td>
                     </tr>
                     <tr>
-                      <td>SN列表：</td>
+                      <td>机身码列表：</td>
                       <td>${Model.lastDeviceSN}</td>
                       <td>代号：</td>
                       <td>${Model.number}</td>

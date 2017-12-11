@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <tr>
                 <td width="15%">IMSI：</td>
                 <td width="35%"><span class="label label-success label-xs">${Model.IMSI}</span></td>
-                <td width="15%">最近设备SN：</td>
+                <td width="15%">最近设备机身码：</td>
                 <td width="35%"><a href="<%=basePath %>device/deviceInfodetail?deviceid=${Model.lastDeviceSN}">${Model.lastDeviceSN}</a></td>
               </tr>
 <%--	          <tr>--%>

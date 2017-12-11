@@ -25,7 +25,7 @@
 		<div class="panel-body">
 		<form class="form-inline" id="searchForm" role="form" method="get" action="#">
         <div class="form-group">
-            <label class="inline-label">设备序列号：</label><input class="form-control" name="SN" type="text" placeholder="" ></div>
+            <label class="inline-label">设备机身码：</label><input class="form-control" name="SN" type="text" placeholder="" ></div>
         <div class="form-group">
             <label class="inline-label">客户名称：</label><input class="form-control" name="customerName" type="text" placeholder="" ></div>
         <div class="form-group">

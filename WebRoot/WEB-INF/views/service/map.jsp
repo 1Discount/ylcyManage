@@ -73,8 +73,8 @@ var myCityC;
          <input class="btn btn-primary" onclick="serachJz();" style="margin-left: 10px;" type="button" value="查询"/>
 			</DIV>
 			<DIV class="form-group">
-			<LABEL style="margin-left: 15px;">SN:</LABEL>
-         	<input  id="SN" class="form-control" type="text" placeholder="输入15位sn显示最近10个轨迹" />
+			<LABEL style="margin-left: 15px;">机身码:</LABEL>
+         	<input  id="SN" class="form-control" type="text" placeholder="输入15位机身码显示最近10个轨迹" />
          	</DIV>
          	<DIV class="form-group">
          <input class="btn btn-primary" onclick="getJZBySN();" style="margin-left: 10px;" type="button" value="显示轨迹"/>
@@ -271,11 +271,11 @@ var myCityC;
 	          }
 	         }
 	      
-	      //SN基站轨迹
+	      //机身码基站轨迹
 	      function getJZBySN(){
 	    	  var sn=$("#SN").val().trim();
 	    	  if(sn.trim()==''){
-	    		  easy2go.toast('warn', "请输入SN!");
+	    		  easy2go.toast('warn', "请输入机身码!");
 	    		  return;
 	    	  }
 	    	  map=null;

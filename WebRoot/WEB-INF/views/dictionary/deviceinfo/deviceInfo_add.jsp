@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								action=""
 								class="form-horizontal">
                   <DIV class="form-group">
-                      <LABEL class="col-md-3 control-label" for="device_sn">序列号：</LABEL>
+                      <LABEL class="col-md-3 control-label" for="device_sn">机身码：</LABEL>
                       <DIV class="col-md-6">
                          <INPUT id="device_sn" class="form-control" name="SN" type="text" required="" data-popover-offset="0,8">
                       </DIV>
@@ -172,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	 var devicename = document.getElementById('device_sn').value.trim();
     	if(devicename == ""){
-    	  	easy2go.toast('info',"设备序列号不能为空！");
+    	  	easy2go.toast('info',"设备机身码不能为空！");
     	  	document.getElementById('device_sn').focus();
     	    return false;
     	}else if(isNaN(devicename)){

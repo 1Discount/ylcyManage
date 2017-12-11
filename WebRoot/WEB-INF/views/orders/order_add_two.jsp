@@ -63,7 +63,7 @@
 												<DIV class="col-md-6">
 													<INPUT id="device_input" class="form-control"
 														name="device_sn" maxLength="24" type="text"
-														placeholder="序列号">
+														placeholder="机身码">
 												</DIV>
 												<DIV class="col-md-1">
 													<BUTTON id="search" class="btn btn-primary" type="button">搜索</BUTTON>
@@ -82,7 +82,7 @@
 																	<tr>
 																		<th w_num="total_line" width="10%;">行号</th>
 																		<th w_check="true" width="10%;"></th>
-																		<th w_index="SN" width="80%;">序列号</th>
+																		<th w_index="SN" width="80%;">机身码</th>
 																	</tr>
 																</table>
 															</div>
@@ -314,7 +314,7 @@
 												</DIV>
 											</DIV>
 											<DIV class="form-group">
-												<LABEL class="col-md-2 control-label">SN：</LABEL>
+												<LABEL class="col-md-2 control-label">机身码：</LABEL>
 												<DIV class="col-md-6">
 													<INPUT id="panlUser_Date_plan"
 														class="form-control" name="SN"
@@ -503,8 +503,8 @@ var dorder=0; //设备交易数
 var forder=0; //流量交易数
 var dorderid="";//设备订单ID集合
 var forderid="";//流量订单ID集合
-var devSNarray="";//设备SN列表
-var devSN="";//最后面添加的设备SN
+var devSNarray="";//设备机身码列表
+var devSN="";//最后面添加的设备机身码
 //搜索设备
 function searchDevice(){
 var keyword = $('#device_input').val().trim();
@@ -689,7 +689,7 @@ $('#create_device_deal').click(function(){
 			return;
 		}
 	}
-	//验证设备SN是否可用
+	//验证设备机身码是否可用
 	
 	/* if($("#device_ID").val()==''){
 		var r=gridObj.getCheckedRowsIndexs();
@@ -705,7 +705,7 @@ $('#create_device_deal').click(function(){
 	} */
 	//判断是否包含设备sn
 	if(devSNarray.indexOf($("#device_SN").val())>-1){
-		easy2go.toast('info', "该设备SN已有未保存订单,不能重复添加");
+		easy2go.toast('info', "该设备机身码已有未保存订单,不能重复添加");
 		return;
 	}
 $.ajax({

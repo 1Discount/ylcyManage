@@ -43,9 +43,9 @@
 								</DIV>
 
 								<DIV class="form-group">
-									<LABEL class="inline-label">SN：</LABEL><INPUT
+									<LABEL class="inline-label">机身码：</LABEL><INPUT
 										class="form-control" id="order_customerName" name="SN"
-										type="text" placeholder="设备序列号">
+										type="text" placeholder="设备机身码">
 								</DIV>
 								<DIV class="form-group">
 									<LABEL class="inline-label">交易类型：</LABEL> <select
@@ -97,7 +97,7 @@
 							<table id="searchTable">
 								<tr>
 									<th w_render="orderidOP" width="10%;">交易ID</th>
-									<th w_index="SN" width="10%;">SN</th>
+									<th w_index="SN" width="10%;">机身码</th>
 									<th w_index="customerName" width="10%;">客户</th>
 									<th w_index="deallType" width="10%;">交易类型</th>
 									<th w_index="dealAmount" width="10%;">总金额</th>

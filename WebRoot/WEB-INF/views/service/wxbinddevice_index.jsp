@@ -27,7 +27,7 @@
         <div class="panel-body">
             <form class="form-inline" id="searchForm" role="form" method="get" action="#">
             <div class="form-group">
-              <label class="inline-label">设备序列号SN：</label>
+              <label class="inline-label">设备机身码：</label>
               <input type="text" name="sn" style="width: 173px;" placeholder="SN" class="form-control" data-popover-offset="10,-105">
             </div>
             <div class="form-group"><label class="inline-label">选取绑定时间段： 从</label>
@@ -60,7 +60,7 @@
 		        <tr>
 		            <th w_index="bindID" w_hidden="true" width="10%;" >ID</th>
 		        	<th w_index="openid" width="15%;">Open ID</th>
-		            <th w_index="sn" width="5%;">设备SN</th>
+		            <th w_index="sn" width="5%;">设备机身码</th>
                     <th w_index="bindDate" width="5%;" w_sort="bindDate,disorder">绑定时间</th>
 		            <th w_index="unbindDate" width="10%;" >解绑时间</th>
  		            <th w_render="render_bindStatus" width="10%;" w_sort="bindStatus,disorder">绑定状态</th>
@@ -102,7 +102,7 @@
     <label class="col-md-12 control-label" style="text-align:left;">目前这里仅需要发送文本text类型消息, 请输入消息内容. 若要与"短信发送"中的内容相通, 则后续跟进:</label> 
     </div>
     <div class="form-group">
-    <label class="col-md-12 control-label" style="text-align:left;">发送给: openid <span class="text-warning h4 openid-label"></span> 设备SN <span class="text-warning h4 sn-label"></span></label> 
+    <label class="col-md-12 control-label" style="text-align:left;">发送给: openid <span class="text-warning h4 openid-label"></span> 设备机身码 <span class="text-warning h4 sn-label"></span></label> 
     </div>
     <div class="form-group">
     <div class="col-sm-12">
@@ -121,7 +121,7 @@
     <label class="col-md-12 control-label" style="text-align:left;">模板消息需要按模板中的参数和样例填写各参数值. 后期开发人员添加时按照约定的步骤即可. 目前参数值暂不处理颜色, 都默认为UI主色</label> 
     </div>
     <div class="form-group">
-    <label class="col-md-12 control-label" style="text-align:left;">发送给: openid <span class="text-warning h4 openid-label"></span> 设备SN <span class="text-warning h4 sn-label"></span></label> 
+    <label class="col-md-12 control-label" style="text-align:left;">发送给: openid <span class="text-warning h4 openid-label"></span> 设备机身码 <span class="text-warning h4 sn-label"></span></label> 
     </div>
     
             <div class="form-group">
@@ -399,7 +399,7 @@
          
          function op_unbind(index) {alert($('input[name="sn"]').val());
         	 var record= gridObj.getRecord(index);
-        	 bootbox.confirm("确认解绑此微信号与设备吗? <br />openid = " + record.openid + "<br />设备SN = " + record.sn, function(result) {
+        	 bootbox.confirm("确认解绑此微信号与设备吗? <br />openid = " + record.openid + "<br />设备机身码 = " + record.sn, function(result) {
                  if(result){
                      $.ajax({
                          type:"POST",

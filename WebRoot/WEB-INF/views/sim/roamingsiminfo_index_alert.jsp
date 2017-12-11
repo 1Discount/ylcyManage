@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
           <label class="inline-label">设备号：</label>
-          <input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备序列号" class="form-control">
+          <input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备机身码" class="form-control">
         </div>
         <div class="form-group">
           <label class="inline-label">ICCID：</label>

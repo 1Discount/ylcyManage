@@ -206,7 +206,7 @@ google.maps.event.addDomListener(window,'load',initialize);
 								    title:jw
 								});
 								var infowindow2 =  new google.maps.InfoWindow({ 
-								   	content:"基点：POS机序列号"+sn
+								   	content:"基点：POS机机身码"+sn
 								   	});
 								markersArray.push(marker2);
 								windowArray.push(infowindow2);
@@ -218,7 +218,7 @@ google.maps.event.addDomListener(window,'load',initialize);
 							    title:jw
 							});
 							var infowindow =  new google.maps.InfoWindow({ 
-							   	content:"POS机序列号"+sn+",距离基点"+data.jdmjl+"米，"+'<a data-sn="'+sn+'" data-lat="'+data.lat+'" data-lon="'+data.lon+'" onclick="setLoc(this)" href="javascript:;" >设为基点</a>'
+							   	content:"POS机机身码"+sn+",距离基点"+data.jdmjl+"米，"+'<a data-sn="'+sn+'" data-lat="'+data.lat+'" data-lon="'+data.lon+'" onclick="setLoc(this)" href="javascript:;" >设为基点</a>'
 							   	});
 							markersArray.push(marker);
 							windowArray.push(infowindow);
@@ -233,7 +233,7 @@ google.maps.event.addDomListener(window,'load',initialize);
 								    title:jw
 								});
 								var infowindow2 =  new google.maps.InfoWindow({ 
-								   	content:"基点：POS机序列号"+sn
+								   	content:"基点：POS机机身码"+sn
 								   	});
 								markersArray.push(marker2);
 								windowArray.push(infowindow2);
@@ -246,7 +246,7 @@ google.maps.event.addDomListener(window,'load',initialize);
 							    title:jw
 							});
 							var infowindow =  new google.maps.InfoWindow({ 
-								content:"POS机序列号"+sn+",距离基点"+data.jdmjl+"米，"+'<a data-sn="'+sn+'" data-lat="'+data.lat+'" data-lon="'+data.lon+'" onclick="setLoc(this)" href="javascript:;" >设为基点</a>'
+								content:"POS机机身码"+sn+",距离基点"+data.jdmjl+"米，"+'<a data-sn="'+sn+'" data-lat="'+data.lat+'" data-lon="'+data.lon+'" onclick="setLoc(this)" href="javascript:;" >设为基点</a>'
 							   	});
 							markersArray.push(marker);
 							windowArray.push(infowindow);
@@ -438,11 +438,11 @@ google.maps.event.addDomListener(window,'load',initialize);
 	          }
 	         }
 	      
-	      //SN基站轨迹
+	      //机身码基站轨迹
 	      function getJZBySN(){
 	    	  var sn=$("#SN").val().trim();
 	    	  if(sn.trim()==''){
-	    		  easy2go.toast('warn', "请输入SN!");
+	    		  easy2go.toast('warn', "请输入机身码!");
 	    		  return;
 	    	  }
 	    	  map=null;

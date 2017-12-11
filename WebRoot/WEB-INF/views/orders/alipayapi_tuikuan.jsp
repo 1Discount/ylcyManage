@@ -46,7 +46,7 @@
 		//必填，格式：年[4位]-月[2位]-日[2位] 小时[2位 24小时制]:分[2位]:秒[2位]，如：2007-10-01 13:13:13
 		//批次号
 		String batch_no = new String(request.getParameter("WIDbatch_no").getBytes("ISO-8859-1"),"UTF-8");
-		//必填，格式：当天日期[8位]+序列号[3至24位]，如：201008010000001
+		//必填，格式：当天日期[8位]+机身码[3至24位]，如：201008010000001
 		//退款笔数
 		String batch_num = new String(request.getParameter("WIDbatch_num").getBytes("ISO-8859-1"),"UTF-8");
 		//必填，参数detail_data的值中，“#”字符出现的数量加1，最大支持1000笔（即“#”字符出现的数量999个）

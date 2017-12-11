@@ -75,7 +75,7 @@
             <div class="form-group">
               <label for="company" class="col-md-3 control-label">退押金申请记录:</label>
               <div class="col-md-6">
-                <table class="table table-bordered"><tbody><tr><td width="30%">设备序列号:</td><td>${Model.SN}</td></tr>
+                <table class="table table-bordered"><tbody><tr><td width="30%">设备机身码:</td><td>${Model.SN}</td></tr>
 <tr><td>客户名称:</td><td>${Model.customerName}</td></tr>
 <tr><td>电话:</td><td><span class="">${Model.phone}</span></td></tr>
 <tr><td>押金总额:</td><td><span class="label label-success label-xs">${Model.dealAmount}</span></td></tr>

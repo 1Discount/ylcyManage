@@ -55,7 +55,7 @@
 										<div class="panel-body">
 											<form class="form-inline" id="searchForm" role="form" method="post" enctype="multipart/form-data" action="<%=basePath%>device/excelsearch" style="display: inline-block;">
 												<div class="form-group">
-													<label class="inline-label">SN：</label>
+													<label class="inline-label">机身码：</label>
 													<input class="form-control" name="SN" type="text" placeholder="设备号" style="width: 600px;">
 												</div>
 												<div class="form-group">
@@ -121,7 +121,7 @@
 											<table id="searchTable" class="bsgrid">
 												<tr>
 													<th w_check="true" width="3%;"></th>
-													<th w_index="SN" width="15%;">SN</th>
+													<th w_index="SN" width="15%;">机身码</th>
 													<th w_index="deviceStatus" width="15%;">状态</th>
 													<th w_index="repertoryStatus" width="15%;">出入库状态</th>
 													<th w_index="creatorUserName" width="15%;">创建人</th>
@@ -146,11 +146,11 @@
 										<div class="panel-body">
 											<form class="form-inline" id="searchForm2" role="form" method="get" action="#">
 												<div class="form-group" style="width:70%">
-													<label class="inline-label">SN：</label>
-													<input class="form-control" name=SN id="SN" type="text" placeholder="请输入SN后六位，多个用'/'隔开，例如：123456/123456" style="width:95%;">
+													<label class="inline-label">机身码：</label>
+													<input class="form-control" name=SN id="SN" type="text" placeholder="请输入机身码后六位，多个用'/'隔开，例如：123456/123456" style="width:95%;">
 												</div>
 												<div class="form-group" style="width:25%">
-													<button class="btn btn-primary" type="button" onclick="return rukuDevice();">输入SN入库</button>
+													<button class="btn btn-primary" type="button" onclick="return rukuDevice();">输入机身码入库</button>
 													<button class="btn btn-primary" type="submit" onclick="excelDevice();">导入excel入库</button>
 												</div>
 											</form>
@@ -161,7 +161,7 @@
 											<table id="searchTable2" class="bsgrid">
 												<tr>
 													<th w_check="true" width="3%;"></th>
-													<th w_index="SN" width="10%;">SN</th>
+													<th w_index="SN" width="10%;">机身码</th>
 													<th w_index="deviceStatus" width="10%;">状态</th>
 													<!-- <th w_index="orderID" width="10%;">订单号</th>
 													<th w_index="shipmentDate" width="10%;">出货时间</th>
@@ -311,7 +311,7 @@
 
 
          if(selectRowCount==0){
-    	   easy2go.toast('warn',"请选择你要出库的SN号！");
+    	   easy2go.toast('warn',"请选择你要出库的机身码号！");
     	   return false;
        	 }else{
 //     	     if(logisticsJC==''){
@@ -368,7 +368,7 @@ if(recipientName==''){
 					'</div>'+
 					'</div>'+
 		 			'</form>'+
-		 			'<span  class="col-sm-12" style="color:red;"><span  class="col-sm-3" ></span><span  class="col-sm-9">1.批量导入数据只支持 excel 2003版本,SN请输入后六位</span></span>',
+		 			'<span  class="col-sm-12" style="color:red;"><span  class="col-sm-3" ></span><span  class="col-sm-9">1.批量导入数据只支持 excel 2003版本,机身码请输入后六位</span></span>',
              buttons: {
                  cancel: {
                      label: "取消",
@@ -386,11 +386,11 @@ if(recipientName==''){
              }
          });
 	 }
-	 //选择SN入库
+	 //选择机身码入库
 	 function rukuDevice(){
 		 var SN = $("#SN").val();
 		 if(SN==''){
-			 easy2go.toast('warn','请输入SN');
+			 easy2go.toast('warn','请输入机身码');
 			 return;
 		 }else{
 			  $.ajax({

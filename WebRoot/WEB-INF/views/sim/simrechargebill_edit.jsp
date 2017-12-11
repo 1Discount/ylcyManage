@@ -57,7 +57,7 @@
 <tr><td>SIM卡ID:</td><td>${Sim.SIMinfoID}</td></tr>
 <tr><td width="30%">国家:</td><td><span class="label label-success label-xs">${Model_MCCCountryName}</span></td></tr>
 <tr><td>运营商:</td><td><span class="label label-success label-xs">${Sim.trademark}</span></td></tr>
-<tr><td>最近设备SN:</td><td><span class="label label-success label-xs">${Sim.lastDeviceSN}</span></td></tr></tbody></table>
+<tr><td>最近设备机身码:</td><td><span class="label label-success label-xs">${Sim.lastDeviceSN}</span></td></tr></tbody></table>
               </div>
               <div class="col-sm-3">
                 <p class="form-control-static"><span class="red">* 如果想修改此项, 应该新建记录或者新建后删除本记录 </span>

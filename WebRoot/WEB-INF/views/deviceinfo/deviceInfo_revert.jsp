@@ -33,7 +33,7 @@
 
 					<DIV class="panel">
 						<DIV class="panel-heading">
-							<b>归还设备</b> <SMALL>归还租用的设备，并且设备状态更改为可用状态。可以在此输入框直接指定设备序列号去尝试归还，或者从下方的客户押金申请记录去操作。它们的结果等同。</SMALL>
+							<b>归还设备</b> <SMALL>归还租用的设备，并且设备状态更改为可用状态。可以在此输入框直接指定设备机身码去尝试归还，或者从下方的客户押金申请记录去操作。它们的结果等同。</SMALL>
 						</DIV>
 						<DIV class="panel-body">
 							<!--                <FORM id="device_form" role="form" method="POST" autocomplete="off" action="" class="form-horizontal"> -->
@@ -43,7 +43,7 @@
 							<DIV class="form-group" style="height: 20px;">
 								<DIV class="col-md-9 col-md-offset-3">
 									<div>
-										<strong>直接指定SN归还:</strong>
+										<strong>直接指定机身码归还:</strong>
 									</div>
 								</DIV>
 							</DIV>
@@ -51,7 +51,7 @@
 								<!--                       <div style="border:0px solid gray;width:90%;color:red;text-align:right;"> -->
 								<%--                            ${message}  --%>
 								<!--                       </div> -->
-								<LABEL class="col-md-3 control-label" for="device_sn">设备序列号：</LABEL>
+								<LABEL class="col-md-3 control-label" for="device_sn">设备机身码：</LABEL>
 								<DIV class="col-md-6">
 									<INPUT id="device_sn" class="form-control" name="device_sn" type="text" required="" style="width: 320px;">
 									<span style="font-size: 12px; color: red;">* 输入后六位即可</span>
@@ -135,7 +135,7 @@
 						<div class="panel-body">
 							<form class="form-inline" id="searchForm" role="form" method="get" action="#">
 								<div class="form-group">
-									<label class="inline-label">SN：</label>
+									<label class="inline-label">机身码：</label>
 									<input class="form-control" name="SN" type="text" placeholder="SN">
 								</div>
 								<div class="form-group">
@@ -165,7 +165,7 @@
 										<th w_index="recordID" w_hidden="true">ID</th>
 										<th w_render="render_orderID" width="5%;">相关订单</th>
 										<%-- w_sort="serverCode,asc" --%>
-										<th w_index="SN" width="5%;">序列号</th>
+										<th w_index="SN" width="5%;">机身码</th>
 										<th w_render="render_customerName" width="10%;">客户</th>
 										<th w_index="phone" width="10%;">电话</th>
 										<th w_render="render_dealAmount" width="10%;">押金总额</th>

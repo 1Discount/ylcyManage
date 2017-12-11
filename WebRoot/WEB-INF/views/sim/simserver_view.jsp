@@ -75,8 +75,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <input type="text" name="IMSI" placeholder="IMSI" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label class="inline-label">序列号：</label>
-                  <input type="text" name="lastDeviceSN" placeholder="设备序列号" class="form-control">
+                  <label class="inline-label">机身码：</label>
+                  <input type="text" name="lastDeviceSN" placeholder="设备机身码" class="form-control">
                 </div>
                 <div class="form-group">
                   <label class="inline-label">ICCID：</label>
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    <th w_render="render_ICCID" width="10%;">ICCID</th>
 	                    <th w_index="IMSI">IMSI号</th>
 	                    <th w_index="simAlias">代号</th>
-                        <th w_index="lastDeviceSN">设备SN</th>
+                        <th w_index="lastDeviceSN">设备机身码</th>
 	                    <th w_index="countryName">国家</th>
 	                    <th w_render="render_cardStatus" width="5%;">状态</th> <!-- w_sort="userID,desc" -->
 	                    <th w_index="serverIP" width="8%;">服务器</th>

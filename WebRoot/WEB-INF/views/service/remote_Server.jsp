@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <DIV class="panel-body" style="padding-top:5px;padding-bottom:5px;">
    <FORM class="form-inline" id="searchForm"  method="get" action="#">
          <DIV class="form-group">
-             <LABEL class="inline-label">设备序列号：</LABEL>
-             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="sn">
+             <LABEL class="inline-label">设备机身码：</LABEL>
+             <INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
          </DIV>
         <!--  <DIV class="form-group">
              <LABEL class="inline-label">在线日期：</LABEL>
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <DIV class="table-responsive">
 <TABLE id="searchTable">
   <TR>
-    <TH w_render="SN"><b>设备序列号</b></TH>
+    <TH w_render="SN"><b>设备机身码</b></TH>
     <!-- <th w_render="getLogs"><b>获取日志</b></th>
     <th w_render="remoteSearch"><b>远程查询</b></th>
     <th w_render="remotesj"><b>远程升级</b></th> -->

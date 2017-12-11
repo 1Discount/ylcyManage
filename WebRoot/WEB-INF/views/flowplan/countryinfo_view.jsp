@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	               <div id="searchTableFlowOrderWrapper"><div class="table-responsive"><table id="searchTableFlowOrder">
 			        <tr>
 			            <th w_render="orderidOP"  width="10%;">交易ID</th>
-			            <th w_index="SN" width="10%;">SN</th>
+			            <th w_index="SN" width="10%;">机身码</th>
 			            <th w_index="customerName"  width="10%;">客户</th>
 			            <th w_index="userCountry"  width="10%;">国家</th>
 			            <th w_index="orderAmount"  width="5%;">总金额</th>

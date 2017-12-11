@@ -49,7 +49,7 @@
 
 
                                 <DIV class="form-group">
-                                    <LABEL class="inline-label">设备SN：</LABEL><INPUT style="width: 137px;" class="form-control" id="SN" name="SN" type="text" placeholder="设备SN">
+                                    <LABEL class="inline-label">设备机身码：</LABEL><INPUT style="width: 137px;" class="form-control" id="SN" name="SN" type="text" placeholder="设备机身码">
                                 </DIV>
 
                                 <DIV class="form-group">
@@ -105,7 +105,7 @@
 								<table id="searchTable">
 									<tr>
 										<th w_index="keyId" width="10%;" w_sort="keyId,desc">流水ID</th>
-										<th w_index="SN" width="10%;">设备SN</th>
+										<th w_index="SN" width="10%;">设备机身码</th>
 										<th w_index="key" width="10%;">绑定码</th>
                                         <th w_index="vendorId" width="10%;">合作方ID</th>
 <!-- 										<th w_render="render_startDate" width="10%;">开始日期</th> -->
@@ -132,7 +132,7 @@
                         <DIV class="panel-body">
 		                范围：<label class="checkbox-items" style="padding-right:10px;"><INPUT name="exportRange" value="1" id="exportRangeAll" type="radio" checked="checked">全部搜索结果</label>
 		                <label class="checkbox-items" style="padding-right:10px;"><INPUT name="exportRange" value="0" id="exportRangeCurPage" type="radio" >当前页</label>
-                        <br />选项：<label class="checkbox-items" style="padding-right:10px;"><INPUT name="optionSnKey" value="1" id="option-only-sn-key" type="checkbox" >仅导出SN和绑定码列</label>
+                        <br />选项：<label class="checkbox-items" style="padding-right:10px;"><INPUT name="optionSnKey" value="1" id="option-only-sn-key" type="checkbox" >仅导出机身码和绑定码列</label>
 		                <br /><button id="exportExcelButton"><a href="javascript:void(0);">导出到 Excel</a></button><br /><br />
                         </DIV>
                     </DIV>
@@ -159,22 +159,22 @@
 						              </div>
                                     </div>
                                     <div class="form-group" id="batchListDiv">
-                                      <label for="batchList" class="col-md-3 control-label">批量导入设备SN:</label>
+                                      <label for="batchList" class="col-md-3 control-label">批量导入设备机身码:</label>
                                       <div class="col-md-6">
                                         <textarea id="batchList" rows="5" name="batchList" maxlength="2000" data-popover-offset="0,8"
                                         class="form-control"></textarea>
                                       </div>
-                                      <div class="col-sm-3"><span class="red">* <em>以逗号分隔的SN列表</em></span></div><!-- 批量发放在后台成功创建后, 会导出 Excel 档并提示是否保存 -->
+                                      <div class="col-sm-3"><span class="red">* <em>以逗号分隔的机身码列表</em></span></div><!-- 批量发放在后台成功创建后, 会导出 Excel 档并提示是否保存 -->
                                     </div>
 
 						            <div class="form-group" id="singleDiv">
-						              <label for="SN" class="col-md-3 control-label">单个设备SN:</label>
+						              <label for="SN" class="col-md-3 control-label">单个设备机身码:</label>
 						              <div class="col-md-6">
 						                <input id="SN" type="text" name="SN" value="${Model.SN}" data-popover-offset="0,8"
 						                minlength="5" maxlength="20" class="form-control">
 						              </div>
 						              <div class="col-sm-3">
-						                <p class="form-control-static"><span class="red">* 15位完整SN或者SN末尾6位部分，后者在提交后会自动判断补上前缀部分</span>
+						                <p class="form-control-static"><span class="red">* 15位完整机身码或者机身码末尾6位部分，后者在提交后会自动判断补上前缀部分</span>
 						                </p>
 						              </div>
 						            </div>
@@ -475,7 +475,7 @@
 	                  return true;
 	              }
         	}
-          }, "单个发放必需填写15位完整SN或6位末尾部分");
+          }, "单个发放必需填写15位完整机身码或6位末尾部分");
        jQuery.validator.addMethod("batchListCheck", function(value, element) {
     	   if(!isBatch) {//单个时不检查
     		   //alert('bbbb');
@@ -500,7 +500,7 @@
                   return true;
               }
            }
-          }, "批量发放输入框最大长度不超过2000且使用逗号分隔,全部SN必须有效,至少有一个合法SN");
+          }, "批量发放输入框最大长度不超过2000且使用逗号分隔,全部机身码必须有效,至少有一个合法机身码");
 
          $(function(){
         	 activateMenu(op);
@@ -557,9 +557,9 @@
                  },
                  messages: {
                    'SN': { //支持批量导入后手动判断
-                     snCustom: "请输入15位完整SN或者SN末尾6位部分，后者在提交后会自动判断补上前缀部分",
-                     maxlength: '请输入15位完整SN或者SN末尾6位部分，后者在提交后会自动判断补上前缀部分',
-                     minlength: '请输入15位完整SN或者SN末尾6位部分，后者在提交后会自动判断补上前缀部分'
+                     snCustom: "请输入15位完整机身码或者机身码末尾6位部分，后者在提交后会自动判断补上前缀部分",
+                     maxlength: '请输入15位完整机身码或者机身码末尾6位部分，后者在提交后会自动判断补上前缀部分',
+                     minlength: '请输入15位完整机身码或者机身码末尾6位部分，后者在提交后会自动判断补上前缀部分'
                    },
                    'remark': {
                      maxlength: "最多不超过100字"
@@ -721,7 +721,7 @@
 			var value=$('#edit_form input[name="SN"]').val();//alert('3 value.substring(0,10) =' + value.substring(0,10))
 			if(value == '' || !(value.length == 15 || value.length == 6)
 			    /*|| (value.length == 15 && value.substring(0,10) != '1721502100')*/) {
-			  easy2go.toast('error', '请输入正确设备SN');
+			  easy2go.toast('error', '请输入正确设备机身码');
                $('input[name="SN"]').focus();
                return;
              }

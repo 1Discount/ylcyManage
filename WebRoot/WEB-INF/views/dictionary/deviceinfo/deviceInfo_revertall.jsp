@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <DIV class="col-md-12">
 
      <DIV class="panel">
-         <DIV class="panel-heading"><b>归还设备</b> <SMALL>归还租用的设备，并且设备状态更改为可用状态。可以在此输入框直接指定设备序列号去尝试归还，或者从下方的客户押金申请记录去操作。它们的结果等同。</SMALL></DIV>
+         <DIV class="panel-heading"><b>归还设备</b> <SMALL>归还租用的设备，并且设备状态更改为可用状态。可以在此输入框直接指定设备机身码去尝试归还，或者从下方的客户押金申请记录去操作。它们的结果等同。</SMALL></DIV>
 
 
      <!-- 批量归还 开始 -->
@@ -56,9 +56,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div style="padding-left:15px;border:1px solid #e2e2e4;height:120px;background-color:#e2e2e4;font-size:11px;color:red;">
        <p>
            <p>注意：</p>
-           <p style="margin-left:43px;">1.批量归还设备需要按照指定的excel格式，SN列输入设备号的后六位即可。</p>
+           <p style="margin-left:43px;">1.批量归还设备需要按照指定的excel格式，机身码列输入设备号的后六位即可。</p>
            <p style="margin-left:43px;">2.批量归还设备与出入库无关，归还设备后即可下单，然后去出入库管理界面，进行入库可改变设备库存数量  </p>
-           <p style="margin-left:43px;">3.批量归还设备excel最新格式为：id &nbsp;&nbsp;&nbsp;  SN(后六位即可) 分id和SN两列即可  （从2016-5-12起调整为两列，去掉是否入库列）</p>
+           <p style="margin-left:43px;">3.批量归还设备excel最新格式为：id &nbsp;&nbsp;&nbsp;  机身码(后六位即可) 分id和机身码两列即可  （从2016-5-12起调整为两列，去掉是否入库列）</p>
        </p>
      </div>
     </div><!-- Excel 批量归还 结束 -->
@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <tr>
                     <th w_index="recordID" w_hidden="true">ID</th>
                     <th w_render="render_orderID" width="5%;">相关订单</th><%-- w_sort="serverCode,asc" --%>
-                    <th w_index="SN" width="5%;" >序列号</th>
+                    <th w_index="SN" width="5%;" >机身码</th>
                     <th w_render="render_customerName" width="10%;" >客户</th>
                     <th w_index="phone" width="10%;" >电话</th>
                     <th w_render="render_dealAmount" width="10%;" >押金总额</th>

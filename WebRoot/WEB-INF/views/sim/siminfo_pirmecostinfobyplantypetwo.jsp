@@ -80,7 +80,7 @@
                                      <TH w_index="planType" width="7%"><b>套餐类型</b></TH>
                                      <!-- <TH w_render="totalSim" width="3%"><b>使用卡总数</b></TH> -->
                                      <TH w_index="country" width="15%" w_length="999999999999999999999999"><b>使用国家</b></TH>
-                                     <TH w_index="assignedSN" width="33%"  w_length="999999999999999999999999"><b>使用SN</b></TH>
+                                     <TH w_index="assignedSN" width="33%"  w_length="999999999999999999999999"><b>使用机身码</b></TH>
                                      <TH w_index="totalData" width="4%"><b>总流量</b></TH>
                                      <TH w_index="totalFlow" width="4%"><b>使用流量</b></TH>
                                      <TH w_index="totalPrice" width="4%"><b>价格</b></TH>

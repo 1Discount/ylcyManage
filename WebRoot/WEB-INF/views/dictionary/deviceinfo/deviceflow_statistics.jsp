@@ -37,7 +37,7 @@
                                     <input type="text" id="endTime" name="endTime" value="${endTime}" data-popover-offset="0,8" class="form_datetime form-control"/>
                                </div>
                                <div class="form-group">
-                                    <LABEL class="inline-label">SN：</LABEL>
+                                    <LABEL class="inline-label">机身码：</LABEL>
                                     <input type="text" id="SN" name="SN" data-popover-offset="0,8" class="form-control"/>
                                     <input type="hidden" id="MCC" name="MCC" value="${MCC}"/>
                                </div>
@@ -61,7 +61,7 @@
                             <table id="searchTable">
                                 <tr>
                                     <th w_index="countryName" width="14%;">国家</th>
-                                    <th w_render="SN" width="14%;">SN</th>
+                                    <th w_render="SN" width="14%;">机身码</th>
                                     <th w_render="avgFlow" width="14%;">日流量均值</th>
                                     <th w_render="maxFlow" width="14%;">日流量峰值</th>
                                     <th w_render="minFlow" width="14%;">日流量谷值</th>

@@ -98,7 +98,7 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label">上次绑定SN：</label>
+									<label class="col-sm-3 control-label">上次绑定机身码：</label>
 									<div class="col-sm-6">
 										<input type="text" name="lastDeviceSN" maxlength="20"
 											value="${Model.lastDeviceSN}" data-popover-offset="0,8"

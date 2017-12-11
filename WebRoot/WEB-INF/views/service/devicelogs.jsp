@@ -114,7 +114,7 @@ id="main-content"><SECTION class="wrapper">
 
 <TABLE id="searchTable5">
   <TR>
-    <th w_index="SN"><b>SN</b></th>
+    <th w_index="SN"><b>机身码</b></th>
     <th w_render="ContextLen"><b>分发/释放</b></th>
     <th w_index="TTContext"><b>VPN</b></th>
     <th w_index="gSta"><b>VPN编号</b></th>

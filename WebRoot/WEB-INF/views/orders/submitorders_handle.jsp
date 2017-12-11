@@ -94,7 +94,7 @@
                              <TABLE id="searchTable">
                                  <TR>
                                   <TH w_render="creatorDate" width="6%"><b>提交时间</b></TH>
-                                     <TH w_render="SN" width="8%"><b>SN</b></TH>
+                                     <TH w_render="SN" width="8%"><b>机身码</b></TH>
                                      
                                      <TH w_render="urgency" width="4%"><b>紧急程度</b></TH>
                                      <TH w_index="problemType" width="6%"><b>类型</b></TH>

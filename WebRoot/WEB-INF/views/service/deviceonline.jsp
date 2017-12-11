@@ -65,7 +65,7 @@
 					<tr classs="extend_render_per_row">
 						<th w_index="MCC" width="10%;">国家</th>
 						<th w_index="SNCount" width="10%;">接入设备数</th>
-						<th w_index="SN" w_length="9999999999999" width="10%;">设备SN</th>
+						<th w_index="SN" w_length="9999999999999" width="10%;">设备机身码</th>
 						<th w_render="operate" width="2%;">操作</th>
 					</tr>
 				</table>
@@ -373,7 +373,7 @@ function loadb() {
 	  //自定义列
     function operate(record, rowIndex, colIndex, options) {
 		  var SN=record.SN;
-         return '<a href="#" id="'+rowIndex+'" onmousemove="copy('+rowIndex+',\''+SN+'\')" class="glyphicon btn btn-primary btn-xs">复制SN</a>';
+         return '<a href="#" id="'+rowIndex+'" onmousemove="copy('+rowIndex+',\''+SN+'\')" class="glyphicon btn btn-primary btn-xs">复制机身码</a>';
 	  }
 	 
 	var tableName = '${tableName}'; // 形如2015-09-22格式

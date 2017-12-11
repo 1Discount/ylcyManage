@@ -56,8 +56,8 @@
                                     </select>
 								</DIV>
 								<DIV class="form-group">
-									<LABEL class="inline-label">序列号：</LABEL>
-									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="序列号">
+									<LABEL class="inline-label">机身码：</LABEL>
+									<INPUT class="form-control" name="SN" id="SN" type="text" placeholder="机身码">
 								</DIV>
 
 
@@ -85,9 +85,9 @@
 							<DIV class="table-responsive">
 								<TABLE id="searchTable2">
 									<TR>
-										<TH w_render="device_num"  width="10%"><b>序列号</b></TH>
+										<TH w_render="device_num"  width="10%"><b>机身码</b></TH>
 										<TH w_index="distributorName"  width="10%"><b>渠道商</b></TH>
-										<TH w_index="deviceDealID" w_hidden="true" width="10%"><b>序列号</b></TH>
+										<TH w_index="deviceDealID" w_hidden="true" width="10%"><b>机身码</b></TH>
 										<TH w_index="modelNumber" width="10%"><b>型号</b></TH>
 										<TH w_index="frequencyRange"  width="10%"><b>制式和频段</b></TH>
 										<TH w_render="device_Status"  width="10%"><b>状态</b></TH>

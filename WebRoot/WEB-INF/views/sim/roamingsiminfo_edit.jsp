@@ -96,7 +96,7 @@
                 <input type="text" name="lastDeviceSN" maxlength="20" value="${Model.lastDeviceSN}" data-popover-offset="0,8" class="form-control">
               </div>
               <div class="col-sm-3">
-                <p class="form-control-static"><span class="red">设备序列号，15位值</span>
+                <p class="form-control-static"><span class="red">设备机身码，15位值</span>
                 </p>
               </div>
             </div>

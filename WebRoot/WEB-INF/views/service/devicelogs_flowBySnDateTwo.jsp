@@ -36,8 +36,8 @@
 							<form class="form-inline" id="searchForm" role="form" method="get" action="#">
 								<input name="flowOrderID" id="flowOrderID" type="hidden" value="${Model.flowOrderID }" />
 								<div class="form-group">
-									<label class="inline-label">设备序列号SN：</label>
-									<input type="text" name="SN" id="SN" style="width: 173px;" value="${Model.SN }" placeholder="输入15位完整SN" class="form-control" data-popover-offset="10,-105">
+									<label class="inline-label">设备机身码：</label>
+									<input type="text" name="SN" id="SN" style="width: 173px;" value="${Model.SN }" placeholder="输入15位完整机身码" class="form-control" data-popover-offset="10,-105">
 								</div>
 								<div class="form-group">
 									<label class="inline-label">选取时间段： 从</label>
@@ -258,7 +258,7 @@
 				},
 				messages : {
 				'SN' : {
-					required : "请输入SN"
+					required : "请输入机身码"
 				},
 				'beginTime' : {
 					required : "请选择开始时间"

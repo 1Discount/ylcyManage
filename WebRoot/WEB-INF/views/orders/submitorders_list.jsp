@@ -49,7 +49,7 @@
                                             <input id="submitOrdersID" name="submitOrdersID" type="hidden"/>
                                             <table width="90%" cellspacing="2px"> 
                                                <tr style="height:40px;">
-                                                  <td style="text-align:right;" width="100"><b>设备SN：</b></td>
+                                                  <td style="text-align:right;" width="100"><b>设备机身码：</b></td>
                                                   <td><input type="text" class="form-control" id="SN" name="SN" value="${SN}"/></td>
                                                   <td style="text-align:right;" width="100"><b>问题描述：</b></td>
                                                   <td>
@@ -180,7 +180,7 @@
                              <TABLE id="searchTable">
                                  <TR>
                                  	<TH w_render="creatorDate" width="6%"><b>提交时间</b></TH>
-                                     <TH w_render="SN" width="6%"><b>SN</b></TH>
+                                     <TH w_render="SN" width="6%"><b>机身码</b></TH>
                                      <!-- <TH w_index="customerName" width="6%"><b>客户名</b></TH> -->
                                      
                                      
@@ -265,7 +265,7 @@
            },
            submitHandler: function(form){
         	   if($("#SN").val()==""){
-                   easy2go.toast('warn', "请输入SN");
+                   easy2go.toast('warn', "请输入机身码");
                    return;
                }
         	   if($("#description").val()==""){

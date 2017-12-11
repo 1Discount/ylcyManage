@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="btn-toolbar btn-header-right">
           <a href="<%=basePath %>sim/siminfo/edit/${Model.SIMinfoID}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span>编辑</a>
           <a href="<%=basePath %>sim/simrechargebill/new?SIMinfoID=${Model.SIMinfoID}&SIMCategory=${Model.SIMCategory}" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span>充值</a>
-          <a href="<%=basePath %>sim/siminfo/simandsn?imsi=${Model.IMSI}" class="btn btn-primary btn-xs">历史绑定SN</a>
+          <a href="<%=basePath %>sim/siminfo/simandsn?imsi=${Model.IMSI}" class="btn btn-primary btn-xs">历史绑定机身码</a>
           </div>
 	    
 	      <h4 class="panel-title">本地SIM卡</h4>
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <tr>
                 <td width="15%">IMSI：</td>
                 <td width="35%"><span class="label label-success label-xs">${Model.IMSI}</span></td>
-                <td width="15%">最近设备SN：</td>
+                <td width="15%">最近设备机身码：</td>
                 <td width="35%"><a href="<%=basePath %>device/deviceInfodetail?deviceid=${Model.lastDeviceSN}">${Model.lastDeviceSN}</a></td>
               </tr>
 	          <tr style="display: none;">
@@ -207,7 +207,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
 	      <div class="btn-toolbar"><a href="<%=basePath %>sim/siminfo/edit/${Model.SIMinfoID}" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span>编辑</a>
 	      <a href="<%=basePath %>sim/simrechargebill/new?SIMinfoID=${Model.SIMinfoID}&SIMCategory=${Model.SIMCategory}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>充值</a>
-          <a href="<%=basePath %>sim/siminfo/simandsn?imsi=${Model.IMSI}" class="btn btn-primary">历史绑定SN</a></div>
+          <a href="<%=basePath %>sim/siminfo/simandsn?imsi=${Model.IMSI}" class="btn btn-primary">历史绑定机身码</a></div>
 	    </div>
 	  </div>
      </div>

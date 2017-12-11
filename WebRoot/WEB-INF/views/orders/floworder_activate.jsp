@@ -44,9 +44,9 @@
 								<input type="hidden" id="deviceDeal_SN" name="SN"
 									value="">
 								<div class="form-group">
-									<label for="deal_amount" class="col-md-3 control-label">选择设备SN进行激活:</label>
+									<label for="deal_amount" class="col-md-3 control-label">选择设备机身码进行激活:</label>
 									<div class="col-md-6">
-										<select id="slect_sn" onchange="selectid();"  name="deviceDealID" required="" class="form-control"><option value="">选择设备SN</option>
+										<select id="slect_sn" onchange="selectid();"  name="deviceDealID" required="" class="form-control"><option value="">选择设备机身码</option>
 <c:forEach items="${snlist}" var="dev" varStatus="status">
 	<option value="${dev.deviceDealID}">${dev.SN}</option>
 </c:forEach>
@@ -86,7 +86,7 @@
    
    function addsub(){
 	   if($("#slect_sn").val()==""){
-		   easy2go.toast('warn', "请选择设备SN");
+		   easy2go.toast('warn', "请选择设备机身码");
 		   return;
 	   }
 			$.ajax({

@@ -93,7 +93,7 @@
 							<form id="searchForm" role="form" action="#" method="get"
 								class="form-inline">
 								<div class="form-group">
-									<label class="inline-label">SN：</label>
+									<label class="inline-label">机身码：</label>
 										<input class="form-control" name="SN" id="SN" type="text" placeholder="SN">
 										<input name="distributorID"  type="hidden" value="${Model.distributorID }">
 								</div>
@@ -115,7 +115,7 @@
 								<table id="searchTable">
 									<tr>
 										<th w_index="deviceID" width="10%"><b>ID</b></th>
-										<th w_index="SN" width="10%"><b>SN</b></th>
+										<th w_index="SN" width="10%"><b>机身码</b></th>
 										<th w_index="deviceColour" width="10%"><b>设备颜色</b></th>
 										<th w_index="repertoryStatus" width="10%"><b>出入库状态</b></th>
 										<th w_index="creatorUserName" width="10%"><b>创建人</b></th>

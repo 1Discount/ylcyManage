@@ -54,7 +54,7 @@
 											<INPUT class="form-control" id="countryList" name="countryList" type="text" placeholder="国家">
 										</DIV>
 										<DIV class="form-group">
-											<LABEL class="inline-label">SN：</LABEL>
+											<LABEL class="inline-label">机身码：</LABEL>
 											<INPUT class="form-control" id="SN" name="SN" type="text" placeholder="">
 										</DIV>
 
@@ -168,7 +168,7 @@
 												<TR>
 													<th w_render="redio" width="2%;"></th>
 													<TH w_index="customerName" width="5%"><b>客户姓名</b></TH>
-													<TH w_index="SN" width="5%"  w_length="8"><b>SN</b></TH>
+													<TH w_index="SN" width="5%"  w_length="8"><b>机身码</b></TH>
 													<TH w_index="customerPhone" width="5%"><b>手机号</b></TH>
 													<TH w_index="address" width="8%" w_length="10"><b>地址</b></TH>
 													<TH w_index="wangwangNo" width="5%"><b>旺旺号</b></TH>
@@ -269,9 +269,9 @@
 									<div class="col-md-2">
 										<input id="client_address" type="text" name="address" class="form-control">
 									</div>
-									<label for="devicedeal_sn" class="col-xs-1 control-label">SN:</label>
+									<label for="devicedeal_sn" class="col-xs-1 control-label">机身码:</label>
 									<div class="col-md-2">
-										<input id="devicedeal_sn" type="text" name="SN" placeholder="SN后六位，用/隔开" class="form-control">
+										<input id="devicedeal_sn" type="text" name="SN" placeholder="机身码后六位，用/隔开" class="form-control">
 									</div>
 									<div class="col-md-3">
 										<label for="" class="col-xs-1 control-label"></label>
@@ -739,9 +739,9 @@
         	//流量个数
         	flowNum=data.total;
         	if(flowNum==1){
-        		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个SN后6位");
+        		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个机身码后6位");
         	}else if(flowNum>1){
-        		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个SN后6位,用/隔开");
+        		$("#devicedeal_sn").attr("placeholder","请输入"+flowNum+"个机身码后6位,用/隔开");
         	}
         }
         //取消填值
@@ -804,7 +804,7 @@
     		  return;
     	  }
     	  if($("#devicedeal_sn").val()==''){
-    		  easy2go.toast('warn',"请输入SN");
+    		  easy2go.toast('warn',"请输入机身码");
     		  return;
     	  }
 
@@ -847,7 +847,7 @@
     						easy2go.toast('warn', data.msg);
 
     					} else if (data.code == -4) {
-    						easy2go.toast('warn', data.msg + "SN如下:" + data.sn);
+    						easy2go.toast('warn', data.msg + "机身码如下:" + data.sn);
 
     					}
     				},
@@ -867,7 +867,7 @@
 				data : $('#flowdeal_form').serialize(),
 				dataType : 'json',
 				success : function(data) {
-					//-1表示SN不存在。-2表示SN使用中,0表示SN或种子卡不支持国家
+					//-1表示机身码不存在。-2表示机身码使用中,0表示机身码或种子卡不支持国家
 					if (data.code == '00') {
 						easy2go.toast('info', '订单创建成功！！！');
 						gridObj1.refreshPage();
@@ -903,7 +903,7 @@
 	       	////////////
 	       	bootbox.dialog({
 	             title: "请输入设备号",
-	             message:'<div><input class="form-control" id="snlist" type="text" placeholder="请输入SN后六位, 多个SN用 / 隔开" /></div>',
+	             message:'<div><input class="form-control" id="snlist" type="text" placeholder="请输入机身码后六位, 多个机身码用 / 隔开" /></div>',
 	             buttons: {
 	                 cancel: {
 	                     label: "取消",

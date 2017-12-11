@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <DIV class="panel-heading"><h4>wifi密码查询</h4></DIV>
 <div class="form-group">
 <div style="padding: 20px;">
-	<label class="inline-label" style=" line-height: 34px;">设备序列号：</label>
+	<label class="inline-label" style=" line-height: 34px;">设备机身码：</label>
 	<input class="form-control" id="SN" name="SN" type="text" placeholder="" style="width:200px;display: inline-block;">&nbsp;
 		<button class="btn btn-primary" id="serch" type="button" onclick="selectwifi()">查询</button>
 	<input class="form-control" id="SNresult" name="SN" type="text" placeholder="" style="width:200px;border:none; display:inline-block;"><br /><br />
@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	function selectwifi(){
  		var SN = $("#SN").val();
  		if(SN=="" || SN.length!=6){
- 			easy2go.toast('warn', "请输入6位数设备序列号");
+ 			easy2go.toast('warn', "请输入6位数设备机身码");
  			return;
  		}
  		$.ajax({

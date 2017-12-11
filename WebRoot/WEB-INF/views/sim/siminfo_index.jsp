@@ -65,8 +65,8 @@
 								</div>
 								
 								<div class="form-group">
-									<label class="inline-label">序列号：</label>
-									<input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备序列号" class="form-control">
+									<label class="inline-label">机身码：</label>
+									<input type="text" name="lastDeviceSN" style="width: 173px;" placeholder="设备机身码" class="form-control">
 								</div>
 								
 								<div class="form-group">
@@ -177,7 +177,7 @@
 										<th w_render="ifr">漫游</th>
 										<th w_render="render_cardStatus" width="5%;">状态</th>
 										<th w_index="IPAndPort" width="8%;">服务器</th>
-										<th w_index="lastDeviceSN" w_sort="lastDeviceSN,unorder">最近设备SN</th>
+										<th w_index="lastDeviceSN" w_sort="lastDeviceSN,unorder">最近设备机身码</th>
 										<th w_render="render_planData" width="5%;">包含流量</th>
 										<th w_render="render_planRemainData" width="5%;">剩余流量</th>
 										<th w_render="render_historyUsedFlow" width="5%;">累计使用流量</th>

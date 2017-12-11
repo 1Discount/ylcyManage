@@ -113,7 +113,7 @@
 								<table id="searchTable1" style="margin-bottom: 0px;">
 									<tr>
 										<th w_index="deviceDealID" width="10%;">交易ID</th>
-										<th w_index="SN" width="10%;">设备SN</th>
+										<th w_index="SN" width="10%;">设备机身码</th>
 										<th w_index="deallType" width="10%;">交易类型</th>
 										<th w_index="dealAmount" width="10%;">金额</th>
 										<th w_index="ifReturn" width="10%;">是否归还</th>
@@ -189,7 +189,7 @@
     '</div>'+
  ' </div>'+
 '<div class="form-group">'+
-'<label class="col-sm-3 control-label">录入SN：</label>'+
+'<label class="col-sm-3 control-label">录入机身码：</label>'+
 '<div class="col-sm-9">'+
      ' <label for="ifboundsn0" class="radio-inline" onclick="inputSnType()">'+
      		 ' <input type="radio"  name="SNInputType" id="ifboundsn0" value="1" checked>手动输入</label> '+                 
@@ -202,7 +202,7 @@
 '<label for="operatorName" class="col-md-3 control-label"></label>'+
 '<div class="col-md-6">'+
 '<input id="SN" type="text" name="SN" data-popover-offset="0,8"'+
-' required maxlength="50"  placeholder="多个SN示例：1254/4525" class="form-control">'+
+' required maxlength="50"  placeholder="多个机身码示例：1254/4525" class="form-control">'+
 ' </div>'+
 ' <div class="col-sm-3">'+
 ' <p class="form-control-static"><span class="red"> </span>'+
@@ -244,7 +244,7 @@
                 	   }
                 	   if(selectRadioValue==1){
                 		   if(SN==''){
-                			   easy2go.toast('warn','请输入设备序列号');
+                			   easy2go.toast('warn','请输入设备机身码');
                 			   return fasle;
                 		   }else{
                 			   var snArray = SN.split("/");
@@ -273,12 +273,12 @@
                 		  		 dataType:'html',
                 		  		 success:function(data){
                 		  			 if(data=="-1"){
-                		  				easy2go.toast('warn',"SN长度为15位");
+                		  				easy2go.toast('warn',"机身码长度为15位");
                 		  			 }
                 		  			 else if(data=="0"){
-                		  				easy2go.toast('warn',"SN个数大于设备个数");
+                		  				easy2go.toast('warn',"机身码个数大于设备个数");
                 		  			}else if(data=="3"){
-                		  				easy2go.toast('warn',"请输入SN后再发货");
+                		  				easy2go.toast('warn',"请输入机身码后再发货");
                 		  			}else if(data=="1"){
                 		  				easy2go.toast('info',"发货成功, 正在跳转", false, null, {
                 		  					onClose: function() { history.go(0); }
