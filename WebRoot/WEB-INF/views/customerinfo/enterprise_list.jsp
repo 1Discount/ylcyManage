@@ -81,11 +81,6 @@
 
 									</DIV>
 
-									<span style="color: green;"></span>
-
-
-
-
 									<DIV class="panel-body">
 									<DIV class="table-responsive">
 										<table id="searchTable">

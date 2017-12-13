@@ -176,7 +176,7 @@
          }
          
          function orderidOP(record, rowIndex, colIndex, options) {
-        	 return '<A  href="<%=basePath%>orders/devicedealorders/info?deviceDealID='+record.deviceDealID+'"><SPAN class="" style="color: green;">详细</SPAN></A>';
+        	 return '<A  href="<%=basePath%>orders/devicedealorders/info?deviceDealID='+record.deviceDealID+'">详细</A>';
          }
           
          //根据ID删除 

@@ -192,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			        document.getElementById('client_phone').focus();
 	    			        return false;
 						} else if (data == 0) {
-							$('.phone_default').empty().append("<span style='color:green;'>此号码可使用！</span>");
+							$('.phone_default').empty().append("<span style='color:1f8bb5;'>此号码可使用！</span>");
 							phoneflage=true;
 							if($('#client_name').val().trim()!='' &&  $('#client_address').val().trim()!='' && $('#client_phone').val().trim()!='' && phoneflage){
 					    		$('#next').attr('disabled',false);
@@ -262,7 +262,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			        document.getElementById('client_phone').focus();
 	    			        return false;
 						} else if (data == 0) {
-							$('.phone_default').empty().append("<span style='color:green;'>此号码可使用！</span>");
+							$('.phone_default').empty().append("<span style='color:1f8bb5;'>此号码可使用！</span>");
 							return true;
 						}else {
 						    $('.phone_default').empty().append(msg);

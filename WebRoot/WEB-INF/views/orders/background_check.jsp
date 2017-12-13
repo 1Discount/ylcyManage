@@ -38,7 +38,7 @@
 		    border-bottom: 1px solid #ddd
 		}
 		.light-green {
-		    color: #00BB00;
+		    color: #1f8bb5;
 		}
 		.red {
 		    color: #E63C0C;

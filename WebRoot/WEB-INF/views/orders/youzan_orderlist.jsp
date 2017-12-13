@@ -315,7 +315,7 @@ var queryParam = '?otherStatusFlag=0'; // 空白时默认显示有效订单
              }
          }         
          function orderidOP(record, rowIndex, colIndex, options) {
-        	 return '<A  href="<%=basePath%>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'"><SPAN class="" style="color: green;">详细</SPAN></A>';
+        	 return '<A  href="<%=basePath%>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'">详细</A>';
          }
          function render_orderAmount(record, rowIndex, colIndex, options) {
              return accounting.formatMoney(record.orderAmount);

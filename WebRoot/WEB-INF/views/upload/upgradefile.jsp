@@ -80,7 +80,6 @@
 						<DIV class="panel-heading">
 							<H3 class="panel-title">文件详情</H3>
 						</DIV>
-						<span style="color: green;"></span>
 						<DIV class="panel-body">
 							<table id="searchTable">
 								<tr>

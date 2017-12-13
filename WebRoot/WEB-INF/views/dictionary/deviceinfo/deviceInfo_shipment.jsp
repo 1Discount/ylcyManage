@@ -75,7 +75,6 @@
 			<DIV class="panel-heading">
 				<H3 class="panel-title">待发货订单</H3>
 			</DIV>
-			<span style="color: green;"></span>
 			<DIV class="panel-body">
 				<table id="searchTable2">
 					<tr>
@@ -103,7 +102,6 @@
 			<DIV class="panel-heading">
 				<H3 class="panel-title">已发货订单</H3>
 			</DIV>
-			<span style="color: green;"></span>
 			<DIV class="panel-body">
 				<table id="searchTable">
 					<tr>
@@ -205,7 +203,7 @@
           }
          function orderidOP(record, rowIndex, colIndex, options) {
 
-        	 return '<A   href="<%=basePath%>orders/ordersinfo/order?ordersID='+record.orderID+'"><SPAN class="" style="color: green;">详细</SPAN></A>';
+        	 return '<A   href="<%=basePath%>orders/ordersinfo/order?ordersID='+record.orderID+'">详细</A>';
 
          }
          function render_orderAmount(record, rowIndex, colIndex, options) {

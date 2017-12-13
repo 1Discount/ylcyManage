@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    }
    
    function orderidOP(record, rowIndex, colIndex, options) {
-       return '<A  href="<%=basePath %>orders/flowdealorders/info?flowDealID='+record.flowDealID+'"><SPAN class="" style="color: green;">'+record.flowDealID+'</SPAN></A>';
+       return '<A  href="<%=basePath %>orders/flowdealorders/info?flowDealID='+record.flowDealID+'">'+record.flowDealID+'</A>';
    }
 --%>
 

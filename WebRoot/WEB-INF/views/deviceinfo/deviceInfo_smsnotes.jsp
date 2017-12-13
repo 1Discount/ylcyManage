@@ -62,7 +62,6 @@
 						<DIV class="panel-heading">
 							<H3 class="panel-title">所有设备短信</H3>
 						</DIV>
-						<span style="color: green;"></span>
 						<DIV class="panel-body">
 							<table id="searchTable">
 								<tr>

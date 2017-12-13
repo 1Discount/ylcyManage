@@ -133,7 +133,7 @@
           });
       	
          function orderidOP(record, rowIndex, colIndex, options) {
-        	 return '<a title="'+record.flowDealID+'" href="<%=basePath%>orders/flowdealorders/info?flowDealID='+record.flowDealID+'"><span class="" style="color: green;">详情</span></a>';
+        	 return '<a title="'+record.flowDealID+'" href="<%=basePath%>orders/flowdealorders/info?flowDealID='+record.flowDealID+'">详情</a>';
          }
          //刷新
          function re(){

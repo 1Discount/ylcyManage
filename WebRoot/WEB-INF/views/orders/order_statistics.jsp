@@ -129,7 +129,7 @@ Hello world!
          }
          
          function orderidOP(record, rowIndex, colIndex, options) {
-        	 return '<A  href="<%=basePath %>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'"><SPAN class="" style="color: green;">'+record.orderID+'</SPAN></A>';
+        	 return '<A  href="<%=basePath %>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'">'+record.orderID+'</A>';
          }
          
          function re(){

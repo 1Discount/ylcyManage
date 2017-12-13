@@ -108,7 +108,6 @@
 						<DIV class="panel-heading">
 							<H3 class="panel-title">所有订单</H3>
 						</DIV>
-						<span style="color: green;"></span>
 						<DIV class="panel-body">
 							<table id="searchTable">
 								<tr>
@@ -253,7 +252,7 @@ var queryParam = '?otherStatusFlag=0'; // 空白时默认显示有效订单
         	 window.location.href="<%=basePath%>workflow/gooflow?orderID="+orderID;
          }
          function orderidOP(record, rowIndex, colIndex, options) {
-        	 return '<A  href="<%=basePath%>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'"><SPAN class="" style="color: green;">详细</SPAN></A>';
+        	 return '<A  href="<%=basePath%>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'">详细</A>';
          }
          function render_orderAmount(record, rowIndex, colIndex, options) {
              return accounting.formatMoney(record.orderAmount);

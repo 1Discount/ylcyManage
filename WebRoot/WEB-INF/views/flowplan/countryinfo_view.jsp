@@ -220,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          return '<A class="btn btn-primary btn-xs"   href="<%=basePath %>orders/flowdealorders/edit?flowDealID='+record.flowDealID+'"><SPAN class="glyphicon glyphicon-edit">编辑</SPAN></A>';
     }    
     function orderidOP(record, rowIndex, colIndex, options) {
-        return '<A  href="<%=basePath %>orders/flowdealorders/info?flowDealID='+record.flowDealID+'"><SPAN class="" style="color: green;">'+record.flowDealID+'</SPAN></A>';
+        return '<A  href="<%=basePath %>orders/flowdealorders/info?flowDealID='+record.flowDealID+'">'+record.flowDealID+'</A>';
     }     
    function re(){
        $("#order_ID").val('');

@@ -108,35 +108,35 @@ Hello world!
          });
           //设备订单总数orderTote 
           function count(record, rowIndex, colIndex, options){
-         	 	return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=orderTote"><SPAN style="color: green;">'+record.count+'</SPAN></A>';
+         	 	return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=orderTote">'+record.count+'</A>';
          	}
                 // 正常订单数normalOrder
           function efficient(record, rowIndex, colIndex, options){
-        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=normalOrder"><SPAN style="color: green;">'+record.efficient+'</SPAN></A>';
+        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=normalOrder">'+record.efficient+'</A>';
            	}
                 // 租用rent
           function rentcount(record, rowIndex, colIndex, options){
-        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=rent"><SPAN style="color: green;">'+record.rentcount+'</SPAN></A>';
+        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=rent">'+record.rentcount+'</A>';
            	}
                  //购买buy 
           function buycount(record, rowIndex, colIndex, options){
-        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=buy"><SPAN style="color: green;">'+record.buycount+'</SPAN></A>';
+        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=buy">'+record.buycount+'</A>';
                  }
                  //正常订单总金额amount 
        <%--    function amount(record, rowIndex, colIndex, options){
-        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=amount"><SPAN style="color: green;">'+record.amount+'</SPAN></A>';
+        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=amount">'+record.amount+'</A>';
         	  } --%>
                 // 未完成订单数notFinsh
           function unfinished(record, rowIndex, colIndex, options){
-        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?statu=notFinsh"><SPAN style="color: green;">'+record.unfinished+'</SPAN></A>';
+        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?statu=notFinsh">'+record.unfinished+'</A>';
         	  } 
                  //已删除订单数deleted
           function delcount(record, rowIndex, colIndex, options){
-        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=deleted"><SPAN style="color: green;">'+record.delcount+'</SPAN></A>';
+        	  return '<A  href="<%=basePath %>orders/devicedealorders/devicedealinfo?status=deleted">'+record.delcount+'</A>';
         	  }
          
          function orderidOP(record, rowIndex, colIndex, options) {
-        	 return '<A  href="<%=basePath %>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'"><SPAN  style="color: green;">'+record.orderID+'</SPAN></A>';
+        	 return '<A  href="<%=basePath %>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'">'+record.orderID+'</A>';
          }
          
          function re(){

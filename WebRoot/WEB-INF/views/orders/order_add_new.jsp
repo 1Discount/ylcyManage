@@ -630,7 +630,7 @@
         	 }
          }
          function orderidOPtwo(record, rowIndex, colIndex, options) {
-        	 return '<A  href="<%=basePath%>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'"><SPAN class="" style="color: green;">详细</SPAN></A>';
+        	 return '<A  href="<%=basePath%>orders/ordersinfo/orderinfo?ordersID='+record.orderID+'">详细</A>';
          }
          function opifReturn(record, rowIndex, colIndex, options){
 
@@ -648,7 +648,7 @@
          }
 
          function orderidOP(record, rowIndex, colIndex, options) {
-        	 return '<a title="'+record.flowDealID+'" href="<%=basePath%>orders/flowdealorders/info?flowDealID='+record.flowDealID+'"><span class="" style="color: green;">详情</span></a>';
+        	 return '<a title="'+record.flowDealID+'" href="<%=basePath%>orders/flowdealorders/info?flowDealID='+record.flowDealID+'">详情</a>';
          }
 
          function acceptOrderStatus(record, rowIndex, colIndex, options){

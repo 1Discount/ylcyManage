@@ -150,7 +150,7 @@
    });
  
      function orderidOP(record, rowIndex, colIndex, options) {
-    	 return '<a title="'+record.flowDealID+'" href="<%=basePath%>orders/flowdealorders/info?flowDealID='+record.flowDealID+'"><span class="" style="color: green;">详情</span></a>';
+    	 return '<a title="'+record.flowDealID+'" href="<%=basePath%>orders/flowdealorders/info?flowDealID='+record.flowDealID+'">详情</a>';
      }
       
   
@@ -159,7 +159,7 @@
     	 var beginDate  = $("#order_creatorDatebegin").val();
     	 var endDate = $("#order_creatorDateend").val();
     	 var mcc = record.mcc;
-    	 return '<a title="'+record.totalInCount+'" href="<%=basePath%>orders/flowdealorders/toflowOrderJieruInfo?mcc='+mcc+'&countryName='+countryName+'&beginDate='+beginDate+'&endDate='+endDate+'"><span style="color: green;">'+record.totalInCount+'</span></a>';
+    	 return '<a title="'+record.totalInCount+'" href="<%=basePath%>orders/flowdealorders/toflowOrderJieruInfo?mcc='+mcc+'&countryName='+countryName+'&beginDate='+beginDate+'&endDate='+endDate+'">'+record.totalInCount+'</a>';
      }
      
      
