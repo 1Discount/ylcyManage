@@ -14,7 +14,7 @@
 
 <head>
 
-<title>全部流量订单-订单管理-EASY2GO ADMIN</title>
+<title>全部流量订单-订单管理-流量运营中心</title>
 
 <meta charset="utf-8">
 

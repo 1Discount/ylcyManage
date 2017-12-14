@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>升级上传-EASY2GO ADMIN</title>
+<title>升级上传-流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"

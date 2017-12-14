@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>添加客户-客户管理-EASY2GO ADMIN</title>
+<title>添加客户-客户管理-流量运营中心</title>
 <meta charset="utf-8">
 
 <meta http-equiv= "Expires " content= "0 "> 

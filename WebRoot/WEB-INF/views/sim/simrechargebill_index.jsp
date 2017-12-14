@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><c:if test="${initCategory eq null or initCategory eq 0}">全部本地SIM卡充值记录</c:if><c:if test="${initCategory eq 1}">全部漫游SIM卡充值记录</c:if>-SIM卡充值管理-EASY2GO ADMIN</title>
+    <title><c:if test="${initCategory eq null or initCategory eq 0}">全部本地SIM卡充值记录</c:if><c:if test="${initCategory eq 1}">全部漫游SIM卡充值记录</c:if>-SIM卡充值管理-流量运营中心</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">

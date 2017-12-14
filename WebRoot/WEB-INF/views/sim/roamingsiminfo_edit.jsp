@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
   <head><c:if test="${Model.ICCID eq null}"><%-- 通过必选字符串字段为null判断为添加记录 --%>
-    <title>添加种子卡-漫游SIM卡管理-EASY2GO ADMIN</title></c:if><c:if test="${Model.ICCID ne null}">
-    <title>编辑种子卡-种子卡管理-EASY2GO ADMIN</title></c:if>
+    <title>添加种子卡-漫游SIM卡管理-流量运营中心</title></c:if><c:if test="${Model.ICCID ne null}">
+    <title>编辑种子卡-种子卡管理-流量运营中心</title></c:if>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">

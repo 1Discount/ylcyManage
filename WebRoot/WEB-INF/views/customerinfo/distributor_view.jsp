@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>渠道商详情-渠道商管理-EASY2GO ADMIN</title>
+<title>渠道商详情-渠道商管理-流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"

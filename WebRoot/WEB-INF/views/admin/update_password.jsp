@@ -9,7 +9,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
-<TITLE>重设密码-EASY2GO ADMIN</TITLE>
+<TITLE>重设密码-流量运营中心</TITLE>
 <META charset="utf-8">
 <META content="IE=edge" http-equiv="X-UA-Compatible">
 <META name="viewport"

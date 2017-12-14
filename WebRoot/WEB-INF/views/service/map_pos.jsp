@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>地图-POS机位置-EASY2GO ADMIN</title>
+<title>地图-POS机位置-流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>设备流量时间段统计 - EASY2GO ADMIN</title>
+    <title>设备流量时间段统计 - 流量运营中心</title>
     <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

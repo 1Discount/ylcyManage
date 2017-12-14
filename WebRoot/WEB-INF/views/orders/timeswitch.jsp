@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>定时任务开关-EASY2GO ADMIN</title>
+<title>定时任务开关-流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"

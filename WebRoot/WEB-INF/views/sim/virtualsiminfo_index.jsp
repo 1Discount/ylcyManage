@@ -10,8 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><c:if test="${IsIndexView}">全部SIM卡-本地SIM卡管理-EASY2GO ADMIN</c:if>
-	<c:if test="${IsTrashView}">本地SIM卡管理-全部已删除SIM卡-EASY2GO ADMIN</c:if></title>
+<title><c:if test="${IsIndexView}">全部SIM卡-本地SIM卡管理-流量运营中心</c:if>
+	<c:if test="${IsTrashView}">本地SIM卡管理-全部已删除SIM卡-流量运营中心</c:if></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"

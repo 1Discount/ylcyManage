@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><c:if test="${IsIndexView}">全部漫游SIM卡-种子卡管理-EASY2GO ADMIN</c:if><c:if test="${IsTrashView}">全部已删除SIM卡-种子卡管理-EASY2GO ADMIN</c:if></title>
+    <title><c:if test="${IsIndexView}">全部漫游SIM卡-种子卡管理-流量运营中心</c:if><c:if test="${IsTrashView}">全部已删除SIM卡-种子卡管理-流量运营中心</c:if></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">

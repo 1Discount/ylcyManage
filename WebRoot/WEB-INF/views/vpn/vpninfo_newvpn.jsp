@@ -12,8 +12,8 @@
 <html>
 <head>
 <title>
-<c:if test="${empty vpnInfo.vpnId}">添加VPN-SIM服务器管理-EASY2GO ADMIN</c:if>
-<c:if test="${not empty vpnInfo.vpnId}">更新VPN-SIM服务器管理-EASY2GO ADMIN</c:if>
+<c:if test="${empty vpnInfo.vpnId}">添加VPN-SIM服务器管理-流量运营中心</c:if>
+<c:if test="${not empty vpnInfo.vpnId}">更新VPN-SIM服务器管理-流量运营中心</c:if>
 </title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">

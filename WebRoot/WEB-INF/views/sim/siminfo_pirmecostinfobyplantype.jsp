@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SIM卡使用详情[SIM卡类型统计]-EASY2GO ADMIN</title>
+<title>SIM卡使用详情[SIM卡类型统计]-流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"

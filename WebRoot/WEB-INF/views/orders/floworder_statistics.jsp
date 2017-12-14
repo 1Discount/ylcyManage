@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>流量订单统计-统计报表-EASY2GO ADMIN</title>
+<title>流量订单统计-统计报表-流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="Expires " content="0 ">
 <meta http-equiv="kiben " content="no-cache ">

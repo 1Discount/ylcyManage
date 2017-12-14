@@ -13,10 +13,10 @@
 <head>
 <c:if test="${Model.ICCID eq null}">
 	<%-- 通过必选字符串字段为null判断为添加记录 --%>
-	<title>添加本地卡-本地SIM卡管理-EASY2GO ADMIN</title>
+	<title>添加本地卡-本地SIM卡管理-流量运营中心</title>
 </c:if>
 <c:if test="${Model.ICCID ne null}">
-	<title>编辑本地卡-本地SIM卡管理-EASY2GO ADMIN</title>
+	<title>编辑本地卡-本地SIM卡管理-流量运营中心</title>
 </c:if>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">

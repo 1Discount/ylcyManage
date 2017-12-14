@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>今天在线流量订单-客服监控中心-EASY2GO ADMIN</title>
+<title>今天在线流量订单-客服监控中心-流量运营中心</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
