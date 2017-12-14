@@ -22,9 +22,8 @@
 	<section id="container">
 		<jsp:include page="/WEB-INF/views/common/_top_menu.jsp" flush="true" />
 		<jsp:include page="/WEB-INF/views/common/_sidebar.jsp" flush="true" />
-
-
-
-		
+	</section>
+	<!-- 要引入此js，会动态加载样式 -->
+	<script src="<%=basePath%>static/js/app.min.js?20150209"></script>
 </body>
 </html>
