@@ -31,7 +31,7 @@
 		<![CDATA[
 			select
 				*
-			from AdminUserInfo where email = #{email} and password=#{password}
+			from AdminUserInfo where (email = #{email} or phone = #{phone}) and password=#{password}
 		]]>
 	</select>
 

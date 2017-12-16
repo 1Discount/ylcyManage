@@ -28,7 +28,7 @@
 			<h2 class="form-signin-heading">用 户 登 录</h2>
 			<div class="login-wrap">
 				<div class="user-login-info">
-					<input type="text" id="user_email" name="email" placeholder="Email"
+					<input type="text" id="user_email" name="email" placeholder="Mobile/Email"
 						value="${email}" autofocus="" class="form-control"> <input
 						type="password" id="user_pwd" name="password"
 						placeholder="Password" class="form-control">

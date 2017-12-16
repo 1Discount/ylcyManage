@@ -1,10 +1,7 @@
 package com.Manage.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -17,15 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.apache.shiro.session.Session;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Manage.common.constants.Constants;
-import com.Manage.common.shiro.CacheSessionDAO;
 import com.Manage.common.util.DES;
 import com.Manage.common.util.LogUtil;
 import com.Manage.entity.AdminOperate;
@@ -75,6 +69,8 @@ public class AdminUserInfoControl extends BaseController {
 			e.printStackTrace();
 		}
 		auinfo.setpassword(pwd);
+		// add 2017-12-16 v1.0.2 支持手机号码登录
+		auinfo.setPhone(auinfo.getEmail());
 		AdminUserInfo dto = adminuserinfoser.login(auinfo);
 		
 		// 判断是否登陆成功.
@@ -618,7 +614,7 @@ public class AdminUserInfoControl extends BaseController {
 
 			return;
 		}
-
+		adminUserInfo.setUserID(loginAdminUserInfo.getUserID());
 		try {
 			if (adminuserinfoser.useredit(adminUserInfo)) {
 
